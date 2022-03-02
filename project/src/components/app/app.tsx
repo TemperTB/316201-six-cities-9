@@ -3,38 +3,39 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 
 import PrivateRoute from '../private-route/private-route';
 
-import Favourites from '../../pages/favourites';
+import { Offers } from '../../types/offers';
+
+import Favorites from '../../pages/favorites';
 import Login from '../../pages/login';
 import Main from '../../pages/main';
 import NotFound from '../../pages/not-found';
 import Offer from '../../pages/offer';
 
+
 type AppScreenProps = {
   placesCount: number;
+  offers: Offers;
 };
 
-function App({ placesCount }: AppScreenProps): JSX.Element {
+function App({ placesCount, offers }: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<Main placesCount={placesCount} />}
+          element={<Main placesCount={placesCount} offers={offers} />}
         />
         <Route path={AppRoute.Login} element={<Login />} />
         <Route path={AppRoute.Offer} element={<Offer />} />
         <Route
-          path={AppRoute.Favourites}
+          path={AppRoute.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-              <Favourites />
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+              <Favorites />
             </PrivateRoute>
           }
         />
-        <Route
-          path="*"
-          element={<NotFound />}
-        />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

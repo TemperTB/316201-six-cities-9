@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-function FavouritesScreen(): JSX.Element {
+function FavoritesScreen(): JSX.Element {
   return (
     <Fragment>
       <main className="page__main page__main--favorites">
@@ -190,4 +190,4 @@ function FavouritesScreen(): JSX.Element {
   );
 }
 
-export default FavouritesScreen;
+export default FavoritesScreen;
