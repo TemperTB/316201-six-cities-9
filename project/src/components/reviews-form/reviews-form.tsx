@@ -27,7 +27,7 @@ function ReviewsForm(): JSX.Element {
       </label>
       <div className="reviews__rating-form form__rating">
         <input
-          onClick={() => ratingChangeHandler}
+          onChange={ratingChangeHandler}
           className="form__rating-input visually-hidden"
           name="rating"
           defaultValue={5}
@@ -44,7 +44,7 @@ function ReviewsForm(): JSX.Element {
           </svg>
         </label>
         <input
-          onClick={() => ratingChangeHandler}
+          onChange={ratingChangeHandler}
           className="form__rating-input visually-hidden"
           name="rating"
           defaultValue={4}
@@ -61,7 +61,7 @@ function ReviewsForm(): JSX.Element {
           </svg>
         </label>
         <input
-          onClick={() => ratingChangeHandler}
+          onChange={ratingChangeHandler}
           className="form__rating-input visually-hidden"
           name="rating"
           defaultValue={3}
@@ -78,7 +78,7 @@ function ReviewsForm(): JSX.Element {
           </svg>
         </label>
         <input
-          onClick={() => ratingChangeHandler}
+          onChange={ratingChangeHandler}
           className="form__rating-input visually-hidden"
           name="rating"
           defaultValue={2}
@@ -95,7 +95,7 @@ function ReviewsForm(): JSX.Element {
           </svg>
         </label>
         <input
-          onClick={() => ratingChangeHandler}
+          onChange={ratingChangeHandler}
           className="form__rating-input visually-hidden"
           name="rating"
           defaultValue={1}
