@@ -3,7 +3,8 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 
 import PrivateRoute from '../private-route/private-route';
 
-import { Offers } from '../../types/offers';
+import { Offers as OffersType } from '../../types/offers';
+import { FavoriteOffers as FavoriteOffersType } from '../../types/favorite-offers';
 
 import Favorites from '../../pages/favorites';
 import Login from '../../pages/login';
@@ -11,13 +12,17 @@ import Main from '../../pages/main';
 import NotFound from '../../pages/not-found';
 import Offer from '../../pages/offer';
 
-
 type AppScreenProps = {
   placesCount: number;
-  offers: Offers;
+  offers: OffersType;
+  favoriteOffers: FavoriteOffersType;
 };
 
-function App({ placesCount, offers }: AppScreenProps): JSX.Element {
+function App({
+  placesCount,
+  offers,
+  favoriteOffers,
+}: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
@@ -26,12 +31,12 @@ function App({ placesCount, offers }: AppScreenProps): JSX.Element {
           element={<Main placesCount={placesCount} offers={offers} />}
         />
         <Route path={AppRoute.Login} element={<Login />} />
-        <Route path={AppRoute.Offer} element={<Offer />} />
+        <Route path={`${AppRoute.Offer}:id`} element={<Offer />} />
         <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-              <Favorites />
+            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+              <Favorites favoriteOffers={favoriteOffers} />
             </PrivateRoute>
           }
         />

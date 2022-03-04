@@ -1,11 +1,11 @@
-import { Offers } from '../types/offers';
+import { Offers as OffersType } from '../types/offers';
 
 import Header from '../components/header/header';
 import MainScreen from '../components/main-screen/main-screen';
 
 type MainProps = {
   placesCount: number;
-  offers: Offers;
+  offers: OffersType;
 };
 
 function Main({ placesCount, offers }: MainProps): JSX.Element {
