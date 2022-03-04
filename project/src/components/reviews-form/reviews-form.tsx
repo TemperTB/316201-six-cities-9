@@ -2,9 +2,7 @@ import { ChangeEvent, useState } from 'react';
 
 function ReviewsForm(): JSX.Element {
 
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [rating, setRating] = useState('');
+  const [, setRating] = useState('');
   const [comment, setComment] = useState('');
 
   const ratingChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
