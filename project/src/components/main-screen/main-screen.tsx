@@ -1,8 +1,9 @@
-import { Offers as OffersType } from '../../types/offers';
+import { Offers as OffersType, Offer as OfferType } from '../../types/offers';
 import { CENTER_COORDINATES } from '../../mocks/center-coordinates';
 import Map from '../map/map';
 
 import PlacesCard from '../places-card/places-card';
+import { useState } from 'react';
 
 type MainScreenProps = {
   placesCount: number;
@@ -10,6 +11,16 @@ type MainScreenProps = {
 };
 
 function MainScreen({ placesCount, offers }: MainScreenProps): JSX.Element {
+  const [selectedPoint, setSelectedPoint] = useState<OfferType | undefined>(
+    undefined,
+  );
+
+  const onPlaceCardHover = (id: number) => {
+    const selectedId = offers.find((offer) => offer.id === id);
+
+    setSelectedPoint(selectedId);
+  };
+
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -83,12 +94,16 @@ function MainScreen({ placesCount, offers }: MainScreenProps): JSX.Element {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              <PlacesCard offers={offers} />
+              <PlacesCard offers={offers} onPlaceCardHover={onPlaceCardHover} />
             </div>
           </section>
           <div className="cities__right-section">
             <section className="cities__map map">
-              <Map centerCoordinates={CENTER_COORDINATES} points={offers} selectedPoint={offers[0]} />
+              <Map
+                centerCoordinates={CENTER_COORDINATES}
+                points={offers}
+                selectedPoint={selectedPoint}
+              />
             </section>
           </div>
         </div>

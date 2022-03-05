@@ -5,10 +5,10 @@ import { Offer } from '../../types/offers';
 
 type PlaceCardProps = {
   offer: Offer;
-  changeActiveCard: (id: number) => void;
+  onPlaceCardHover: (id: number) => void;
 };
 
-function PlaceCard({ offer, changeActiveCard }: PlaceCardProps): JSX.Element {
+function PlaceCard({ offer, onPlaceCardHover }: PlaceCardProps): JSX.Element {
   const {
     previewImage,
     isPremium,
@@ -23,7 +23,7 @@ function PlaceCard({ offer, changeActiveCard }: PlaceCardProps): JSX.Element {
     <article
       className="cities__place-card place-card"
       onMouseOver={() => {
-        changeActiveCard(id);
+        onPlaceCardHover(id);
       }}
     >
       {isPremium ? (
