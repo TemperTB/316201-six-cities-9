@@ -21,3 +21,6 @@ export enum AuthorizationStatus {
  * Одна звезда рейтинга занимает 20 процентов ширины
  */
 export const PERCENT_PER_STAR = 20;
+
+export const URL_MARKER_CURRENT = '../img/pin-active.svg';
+export const URL_MARKER_DEFAULT = '../img/pin.svg';

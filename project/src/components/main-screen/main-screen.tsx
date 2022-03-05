@@ -1,4 +1,6 @@
 import { Offers as OffersType } from '../../types/offers';
+import { CENTER_COORDINATES } from '../../mocks/center-coordinates';
+import Map from '../map/map';
 
 import PlacesCard from '../places-card/places-card';
 
@@ -85,7 +87,9 @@ function MainScreen({ placesCount, offers }: MainScreenProps): JSX.Element {
             </div>
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map" />
+            <section className="cities__map map">
+              <Map centerCoordinates={CENTER_COORDINATES} points={offers} selectedPoint={offers[0]} />
+            </section>
           </div>
         </div>
       </div>
