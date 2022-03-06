@@ -22,5 +22,12 @@ export enum AuthorizationStatus {
  */
 export const PERCENT_PER_STAR = 20;
 
+/**
+ * Константы для карты
+ */
 export const URL_MARKER_CURRENT = '../img/pin-active.svg';
 export const URL_MARKER_DEFAULT = '../img/pin.svg';
+export const ICON_WIDTH = 40;
+export const ICON_HEIGHT = 40;
+export const ANCHOR_RELATIVE_X = 20;
+export const ANCHOR_RELATIVE_Y = 40;
