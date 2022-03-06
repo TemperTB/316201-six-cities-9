@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { FavoriteOffers as FavoriteOffersType } from '../../types/favorite-offers';
 import FavoritePlaceCard from '../favorite-place-card/favorite-place-card';
+import Footer from '../footer/footer';
 
 type FavoriteScreenProps = {
   favoriteOffers: FavoriteOffersType;
@@ -35,17 +36,7 @@ function FavoritesScreen({ favoriteOffers }: FavoriteScreenProps): JSX.Element {
           </section>
         </div>
       </main>
-      <footer className="footer container">
-        <a className="footer__logo-link" href="main.html">
-          <img
-            className="footer__logo"
-            src="img/logo.svg"
-            alt="6 cities logo"
-            width={64}
-            height={33}
-          />
-        </a>
-      </footer>
+      <Footer />
     </Fragment>
   );
 }

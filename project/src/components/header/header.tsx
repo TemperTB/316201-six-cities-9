@@ -1,3 +1,4 @@
+import { LogoTypes } from '../../const';
 import Logo from '../logo/logo';
 
 function Header(): JSX.Element {
@@ -6,7 +7,7 @@ function Header(): JSX.Element {
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            <Logo />
+            <Logo type={LogoTypes.Header}/>
           </div>
           <nav className="header__nav">
             <ul className="header__nav-list">
