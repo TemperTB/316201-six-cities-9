@@ -5,10 +5,11 @@ import { OfferType } from '../../types/offers';
 
 type PlaceCardProps = {
   offer: OfferType;
+  key: number;
   onPlaceCardHover: (id: number) => void;
 };
 
-function PlaceCard({ offer, onPlaceCardHover }: PlaceCardProps): JSX.Element {
+function PlaceCard({ offer, key, onPlaceCardHover }: PlaceCardProps): JSX.Element {
   const {
     previewImage,
     isPremium,
@@ -20,26 +21,24 @@ function PlaceCard({ offer, onPlaceCardHover }: PlaceCardProps): JSX.Element {
     id,
   } = offer;
   return (
-    <article
+    <article key={key}
       className="cities__place-card place-card"
       onMouseOver={() => {
         onPlaceCardHover(id);
       }}
     >
-      {isPremium ? (
+      {isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
-      ) : (
-        ''
       )}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={AppRoute.Offer + id}>
           <img
             className="place-card__image"
             src={previewImage}
-            width={260}
-            height={200}
+            width="260"
+            height="200"
             alt="Place image"
           />
         </Link>
@@ -52,7 +51,7 @@ function PlaceCard({ offer, onPlaceCardHover }: PlaceCardProps): JSX.Element {
           </div>
           <button
             className={`place-card__bookmark-button button ${
-              isFavorite ? 'place-card__bookmark-button--active' : ''
+              isFavorite && 'place-card__bookmark-button--active'
             }`}
             type="button"
           >

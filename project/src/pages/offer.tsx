@@ -1,11 +1,18 @@
 import Header from '../components/header/header';
-import PlaceScreen from '../components/place-screen/place-screen';
+import OfferScreen from '../components/offer-screen/offer-screen';
+import { OfferType } from '../types/offers';
+import { OfferReviewsType } from '../types/offer-reviews';
 
-function Offer(): JSX.Element {
+type OfferProps = {
+  offer: OfferType;
+  reviews: OfferReviewsType;
+};
+
+function Offer({ offer, reviews }: OfferProps): JSX.Element {
   return (
     <div className="page">
       <Header />
-      <PlaceScreen />;
+      <OfferScreen offer={offer} reviews={reviews}/>;
     </div>
   );
 }
