@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Offers as OffersType } from '../../types/offers';
+import { OffersType } from '../../types/offers';
 
 import PlaceCard from '../place-card/place-card';
 

@@ -1,4 +1,4 @@
-import { Offers as OffersType, Offer as OfferType } from '../../types/offers';
+import { OffersType, OfferType } from '../../types/offers';
 import { CENTER_COORDINATES } from '../../mocks/center-coordinates';
 import Map from '../map/map';
 

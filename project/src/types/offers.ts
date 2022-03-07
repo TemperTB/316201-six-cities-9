@@ -1,4 +1,4 @@
-export type Offer = {
+export type OfferType = {
   bedrooms: number;
   city: {
     location: {
@@ -33,4 +33,4 @@ export type Offer = {
   type: string;
 };
 
-export type Offers = Offer[];
+export type OffersType = OfferType[];

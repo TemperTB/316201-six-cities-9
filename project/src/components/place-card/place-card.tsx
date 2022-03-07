@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { AppRoute, PERCENT_PER_STAR } from '../../const';
 
-import { Offer } from '../../types/offers';
+import { OfferType } from '../../types/offers';
 
 type PlaceCardProps = {
-  offer: Offer;
+  offer: OfferType;
   onPlaceCardHover: (id: number) => void;
 };
 

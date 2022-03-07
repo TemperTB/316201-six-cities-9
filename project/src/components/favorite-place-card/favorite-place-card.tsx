@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { AppRoute, PERCENT_PER_STAR } from '../../const';
 
-import { FavoriteOffer } from '../../types/favorite-offers';
+import { FavoriteOfferType } from '../../types/favorite-offers';
 
 type FavoritePlaceCardProps = {
-  favoriteOffer: FavoriteOffer;
+  favoriteOffer: FavoriteOfferType;
 };
 
 function FavoritePlaceCard({

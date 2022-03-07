@@ -3,8 +3,8 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 
 import PrivateRoute from '../private-route/private-route';
 
-import { Offers as OffersType } from '../../types/offers';
-import { FavoriteOffers as FavoriteOffersType } from '../../types/favorite-offers';
+import { OffersType } from '../../types/offers';
+import { FavoriteOffersType } from '../../types/favorite-offers';
 
 import Favorites from '../../pages/favorites';
 import Login from '../../pages/login';

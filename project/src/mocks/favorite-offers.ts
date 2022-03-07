@@ -1,6 +1,6 @@
-import { FavoriteOffers } from '../types/favorite-offers';
+import { FavoriteOffersType } from '../types/favorite-offers';
 
-export const favoriteOffers: FavoriteOffers = [
+export const favoriteOffers: FavoriteOffersType = [
   {
     bedrooms: 3,
     city: {

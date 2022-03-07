@@ -36,3 +36,5 @@ export enum LogoTypes {
   Header = 'header',
   Footer = 'footer',
 }
+
+export const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
