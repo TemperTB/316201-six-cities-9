@@ -4,12 +4,12 @@ import 'leaflet/dist/leaflet.css';
 import useMap from '../../hooks/useMap';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT, ICON_WIDTH, ICON_HEIGHT, ANCHOR_RELATIVE_X, ANCHOR_RELATIVE_Y } from '../../const';
 import { CenterCoordinates } from '../../types/center-coordinates';
-import { Offer, Offers } from '../../types/offers';
+import { OfferType, OffersType } from '../../types/offers';
 
 type MapProps = {
   centerCoordinates: CenterCoordinates;
-  points: Offers;
-  selectedPoint: Offer | undefined;
+  points: OffersType;
+  selectedPoint: OfferType | undefined;
 };
 
 const defaultCustomIcon = new Icon({
