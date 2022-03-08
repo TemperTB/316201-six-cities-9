@@ -37,5 +37,11 @@ export enum LogoTypes {
   Footer = 'footer',
 }
 
+export enum PlaceCardTypes {
+  Main = 'cities',
+  Favorites = 'favorites',
+  Nearby = 'near-places',
+}
+
 export const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octover', 'November', 'December'];
 

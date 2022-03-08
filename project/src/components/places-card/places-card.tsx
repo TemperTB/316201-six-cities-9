@@ -1,15 +1,18 @@
 import { Fragment } from 'react';
+import { PlaceCardTypes } from '../../const';
 import { OffersType } from '../../types/offers';
 
 import PlaceCard from '../place-card/place-card';
 
 type PlacesCardProps = {
   offers: OffersType;
-  onPlaceCardHover: (id: number) => void;
+  typeCard: PlaceCardTypes;
+  onPlaceCardHover?: (id: number) => void;
 };
 
 function PlacesCard({
   offers,
+  typeCard,
   onPlaceCardHover,
 }: PlacesCardProps): JSX.Element {
   return (
@@ -18,6 +21,7 @@ function PlacesCard({
         <PlaceCard
           offer={offer}
           key={offer.id}
+          typeCard={typeCard}
           onPlaceCardHover={onPlaceCardHover}
         />
       ))}

@@ -14,15 +14,15 @@ type Parametrs = {
 const getParametrs = (type: LogoTypes): Parametrs => {
   switch (type) {
     case LogoTypes.Header:
-      return {classPrefix:'header', width: 81, height: 41};
+      return { classPrefix: LogoTypes.Header, width: 81, height: 41 };
     case LogoTypes.Footer:
-      return {classPrefix:'footer', width: 64, height: 33};
+      return { classPrefix: LogoTypes.Footer, width: 64, height: 33 };
     default:
-      return {classPrefix:'header', width: 81, height: 41};
+      return { classPrefix: LogoTypes.Header, width: 81, height: 41 };
   }
 };
 
-function Logo({type}: LogoProps): JSX.Element {
+function Logo({ type }: LogoProps): JSX.Element {
   const { classPrefix, width, height } = getParametrs(type);
   return (
     <Link className={`${classPrefix}__logo-link`} to="/">

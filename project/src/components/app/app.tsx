@@ -13,6 +13,7 @@ import Login from '../../pages/login';
 import Main from '../../pages/main';
 import NotFound from '../../pages/not-found';
 import Offer from '../../pages/offer';
+import { NearbyOffersType } from '../../types/nearby-offers';
 
 
 type AppScreenProps = {
@@ -20,6 +21,7 @@ type AppScreenProps = {
   offers: OffersType;
   favoriteOffers: FavoriteOffersType;
   reviews: OfferReviewsType;
+  nearbyOffers: NearbyOffersType;
 };
 
 function App({
@@ -27,6 +29,7 @@ function App({
   offers,
   favoriteOffers,
   reviews,
+  nearbyOffers,
 }: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
@@ -36,7 +39,7 @@ function App({
           element={<Main placesCount={placesCount} offers={offers} />}
         />
         <Route path={AppRoute.Login} element={<Login />} />
-        <Route path={`${AppRoute.Offer}:id`} element={<Offer offer={offers[0]} reviews={reviews}/>} />
+        <Route path={`${AppRoute.Offer}:id`} element={<Offer offer={offers[0]} reviews={reviews} nearbyOffers={nearbyOffers}/>} />
         <Route
           path={AppRoute.Favorites}
           element={

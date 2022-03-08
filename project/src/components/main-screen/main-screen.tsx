@@ -4,6 +4,7 @@ import Map from '../map/map';
 
 import PlacesCard from '../places-card/places-card';
 import { useState } from 'react';
+import { PlaceCardTypes } from '../../const';
 
 type MainScreenProps = {
   placesCount: number;
@@ -17,7 +18,6 @@ function MainScreen({ placesCount, offers }: MainScreenProps): JSX.Element {
 
   const onPlaceCardHover = (id: number) => {
     const selectedId = offers.find((offer) => offer.id === id);
-
     setSelectedPoint(selectedId);
   };
 
@@ -94,7 +94,11 @@ function MainScreen({ placesCount, offers }: MainScreenProps): JSX.Element {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              <PlacesCard offers={offers} onPlaceCardHover={onPlaceCardHover} />
+              <PlacesCard
+                offers={offers}
+                onPlaceCardHover={onPlaceCardHover}
+                typeCard={PlaceCardTypes.Main}
+              />
             </div>
           </section>
           <div className="cities__right-section">
@@ -103,6 +107,7 @@ function MainScreen({ placesCount, offers }: MainScreenProps): JSX.Element {
                 centerCoordinates={CENTER_COORDINATES}
                 points={offers}
                 selectedPoint={selectedPoint}
+                height={750}
               />
             </section>
           </div>
