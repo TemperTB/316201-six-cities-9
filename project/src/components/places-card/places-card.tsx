@@ -13,7 +13,7 @@ type PlacesCardProps = {
 function PlacesCard({
   offers,
   typeCard,
-  onPlaceCardHover,
+  onPlaceCardHover = undefined,
 }: PlacesCardProps): JSX.Element {
   return (
     <Fragment>

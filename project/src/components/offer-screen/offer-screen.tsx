@@ -21,7 +21,7 @@ function OfferScreen({ offer, reviews, nearbyOffers }: OfferScreenProps): JSX.El
             Other places in the neighbourhood
           </h2>
           <div className="near-places__list places__list">
-            <PlacesCard offers={nearbyOffers} typeCard={PlaceCardTypes.Nearby} onPlaceCardHover={undefined} />
+            <PlacesCard offers={nearbyOffers} typeCard={PlaceCardTypes.Nearby} />
           </div>
         </section>
       </div>

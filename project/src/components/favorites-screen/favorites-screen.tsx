@@ -28,7 +28,6 @@ function FavoritesScreen({ favoriteOffers }: FavoriteScreenProps): JSX.Element {
                   <PlacesCard
                     offers={favoriteOffers}
                     typeCard={PlaceCardTypes.Favorites}
-                    onPlaceCardHover={undefined}
                   />
                 </div>
               </li>

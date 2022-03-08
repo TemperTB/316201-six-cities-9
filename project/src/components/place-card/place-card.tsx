@@ -53,7 +53,7 @@ function PlaceCard({
   offer,
   key,
   typeCard,
-  onPlaceCardHover,
+  onPlaceCardHover=undefined,
 }: PlaceCardProps): JSX.Element {
   const {
     previewImage,
