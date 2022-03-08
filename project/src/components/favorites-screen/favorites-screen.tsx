@@ -1,6 +1,8 @@
 import { Fragment } from 'react';
-import { FavoriteOffers as FavoriteOffersType } from '../../types/favorite-offers';
-import FavoritePlaceCard from '../favorite-place-card/favorite-place-card';
+import { PlaceCardTypes } from '../../const';
+import { FavoriteOffersType } from '../../types/favorite-offers';
+import Footer from '../footer/footer';
+import PlacesCard from '../places-card/places-card';
 
 type FavoriteScreenProps = {
   favoriteOffers: FavoriteOffersType;
@@ -23,29 +25,17 @@ function FavoritesScreen({ favoriteOffers }: FavoriteScreenProps): JSX.Element {
                   </div>
                 </div>
                 <div className="favorites__places">
-                  {favoriteOffers.map((favoriteOffer) => (
-                    <FavoritePlaceCard
-                      favoriteOffer={favoriteOffer}
-                      key={favoriteOffer.id}
-                    />
-                  ))}
+                  <PlacesCard
+                    offers={favoriteOffers}
+                    typeCard={PlaceCardTypes.Favorites}
+                  />
                 </div>
               </li>
             </ul>
           </section>
         </div>
       </main>
-      <footer className="footer container">
-        <a className="footer__logo-link" href="main.html">
-          <img
-            className="footer__logo"
-            src="img/logo.svg"
-            alt="6 cities logo"
-            width={64}
-            height={33}
-          />
-        </a>
-      </footer>
+      <Footer />
     </Fragment>
   );
 }

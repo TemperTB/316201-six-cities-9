@@ -3,25 +3,33 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 
 import PrivateRoute from '../private-route/private-route';
 
-import { Offers as OffersType } from '../../types/offers';
-import { FavoriteOffers as FavoriteOffersType } from '../../types/favorite-offers';
+import { OffersType } from '../../types/offers';
+import { FavoriteOffersType } from '../../types/favorite-offers';
+import { OfferReviewsType } from '../../types/offer-reviews';
+
 
 import Favorites from '../../pages/favorites';
 import Login from '../../pages/login';
 import Main from '../../pages/main';
 import NotFound from '../../pages/not-found';
 import Offer from '../../pages/offer';
+import { NearbyOffersType } from '../../types/nearby-offers';
+
 
 type AppScreenProps = {
   placesCount: number;
   offers: OffersType;
   favoriteOffers: FavoriteOffersType;
+  reviews: OfferReviewsType;
+  nearbyOffers: NearbyOffersType;
 };
 
 function App({
   placesCount,
   offers,
   favoriteOffers,
+  reviews,
+  nearbyOffers,
 }: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
@@ -31,11 +39,11 @@ function App({
           element={<Main placesCount={placesCount} offers={offers} />}
         />
         <Route path={AppRoute.Login} element={<Login />} />
-        <Route path={`${AppRoute.Offer}:id`} element={<Offer />} />
+        <Route path={`${AppRoute.Offer}:id`} element={<Offer offer={offers[0]} reviews={reviews} nearbyOffers={nearbyOffers}/>} />
         <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
               <Favorites favoriteOffers={favoriteOffers} />
             </PrivateRoute>
           }

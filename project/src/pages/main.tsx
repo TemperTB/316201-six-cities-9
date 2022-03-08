@@ -1,4 +1,4 @@
-import { Offers as OffersType } from '../types/offers';
+import { OffersType } from '../types/offers';
 
 import Header from '../components/header/header';
 import MainScreen from '../components/main-screen/main-screen';

@@ -1,23 +1,27 @@
 import { Fragment } from 'react';
-import { Offers as OffersType } from '../../types/offers';
+import { PlaceCardTypes } from '../../const';
+import { OffersType } from '../../types/offers';
 
 import PlaceCard from '../place-card/place-card';
 
 type PlacesCardProps = {
   offers: OffersType;
-  onPlaceCardHover: (id: number) => void;
+  typeCard: PlaceCardTypes;
+  onPlaceCardHover?: (id: number) => void;
 };
 
 function PlacesCard({
   offers,
-  onPlaceCardHover,
+  typeCard,
+  onPlaceCardHover = undefined,
 }: PlacesCardProps): JSX.Element {
   return (
     <Fragment>
-      {offers.map((offer, id) => (
+      {offers.map((offer) => (
         <PlaceCard
           offer={offer}
           key={offer.id}
+          typeCard={typeCard}
           onPlaceCardHover={onPlaceCardHover}
         />
       ))}

@@ -31,3 +31,17 @@ export const ICON_WIDTH = 40;
 export const ICON_HEIGHT = 40;
 export const ANCHOR_RELATIVE_X = 20;
 export const ANCHOR_RELATIVE_Y = 40;
+
+export enum LogoTypes {
+  Header = 'header',
+  Footer = 'footer',
+}
+
+export enum PlaceCardTypes {
+  Main = 'cities',
+  Favorites = 'favorites',
+  Nearby = 'near-places',
+}
+
+export const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octover', 'November', 'December'];
+

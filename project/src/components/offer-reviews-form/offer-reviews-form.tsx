@@ -1,7 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 
-function ReviewsForm(): JSX.Element {
-
+function OfferReviewsForm(): JSX.Element {
   const [, setRating] = useState('');
   const [comment, setComment] = useState('');
 
@@ -16,7 +15,6 @@ function ReviewsForm(): JSX.Element {
     const { value } = evt.target;
     setComment(value);
   };
-
 
   return (
     <form className="reviews__form form" action="#" method="post">
@@ -117,7 +115,6 @@ function ReviewsForm(): JSX.Element {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        defaultValue={''}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
@@ -137,4 +134,4 @@ function ReviewsForm(): JSX.Element {
   );
 }
 
-export default ReviewsForm;
+export default OfferReviewsForm;
