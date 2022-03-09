@@ -7,6 +7,7 @@ type LocationItemProps = {
   city: CityType;
   key: string;
 };
+
 function LocationItem({
   city,
   key,
@@ -15,13 +16,13 @@ function LocationItem({
   const { name } = city;
   const isActive = name === activeCity.name ? 'tabs__item--active' : '';
   const dispatch = useAppDispatch();
+
   return (
     <li key={key} className="locations__item">
       <a
         className={`locations__item-link tabs__item ${isActive}`}
         href="#"
-        onClick={() =>
-          dispatch(changeCity({ city }))}
+        onClick={() => dispatch(changeCity({ city }))}
       >
         <span>{name}</span>
       </a>
