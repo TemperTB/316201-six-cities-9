@@ -4,7 +4,6 @@ import { OfferType } from '../../types/offers';
 
 type PlaceCardProps = {
   offer: OfferType;
-  key: number;
   typeCard: PlaceCardTypes;
   onPlaceCardHover?: (offer: OfferType) => void;
 };
@@ -16,6 +15,9 @@ type Parametrs = {
   imgHeight: number;
 };
 
+/**
+ * В зависимости от места отрисовки компонента (type) возвращает значения необходимые для правильной отрисовки
+ */
 const getParametrs = (type: PlaceCardTypes): Parametrs => {
   switch (type) {
     case PlaceCardTypes.Main:
@@ -51,7 +53,6 @@ const getParametrs = (type: PlaceCardTypes): Parametrs => {
 
 function PlaceCard({
   offer,
-  key,
   typeCard,
   onPlaceCardHover=undefined,
 }: PlaceCardProps): JSX.Element {
@@ -68,7 +69,6 @@ function PlaceCard({
   const { mainClass, classPrefix, imgWidth, imgHeight } = getParametrs(typeCard);
   return (
     <article
-      key={key}
       className={`${mainClass} place-card`}
       onMouseOver={() => {
         onPlaceCardHover && onPlaceCardHover(offer);

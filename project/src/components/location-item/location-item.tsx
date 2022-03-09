@@ -5,12 +5,10 @@ import { CityType } from '../../types/offers';
 type LocationItemProps = {
   activeCity: CityType;
   city: CityType;
-  key: string;
 };
 
 function LocationItem({
   city,
-  key,
   activeCity,
 }: LocationItemProps): JSX.Element {
   const { name } = city;
@@ -18,7 +16,7 @@ function LocationItem({
   const dispatch = useAppDispatch();
 
   return (
-    <li key={key} className="locations__item">
+    <li className="locations__item">
       <a
         className={`locations__item-link tabs__item ${isActive}`}
         href="#"
