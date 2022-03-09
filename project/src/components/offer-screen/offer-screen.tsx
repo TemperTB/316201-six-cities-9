@@ -4,6 +4,7 @@ import { NearbyOffersType } from '../../types/nearby-offers';
 import OfferProperty from '../offer-property/offer-property';
 import { PlaceCardTypes } from '../../const';
 import PlacesCard from '../places-card/places-card';
+import { useAppSelector } from '../../hooks';
 
 type OfferScreenProps = {
   offer: OfferType;
@@ -12,6 +13,9 @@ type OfferScreenProps = {
 };
 
 function OfferScreen({ offer, reviews, nearbyOffers }: OfferScreenProps): JSX.Element {
+
+  const { filteredOffers } = useAppSelector((state) => state);
+
   return (
     <main className="page__main page__main--property">
       <OfferProperty offer={offer} reviews={reviews} nearbyOffers={nearbyOffers} />
@@ -21,7 +25,7 @@ function OfferScreen({ offer, reviews, nearbyOffers }: OfferScreenProps): JSX.El
             Other places in the neighbourhood
           </h2>
           <div className="near-places__list places__list">
-            <PlacesCard offers={nearbyOffers} typeCard={PlaceCardTypes.Nearby} />
+            <PlacesCard offers={filteredOffers} typeCard={PlaceCardTypes.Nearby} />
           </div>
         </section>
       </div>

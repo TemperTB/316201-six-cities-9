@@ -1,13 +1,15 @@
-export type OfferType = {
-  bedrooms: number;
-  city: {
+export type CityType = {
+    name: string;
     location: {
       latitude: number;
       longitude: number;
       zoom: number;
     };
-    name: string;
   };
+
+export type OfferType = {
+  bedrooms: number;
+  city: CityType;
   description: string;
   goods: string[];
   host: {

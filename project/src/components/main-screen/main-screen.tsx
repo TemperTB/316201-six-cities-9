@@ -1,24 +1,24 @@
-import { OffersType, OfferType } from '../../types/offers';
-import { CENTER_COORDINATES } from '../../mocks/center-coordinates';
+import { OfferType } from '../../types/offers';
 import Map from '../map/map';
 
 import PlacesCard from '../places-card/places-card';
 import { useState } from 'react';
 import { PlaceCardTypes } from '../../const';
+import LocationsList from '../locations-list/locations-list';
+import { useAppSelector } from '../../hooks';
 
-type MainScreenProps = {
-  placesCount: number;
-  offers: OffersType;
-};
 
-function MainScreen({ placesCount, offers }: MainScreenProps): JSX.Element {
+function MainScreen(): JSX.Element {
+  const { filteredOffers, currentCity } = useAppSelector((state) => state);
+
+  const placesCount: number = filteredOffers.length;
+
   const [selectedPoint, setSelectedPoint] = useState<OfferType | undefined>(
     undefined,
   );
 
-  const onPlaceCardHover = (id: number) => {
-    const selectedId = offers.find((offer) => offer.id === id);
-    setSelectedPoint(selectedId);
+  const onPlaceCardHover = (offer: OfferType) => {
+    setSelectedPoint(offer);
   };
 
   return (
@@ -26,38 +26,7 @@ function MainScreen({ placesCount, offers }: MainScreenProps): JSX.Element {
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <ul className="locations__list tabs__list">
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Paris</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Cologne</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Brussels</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item tabs__item--active">
-                <span>Amsterdam</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Hamburg</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Dusseldorf</span>
-              </a>
-            </li>
-          </ul>
+          <LocationsList />
         </section>
       </div>
       <div className="cities">
@@ -95,7 +64,7 @@ function MainScreen({ placesCount, offers }: MainScreenProps): JSX.Element {
             </form>
             <div className="cities__places-list places__list tabs__content">
               <PlacesCard
-                offers={offers}
+                offers={filteredOffers}
                 onPlaceCardHover={onPlaceCardHover}
                 typeCard={PlaceCardTypes.Main}
               />
@@ -104,10 +73,11 @@ function MainScreen({ placesCount, offers }: MainScreenProps): JSX.Element {
           <div className="cities__right-section">
             <section className="cities__map map">
               <Map
-                centerCoordinates={CENTER_COORDINATES}
-                points={offers}
-                selectedPoint={selectedPoint}
+                centerCoordinates={currentCity.location}
                 height={750}
+                key={currentCity.name}
+                points={filteredOffers}
+                selectedPoint={selectedPoint}
               />
             </section>
           </div>

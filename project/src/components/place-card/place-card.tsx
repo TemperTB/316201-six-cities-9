@@ -6,7 +6,7 @@ type PlaceCardProps = {
   offer: OfferType;
   key: number;
   typeCard: PlaceCardTypes;
-  onPlaceCardHover?: (id: number) => void;
+  onPlaceCardHover?: (offer: OfferType) => void;
 };
 
 type Parametrs = {
@@ -69,10 +69,9 @@ function PlaceCard({
   return (
     <article
       key={key}
-      cities__place-card
       className={`${mainClass} place-card`}
       onMouseOver={() => {
-        onPlaceCardHover && onPlaceCardHover(id);
+        onPlaceCardHover && onPlaceCardHover(offer);
       }}
     >
       {isPremium && (
