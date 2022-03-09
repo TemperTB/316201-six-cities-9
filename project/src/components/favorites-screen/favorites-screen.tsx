@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import { PlaceCardTypes } from '../../const';
+import { useAppSelector } from '../../hooks';
 import { FavoriteOffersType } from '../../types/favorite-offers';
 import Footer from '../footer/footer';
 import PlacesCard from '../places-card/places-card';
@@ -9,6 +10,9 @@ type FavoriteScreenProps = {
 };
 
 function FavoritesScreen({ favoriteOffers }: FavoriteScreenProps): JSX.Element {
+
+  const { filteredOffers } = useAppSelector((state) => state);
+
   return (
     <Fragment>
       <main className="page__main page__main--favorites">
@@ -26,7 +30,7 @@ function FavoritesScreen({ favoriteOffers }: FavoriteScreenProps): JSX.Element {
                 </div>
                 <div className="favorites__places">
                   <PlacesCard
-                    offers={favoriteOffers}
+                    offers={filteredOffers}
                     typeCard={PlaceCardTypes.Favorites}
                   />
                 </div>

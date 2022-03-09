@@ -36,7 +36,7 @@ function App({
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<Main placesCount={placesCount} offers={offers} />}
+          element={<Main/>}
         />
         <Route path={AppRoute.Login} element={<Login />} />
         <Route path={`${AppRoute.Offer}:id`} element={<Offer offer={offers[0]} reviews={reviews} nearbyOffers={nearbyOffers}/>} />
