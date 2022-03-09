@@ -8,7 +8,7 @@ type PlacesSortingOptionsProps = {
   toggleSortTypeVisible: () => void;
 };
 
-function PlacesSortingOptions({
+function PlacesSortingOption({
   activeOption,
   option,
   toggleSortTypeVisible,
@@ -34,4 +34,4 @@ function PlacesSortingOptions({
   );
 }
 
-export default PlacesSortingOptions;
+export default PlacesSortingOption;

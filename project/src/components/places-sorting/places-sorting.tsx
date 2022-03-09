@@ -1,6 +1,6 @@
 import { sortTypes } from '../../const';
 import { SortType } from '../../types/types';
-import PlacesSortingOptions from '../places-sorting-option/places-sorting-options';
+import PlacesSortingOption from '../places-sorting-option/places-sorting-option';
 
 type PlacesSortingProps = {
   sortType: SortType;
@@ -31,7 +31,7 @@ function PlacesSorting({ sortType }: PlacesSortingProps): JSX.Element {
         {sortTypes.map((type, id) => {
           const keyValue = `${id}: ${type}`;
           return (
-            <PlacesSortingOptions
+            <PlacesSortingOption
               activeOption={sortType}
               key={keyValue}
               option={type}
