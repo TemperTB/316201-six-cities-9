@@ -30,7 +30,7 @@ export const OFFERS: OffersType = [
     title: 'Canal View Prinsengracht',
     isFavorite: false,
     isPremium: false,
-    rating: 4.6,
+    rating: 1,
     type: 'house',
     bedrooms: 4,
     maxAdults: 5,

@@ -17,14 +17,17 @@ function PlacesCard({
 }: PlacesCardProps): JSX.Element {
   return (
     <Fragment>
-      {offers.map((offer) => (
-        <PlaceCard
-          offer={offer}
-          key={offer.id}
-          typeCard={typeCard}
-          onPlaceCardHover={onPlaceCardHover}
-        />
-      ))}
+      {offers.map((offer, id) => {
+        const keyValue = `${id}: ${offer.id}`;
+        return (
+          <PlaceCard
+            offer={offer}
+            key={keyValue}
+            typeCard={typeCard}
+            onPlaceCardHover={onPlaceCardHover}
+          />
+        );
+      })}
     </Fragment>
   );
 }

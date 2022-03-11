@@ -14,7 +14,7 @@ type OfferScreenProps = {
 
 function OfferScreen({ offer, reviews, nearbyOffers }: OfferScreenProps): JSX.Element {
 
-  const { filteredOffers } = useAppSelector((state) => state);
+  const { validOffers: filteredOffers } = useAppSelector((state) => state);
 
   return (
     <main className="page__main page__main--property">

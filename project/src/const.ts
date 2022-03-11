@@ -1,3 +1,4 @@
+import { SortTypes } from './types/types';
 /**
  * Пути к страницам
  */
@@ -110,3 +111,7 @@ export const CITIES = [
 ];
 
 export const START_CITY = CITIES[0];
+
+export const sortTypes: SortTypes = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
+
+
