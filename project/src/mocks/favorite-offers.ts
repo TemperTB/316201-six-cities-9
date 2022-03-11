@@ -1,6 +1,6 @@
-import { FavoriteOffersType } from '../types/favorite-offers';
+import { FavoriteOffers } from '../types/favorite-offers';
 
-export const FAVORITE_OFFERS: FavoriteOffersType = [
+export const FAVORITE_OFFERS: FavoriteOffers = [
   {
     city: {
       name: 'Dusseldorf',

@@ -1,6 +1,6 @@
-import { OfferReviewsType } from '../types/offer-reviews';
+import { OfferReviews } from '../types/offer-reviews';
 
-export const REVIEWS: OfferReviewsType = [
+export const REVIEWS: OfferReviews = [
   {
     id: 1,
     user: {

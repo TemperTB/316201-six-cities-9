@@ -63,8 +63,8 @@ export const CITIES = [
   {
     name: 'Paris',
     location: {
-      latitude: 52.369553943508,
-      longitude: 4.85309666406198,
+      latitude: 48.85661,
+      longitude: 2.351499,
       zoom: 13,
     },
   },
@@ -114,4 +114,8 @@ export const START_CITY = CITIES[0];
 
 export const sortTypes: SortTypes = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
 
-
+export enum APIRoute {
+  Offers = '/hotels',
+  Login = '/login',
+  Logout = '/logout',
+}

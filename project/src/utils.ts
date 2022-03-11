@@ -1,9 +1,9 @@
-import { CityType, OffersType } from './types/offers';
+import { City, Offers } from './types/offers';
 import { SortType } from './types/types';
 
-export const filterOffers = (offers: OffersType, city: CityType): OffersType => offers.filter((offer) => offer.city.name === city.name);
+export const filterOffers = (offers: Offers, city: City): Offers => offers.filter((offer) => offer.city.name === city.name);
 
-export const sortOffers = (offers: OffersType, sortType: SortType): OffersType => {
+export const sortOffers = (offers: Offers, sortType: SortType): Offers => {
   switch (sortType) {
     case 'Popular':
       return offers;

@@ -11,12 +11,12 @@ import {
   ANCHOR_RELATIVE_Y
 } from '../../const';
 import { CenterCoordinates } from '../../types/center-coordinates';
-import { OfferType, OffersType } from '../../types/offers';
+import { Offer, Offers } from '../../types/offers';
 
 type MapProps = {
   centerCoordinates: CenterCoordinates;
-  points: OffersType;
-  selectedPoint: OfferType | undefined;
+  points: Offers;
+  selectedPoint: Offer | undefined;
   height: number;
 };
 
