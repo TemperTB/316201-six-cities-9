@@ -1,10 +1,10 @@
 import Header from '../components/header/header';
 import FavoritesScreen from '../components/favorites-screen/favorites-screen';
-import { FavoriteOffersType } from '../types/favorite-offers';
+import { FavoriteOffers } from '../types/favorite-offers';
 
 
 type FavoritesProps = {
-  favoriteOffers: FavoriteOffersType;
+  favoriteOffers: FavoriteOffers;
 };
 
 function Favorites({ favoriteOffers }: FavoritesProps): JSX.Element {

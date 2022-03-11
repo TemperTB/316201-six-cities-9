@@ -1,32 +1,46 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { changeCity, changeSortType } from './action';
+import { changeCity, changeSortType, loadOffers } from './action';
 import { sortTypes, START_CITY } from '../const';
-import { OFFERS } from '../mocks/offers';
 import { filterOffers, sortOffers } from '../utils';
-import { OffersType } from '../types/offers';
+import { City, Offers } from '../types/offers';
 
+type InitalState = {
+  isDataLoaded: boolean,
+  currentCity: City,
+  offers: Offers,
+  sortType: string,
+  validOffers: Offers,
+}
 
-const initialState = {
+const initialState: InitalState = {
+  isDataLoaded: false,
   currentCity: START_CITY,
-  validOffers: sortOffers(filterOffers(OFFERS, START_CITY), sortTypes[0]),
-  offers: OFFERS,
+  offers: [],
   sortType: sortTypes[0],
+  validOffers: [],
 };
 
 const reducer = createReducer(initialState, (builder) => {
   builder.addCase(changeCity, (state, action) => {
     const { city } = action.payload;
     state.currentCity = city;
-    const filteredOffers: OffersType = filterOffers(state.offers, city);
-    const sortedOffers: OffersType = sortOffers(filteredOffers, state.sortType);
+    const filteredOffers: Offers = filterOffers(state.offers, city);
+    const sortedOffers: Offers = sortOffers(filteredOffers, state.sortType);
     state.validOffers = sortedOffers;
   });
   builder.addCase(changeSortType, (state, action) => {
     const { sortType } = action.payload;
     state.sortType = sortType;
-    const filteredOffers: OffersType = filterOffers(state.offers, state.currentCity);
-    const sortedOffers: OffersType = sortOffers(filteredOffers, sortType);
+    const filteredOffers: Offers = filterOffers(state.offers, state.currentCity);
+    const sortedOffers: Offers = sortOffers(filteredOffers, sortType);
     state.validOffers = sortedOffers;
+  });
+  builder.addCase(loadOffers, (state, action) => {
+    state.offers = action.payload;
+    const filteredOffers: Offers = filterOffers(state.offers, state.currentCity);
+    const sortedOffers: Offers = sortOffers(filteredOffers, state.sortType);
+    state.validOffers = sortedOffers;
+    state.isDataLoaded = true;
   });
 });
 

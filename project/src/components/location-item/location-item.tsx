@@ -1,10 +1,10 @@
 import { useAppDispatch } from '../../hooks';
 import { changeCity } from '../../store/action';
-import { CityType } from '../../types/offers';
+import { City } from '../../types/offers';
 
 type LocationItemProps = {
-  activeCity: CityType;
-  city: CityType;
+  activeCity: City;
+  city: City;
 };
 
 function LocationItem({

@@ -1,6 +1,6 @@
 import OfferReviewsForm from '../offer-reviews-form/offer-reviews-form';
 import OfferReviewsList from '../offer-reviews-list/offer-reviews-list';
-import { OfferReviewsType } from '../../types/offer-reviews';
+import { OfferReviews as OfferReviewsType} from '../../types/offer-reviews';
 
 
 type OfferReviewsProps = {

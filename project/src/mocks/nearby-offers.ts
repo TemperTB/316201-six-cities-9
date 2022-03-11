@@ -1,6 +1,6 @@
-import { NearbyOffersType } from '../types/nearby-offers';
+import { NearbyOffers } from '../types/nearby-offers';
 
-export const NEARBY_OFFERS: NearbyOffersType = [
+export const NEARBY_OFFERS: NearbyOffers = [
   {
     city: {
       name: 'Dusseldorf',

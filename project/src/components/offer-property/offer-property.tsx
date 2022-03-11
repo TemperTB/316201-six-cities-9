@@ -1,14 +1,14 @@
 import { PERCENT_PER_STAR } from '../../const';
-import { NearbyOffersType } from '../../types/nearby-offers';
-import { OfferReviewsType } from '../../types/offer-reviews';
-import { OfferType } from '../../types/offers';
+import { NearbyOffers } from '../../types/nearby-offers';
+import { OfferReviews as OfferReviewsType } from '../../types/offer-reviews';
+import { Offer } from '../../types/offers';
 import OfferReviews from '../offer-reviews/offer-reviews';
 import Map from '../map/map';
 
 type OfferPropertyProps = {
-  offer: OfferType;
+  offer: Offer;
   reviews: OfferReviewsType;
-  nearbyOffers: NearbyOffersType;
+  nearbyOffers: NearbyOffers;
 };
 
 function OfferProperty({

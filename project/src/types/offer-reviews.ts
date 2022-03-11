@@ -1,4 +1,4 @@
-export type OfferReviewType = {
+export type OfferReview = {
   comment: string;
   date: string;
   id: number;
@@ -11,4 +11,4 @@ export type OfferReviewType = {
   };
 };
 
-export type OfferReviewsType = OfferReviewType[];
+export type OfferReviews = OfferReview[];

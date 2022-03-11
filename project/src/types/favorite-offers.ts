@@ -1,4 +1,4 @@
-export type FavoriteOfferType = {
+export type FavoriteOffer = {
   bedrooms: number;
   city: {
     location: {
@@ -33,4 +33,4 @@ export type FavoriteOfferType = {
   type: string;
 };
 
-export type FavoriteOffersType = FavoriteOfferType[];
+export type FavoriteOffers = FavoriteOffer[];

@@ -1,12 +1,12 @@
 import { Fragment } from 'react';
 import { PlaceCardTypes } from '../../const';
 import { useAppSelector } from '../../hooks';
-import { FavoriteOffersType } from '../../types/favorite-offers';
+import { FavoriteOffers } from '../../types/favorite-offers';
 import Footer from '../footer/footer';
 import PlacesCard from '../places-card/places-card';
 
 type FavoriteScreenProps = {
-  favoriteOffers: FavoriteOffersType;
+  favoriteOffers: FavoriteOffers;
 };
 
 function FavoritesScreen({ favoriteOffers }: FavoriteScreenProps): JSX.Element {

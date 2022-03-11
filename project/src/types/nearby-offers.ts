@@ -1,4 +1,4 @@
-export type NearbyOfferType = {
+export type NearbyOffer = {
   bedrooms: number;
   city: {
     location: {
@@ -33,4 +33,4 @@ export type NearbyOfferType = {
   type: string;
 };
 
-export type NearbyOffersType = NearbyOfferType[];
+export type NearbyOffers = NearbyOffer[];

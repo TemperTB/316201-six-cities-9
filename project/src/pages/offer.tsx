@@ -1,20 +1,18 @@
 import Header from '../components/header/header';
 import OfferScreen from '../components/offer-screen/offer-screen';
-import { OfferType } from '../types/offers';
-import { OfferReviewsType } from '../types/offer-reviews';
-import { NearbyOffersType } from '../types/nearby-offers';
+import { OfferReviews } from '../types/offer-reviews';
+import { NearbyOffers } from '../types/nearby-offers';
 
 type OfferProps = {
-  offer: OfferType;
-  reviews: OfferReviewsType;
-  nearbyOffers: NearbyOffersType;
+  reviews: OfferReviews;
+  nearbyOffers: NearbyOffers;
 };
 
-function Offer({ offer, reviews, nearbyOffers }: OfferProps): JSX.Element {
+function Offer({ reviews, nearbyOffers }: OfferProps): JSX.Element {
   return (
     <div className="page">
       <Header />
-      <OfferScreen offer={offer} reviews={reviews} nearbyOffers={nearbyOffers}/>;
+      <OfferScreen reviews={reviews} nearbyOffers={nearbyOffers}/>;
     </div>
   );
 }

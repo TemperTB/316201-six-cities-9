@@ -1,31 +1,36 @@
-import { OfferType } from '../../types/offers';
-import { OfferReviewsType } from '../../types/offer-reviews';
-import { NearbyOffersType } from '../../types/nearby-offers';
+import { OfferReviews } from '../../types/offer-reviews';
+import { NearbyOffers } from '../../types/nearby-offers';
 import OfferProperty from '../offer-property/offer-property';
 import { PlaceCardTypes } from '../../const';
 import PlacesCard from '../places-card/places-card';
 import { useAppSelector } from '../../hooks';
 
 type OfferScreenProps = {
-  offer: OfferType;
-  reviews: OfferReviewsType;
-  nearbyOffers: NearbyOffersType;
+  reviews: OfferReviews;
+  nearbyOffers: NearbyOffers;
 };
 
-function OfferScreen({ offer, reviews, nearbyOffers }: OfferScreenProps): JSX.Element {
+function OfferScreen({ reviews, nearbyOffers }: OfferScreenProps): JSX.Element {
 
-  const { validOffers: filteredOffers } = useAppSelector((state) => state);
+  const { validOffers } = useAppSelector((state) => state);
 
   return (
     <main className="page__main page__main--property">
-      <OfferProperty offer={offer} reviews={reviews} nearbyOffers={nearbyOffers} />
+      <OfferProperty
+        offer={validOffers[0]}
+        reviews={reviews}
+        nearbyOffers={nearbyOffers}
+      />
       <div className="container">
         <section className="near-places places">
           <h2 className="near-places__title">
             Other places in the neighbourhood
           </h2>
           <div className="near-places__list places__list">
-            <PlacesCard offers={filteredOffers} typeCard={PlaceCardTypes.Nearby} />
+            <PlacesCard
+              offers={nearbyOffers}
+              typeCard={PlaceCardTypes.Nearby}
+            />
           </div>
         </section>
       </div>

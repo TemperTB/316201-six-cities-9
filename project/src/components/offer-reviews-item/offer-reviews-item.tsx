@@ -1,8 +1,8 @@
 import { MONTHS, PERCENT_PER_STAR } from '../../const';
-import { OfferReviewType } from '../../types/offer-reviews';
+import { OfferReview } from '../../types/offer-reviews';
 
 type OfferReviewsItemProps = {
-  review: OfferReviewType;
+  review: OfferReview;
   key: number;
 };
 
