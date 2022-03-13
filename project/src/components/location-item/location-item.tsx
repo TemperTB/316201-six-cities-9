@@ -20,7 +20,7 @@ function LocationItem({
       <a
         className={`locations__item-link tabs__item ${isActive}`}
         href="#"
-        onClick={() => dispatch(changeCity({ city }))}
+        onClick={() => dispatch(changeCity(city))}
       >
         <span>{name}</span>
       </a>

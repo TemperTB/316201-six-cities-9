@@ -1,20 +1,24 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { changeCity, changeSortType, loadOffers } from './action';
-import { sortTypes, START_CITY } from '../const';
+import { changeCity, changeSortType, loadOffers, requireAuthorization, setError } from './action';
+import { AuthorizationStatus, sortTypes, START_CITY } from '../const';
 import { filterOffers, sortOffers } from '../utils';
 import { City, Offers } from '../types/offers';
 
 type InitalState = {
-  isDataLoaded: boolean,
+  authorizationStatus: AuthorizationStatus,
   currentCity: City,
+  isDataLoaded: boolean,
+  error: string,
   offers: Offers,
   sortType: string,
   validOffers: Offers,
 }
 
 const initialState: InitalState = {
-  isDataLoaded: false,
+  authorizationStatus: AuthorizationStatus.Unknown,
   currentCity: START_CITY,
+  error: '',
+  isDataLoaded: false,
   offers: [],
   sortType: sortTypes[0],
   validOffers: [],
@@ -22,17 +26,15 @@ const initialState: InitalState = {
 
 const reducer = createReducer(initialState, (builder) => {
   builder.addCase(changeCity, (state, action) => {
-    const { city } = action.payload;
-    state.currentCity = city;
-    const filteredOffers: Offers = filterOffers(state.offers, city);
+    state.currentCity = action.payload;
+    const filteredOffers: Offers = filterOffers(state.offers, state.currentCity);
     const sortedOffers: Offers = sortOffers(filteredOffers, state.sortType);
     state.validOffers = sortedOffers;
   });
   builder.addCase(changeSortType, (state, action) => {
-    const { sortType } = action.payload;
-    state.sortType = sortType;
+    state.sortType = action.payload;
     const filteredOffers: Offers = filterOffers(state.offers, state.currentCity);
-    const sortedOffers: Offers = sortOffers(filteredOffers, sortType);
+    const sortedOffers: Offers = sortOffers(filteredOffers, state.sortType);
     state.validOffers = sortedOffers;
   });
   builder.addCase(loadOffers, (state, action) => {
@@ -41,6 +43,12 @@ const reducer = createReducer(initialState, (builder) => {
     const sortedOffers: Offers = sortOffers(filteredOffers, state.sortType);
     state.validOffers = sortedOffers;
     state.isDataLoaded = true;
+  });
+  builder.addCase(requireAuthorization, (state, action) => {
+    state.authorizationStatus = action.payload;
+  });
+  builder.addCase(setError, (state, action) => {
+    state.error = action.payload;
   });
 });
 

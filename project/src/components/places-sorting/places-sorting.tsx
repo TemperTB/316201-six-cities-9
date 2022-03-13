@@ -1,5 +1,5 @@
 import { sortTypes } from '../../const';
-import { SortType } from '../../types/types';
+import { SortType } from '../../types/sort';
 import PlacesSortingOption from '../places-sorting-option/places-sorting-option';
 
 type PlacesSortingProps = {

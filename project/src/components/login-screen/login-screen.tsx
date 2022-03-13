@@ -1,10 +1,49 @@
+import { ChangeEvent, FormEvent, useState } from 'react';
+import { useAppDispatch } from '../../hooks';
+import { loginAction } from '../../store/api-actions';
+
 function LoginScreen(): JSX.Element {
+
+  const dispatch = useAppDispatch();
+
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+
+  const loginChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
+    evt.preventDefault();
+    const { value } = evt.target;
+    setLogin(value);
+  };
+
+  const passwordChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
+    evt.preventDefault();
+    const { value } = evt.target;
+    setPassword(value);
+  };
+
+  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+    if (login !== '' && password !== '') {
+      dispatch(
+        loginAction({
+          login: login,
+          password: password,
+        }),
+      );
+    }
+  };
+
   return (
     <main className="page__main page__main--login">
       <div className="page__login-container container">
         <section className="login">
           <h1 className="login__title">Sign in</h1>
-          <form className="login__form form" action="#" method="post">
+          <form
+            className="login__form form"
+            action="#"
+            method="post"
+            onSubmit={handleSubmit}
+          >
             <div className="login__input-wrapper form__input-wrapper">
               <label className="visually-hidden">E-mail</label>
               <input
@@ -13,6 +52,8 @@ function LoginScreen(): JSX.Element {
                 name="email"
                 placeholder="Email"
                 required
+                value={login}
+                onChange={loginChangeHandler}
               />
             </div>
             <div className="login__input-wrapper form__input-wrapper">
@@ -23,6 +64,8 @@ function LoginScreen(): JSX.Element {
                 name="password"
                 placeholder="Password"
                 required
+                value={password}
+                onChange={passwordChangeHandler}
               />
             </div>
             <button className="login__submit form__submit button" type="submit">
@@ -43,3 +86,4 @@ function LoginScreen(): JSX.Element {
 }
 
 export default LoginScreen;
+
