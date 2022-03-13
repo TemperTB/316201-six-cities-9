@@ -1,21 +1,20 @@
 import { Route, Routes } from 'react-router-dom';
 import { AppRoute } from '../../const';
+import { useAppSelector } from '../../hooks';
+import HistoryRouter from '../history-route/history-route';
+import browserHistory from '../../browser-history';
 
 import PrivateRoute from '../private-route/private-route';
 
 import { FavoriteOffers } from '../../types/favorite-offers';
 import { OfferReviews } from '../../types/offer-reviews';
-
+import { NearbyOffers } from '../../types/nearby-offers';
 
 import Favorites from '../../pages/favorites';
 import Login from '../../pages/login';
 import Main from '../../pages/main';
 import NotFound from '../../pages/not-found';
 import Offer from '../../pages/offer';
-import { NearbyOffers } from '../../types/nearby-offers';
-import { useAppSelector } from '../../hooks';
-import HistoryRouter from '../history-route/history-route';
-import browserHistory from '../../browser-history';
 
 
 type AppScreenProps = {

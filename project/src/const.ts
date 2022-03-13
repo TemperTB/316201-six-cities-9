@@ -125,6 +125,9 @@ export enum APIRoute {
  */
 export const TIMEOUT_SHOW_ERROR = 2000;
 
+/**
+ * Коды ответов от сервера
+ */
 export enum HTTP_CODE {
   BAD_REQUEST = 400,
   UNAUTHORIZED = 401,
