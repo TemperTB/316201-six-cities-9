@@ -7,6 +7,7 @@ import { NEARBY_OFFERS } from './mocks/nearby-offers';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { fetchOffersAction } from './store/api-actions';
+import ErrorMessage from './components/error-message/error-message';
 
 store.dispatch(fetchOffersAction());
 
@@ -14,6 +15,7 @@ store.dispatch(fetchOffersAction());
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      <ErrorMessage />
       <App
         favoriteOffers={FAVORITE_OFFERS}
         reviews={REVIEWS}

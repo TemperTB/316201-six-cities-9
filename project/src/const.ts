@@ -1,4 +1,4 @@
-import { SortTypes } from './types/types';
+import { SortTypes } from './types/sort';
 /**
  * Пути к страницам
  */
@@ -118,4 +118,15 @@ export enum APIRoute {
   Offers = '/hotels',
   Login = '/login',
   Logout = '/logout',
+}
+
+/**
+ * Время отображения ошибки
+ */
+export const TIMEOUT_SHOW_ERROR = 2000;
+
+export enum HTTP_CODE {
+  BAD_REQUEST = 400,
+  UNAUTHORIZED = 401,
+  NOT_FOUND = 404,
 }

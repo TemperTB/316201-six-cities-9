@@ -1,6 +1,6 @@
 import { useAppDispatch } from '../../hooks';
 import { changeSortType } from '../../store/action';
-import { SortType } from '../../types/types';
+import { SortType } from '../../types/sort';
 
 type PlacesSortingOptionsProps = {
   activeOption: string;
@@ -18,7 +18,7 @@ function PlacesSortingOption({
   const changeActiveCard = () => {
     const sortType = option;
     toggleSortTypeVisible();
-    dispatch(changeSortType({ sortType }));
+    dispatch(changeSortType(sortType));
   };
 
   return (

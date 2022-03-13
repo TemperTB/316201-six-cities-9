@@ -1,5 +1,5 @@
 import { City, Offers } from './types/offers';
-import { SortType } from './types/types';
+import { SortType } from './types/sort';
 
 export const filterOffers = (offers: Offers, city: City): Offers => offers.filter((offer) => offer.city.name === city.name);
 

@@ -1,5 +1,5 @@
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { Route, Routes } from 'react-router-dom';
+import { AppRoute } from '../../const';
 
 import PrivateRoute from '../private-route/private-route';
 
@@ -13,8 +13,9 @@ import Main from '../../pages/main';
 import NotFound from '../../pages/not-found';
 import Offer from '../../pages/offer';
 import { NearbyOffers } from '../../types/nearby-offers';
-// import { useAppSelector } from '../../hooks';
-// import LoadingScreen from '../loading-screen/loading-screen';
+import { useAppSelector } from '../../hooks';
+import HistoryRouter from '../history-route/history-route';
+import browserHistory from '../../browser-history';
 
 
 type AppScreenProps = {
@@ -29,32 +30,30 @@ function App({
   nearbyOffers,
 }: AppScreenProps): JSX.Element {
 
-  // const { isDataLoaded } = useAppSelector((state) => state);
-
-  // if (!isDataLoaded) {
-  //   return <LoadingScreen />;
-  // }
+  const { authorizationStatus } = useAppSelector(
+    (state) => state,
+  );
 
   return (
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Routes>
-        <Route
-          path={AppRoute.Main}
-          element={<Main/>}
-        />
+        <Route path={AppRoute.Main} element={<Main />} />
         <Route path={AppRoute.Login} element={<Login />} />
-        <Route path={`${AppRoute.Offer}:id`} element={<Offer reviews={reviews} nearbyOffers={nearbyOffers}/>} />
+        <Route
+          path={`${AppRoute.Offer}:id`}
+          element={<Offer reviews={reviews} nearbyOffers={nearbyOffers} />}
+        />
         <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+            <PrivateRoute authorizationStatus={authorizationStatus}>
               <Favorites favoriteOffers={favoriteOffers} />
             </PrivateRoute>
           }
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   );
 }
 
