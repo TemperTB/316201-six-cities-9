@@ -2,6 +2,12 @@ import { useEffect, useState, MutableRefObject } from 'react';
 import { Map, TileLayer } from 'leaflet';
 import { CenterCoordinates } from '../types/center-coordinates';
 
+/**
+ * Отрисовывает карту leaflet
+ * @param mapRef DOM-элемент для карты
+ * @param centerCoordinates Координаты центра карты
+ * @returns Карту leaflet
+ */
 function useMap(
   mapRef: MutableRefObject<HTMLElement | null>,
   centerCoordinates: CenterCoordinates,

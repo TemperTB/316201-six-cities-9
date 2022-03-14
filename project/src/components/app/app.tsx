@@ -4,7 +4,7 @@ import { useAppSelector } from '../../hooks';
 import HistoryRouter from '../history-route/history-route';
 import browserHistory from '../../browser-history';
 
-import PrivateRoute from '../private-route/private-route';
+import PrivateRouteAuth from '../private-route-auth/private-route-auth';
 
 import { FavoriteOffers } from '../../types/favorite-offers';
 
@@ -40,9 +40,9 @@ function App({
         <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute authorizationStatus={authorizationStatus}>
+            <PrivateRouteAuth authorizationStatus={authorizationStatus}>
               <Favorites favoriteOffers={favoriteOffers} />
-            </PrivateRoute>
+            </PrivateRouteAuth>
           }
         />
         <Route path="*" element={<NotFound />} />

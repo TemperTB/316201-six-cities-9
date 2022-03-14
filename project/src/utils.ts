@@ -3,8 +3,18 @@ import { OfferReviews } from './types/offer-reviews';
 import { City, Offers } from './types/offers';
 import { SortType } from './types/sort';
 
+/**
+ * Фильтрует список предложений по городу
+ * @param offers список для фильтрации
+ * @param city город, по которому произойдет фильтрация
+ */
 export const filterOffers = (offers: Offers, city: City): Offers => offers.filter((offer) => offer.city.name === city.name);
 
+/**
+ * Сортирует список предложений на основе выбранного типа сортировки
+ * @param offers список для сортировки
+ * @param sortType тип сортировки
+ */
 export const sortOffers = (offers: Offers, sortType: SortType): Offers => {
   switch (sortType) {
     case 'Popular':
@@ -20,6 +30,9 @@ export const sortOffers = (offers: Offers, sortType: SortType): Offers => {
   }
 };
 
+/**
+ * Сортирует отзывы согласно ТЗ (от позднего к раннему по дате)
+ */
 export const sortingReviews = (arr: OfferReviews) => {
   if (arr.length < 2) {
     return arr;
@@ -28,6 +41,9 @@ export const sortingReviews = (arr: OfferReviews) => {
   return newArr.sort((b, a) => Date.parse(a.date) - Date.parse(b.date));
 };
 
+/**
+ * Ограничивает количество отзывов согласно ТЗ
+ */
 export const limitingReviews = (arr: OfferReviews) => {
   if (arr.length > 10) {
     return arr.slice(0, MAX_COUNT_REVIEWS);

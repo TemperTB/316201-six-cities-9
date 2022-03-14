@@ -10,10 +10,12 @@ import { Offers, Offer } from '../types/offers';
 import { UserData } from '../types/user-data';
 import { loadNearbyOffers, loadOffer, loadOffers, loadReviews, redirectToRoute, requireAuthorization, sendReview } from './action';
 
+/**
+ * Получение списка предложений (для главной страницы)
+ */
 export const fetchOffersAction = createAsyncThunk(
   'data/fetchOffers',
   async () => {
-
     try {
       const {data} = await api.get<Offers>(APIRoute.Offers);
       store.dispatch(loadOffers(data));
@@ -23,6 +25,9 @@ export const fetchOffersAction = createAsyncThunk(
   },
 );
 
+/**
+ * Получение информации об одном предложении
+ */
 export const fetchOfferAction = createAsyncThunk(
   'data/fetchOffer',
   async (id: string) => {
@@ -36,6 +41,9 @@ export const fetchOfferAction = createAsyncThunk(
   },
 );
 
+/**
+ * Получение информации о соседних предложениях
+ */
 export const fetchNearbyOffersAction = createAsyncThunk(
   'data/fetchNearbyOffers',
   async (id: string) => {
@@ -48,6 +56,9 @@ export const fetchNearbyOffersAction = createAsyncThunk(
   },
 );
 
+/**
+ * Получение отзывов
+ */
 export const fetchReviewsAction = createAsyncThunk(
   'data/fetchReviews',
   async (id: string) => {
@@ -60,6 +71,9 @@ export const fetchReviewsAction = createAsyncThunk(
   },
 );
 
+/**
+ * Отправка отзыва
+ */
 export const fetchSendReview = createAsyncThunk(
   'data/fetchSendReviews',
   async ({id, comment, rating}: ReviewData) => {
@@ -72,6 +86,9 @@ export const fetchSendReview = createAsyncThunk(
   },
 );
 
+/**
+ * Проверка авторизации
+ */
 export const checkAuthAction = createAsyncThunk(
   'user/checkAuth',
   async () => {
@@ -84,6 +101,9 @@ export const checkAuthAction = createAsyncThunk(
   },
 );
 
+/**
+ * Авторизация пользователя
+ */
 export const loginAction = createAsyncThunk(
   'user/login',
   async ({login: email, password}: AuthData) => {
@@ -99,6 +119,9 @@ export const loginAction = createAsyncThunk(
   },
 );
 
+/**
+ * Выход пользователя (logout)
+ */
 export const logoutAction = createAsyncThunk(
   'user/logout',
   async () => {

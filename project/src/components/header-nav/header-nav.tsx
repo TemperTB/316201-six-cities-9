@@ -9,7 +9,9 @@ function HeaderNav(): JSX.Element | null {
   const dispatch = useAppDispatch();
   const { authorizationStatus } = useAppSelector((state) => state);
 
-
+  /**
+   * В зависимости от того авторизован пользователь или нет, возвращает разметку для меню навигации
+   */
   const getNavItems = (status: AuthorizationStatus): JSX.Element => {
     switch (status) {
       case (AuthorizationStatus.Auth):

@@ -5,6 +5,9 @@ type OfferReviewsItemProps = {
   review: OfferReview;
 };
 
+/**
+ * Переводит дату в нужный формат (согласно макета)
+ */
 const transformDate = (dateToTransform: string): string => {
   const date = new Date(dateToTransform);
   return `${MONTHS[date.getMonth()]} ${date.getFullYear()}`;

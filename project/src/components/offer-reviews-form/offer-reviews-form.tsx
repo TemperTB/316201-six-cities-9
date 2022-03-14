@@ -9,6 +9,9 @@ function OfferReviewsForm(): JSX.Element {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
 
+  /**
+   * Проверка согласно ТЗ (если пользователь ввел комментарий из 50+ символов и выбрал рейтинг, кнопка для отправки разблокируется)
+   */
   useEffect(() => {
     const submitButton: HTMLButtonElement | null =
       document.querySelector('.form__submit');
@@ -19,12 +22,17 @@ function OfferReviewsForm(): JSX.Element {
     }
   }, [rating, comment]);
 
+  /**
+   * Действия при изменении рейтинга
+   */
   const ratingChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
-    evt.preventDefault();
     const { value } = evt.target;
     setRating(Number(value));
   };
 
+  /**
+   * Действия при изменении комментария
+   */
   const commentChangeHandler = (evt: ChangeEvent<HTMLTextAreaElement>) => {
     evt.preventDefault();
     const { value } = evt.target;
@@ -34,6 +42,9 @@ function OfferReviewsForm(): JSX.Element {
   const fieldset: HTMLFieldSetElement | null =
     document.querySelector('.reviews__fieldset');
 
+  /**
+   * Асинхронное действие, которое следит за отправкой комментария на сервер. При корректной отправке очищает и разблокирует форму
+   */
   const sendReview = async () => {
     try {
       await dispatch(fetchSendReview({ id: offer.id, comment, rating }));
@@ -42,9 +53,13 @@ function OfferReviewsForm(): JSX.Element {
       (fieldset as HTMLFieldSetElement).disabled = false;
     } catch (error) {
       errorHandle(error);
+      (fieldset as HTMLFieldSetElement).disabled = false;
     }
   };
 
+  /**
+   * Действия при отправке формы (форма блокируется)
+   */
   const formSubmitHandler = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     (fieldset as HTMLFieldSetElement).disabled = true;

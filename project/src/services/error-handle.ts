@@ -3,6 +3,9 @@ import {toast} from 'react-toastify';
 import {ErrorType} from '../types/error';
 import {HTTP_CODE} from '../const';
 
+/**
+ * Функция для отображения возникающих ошибок
+ */
 export const errorHandle = (error: ErrorType): void => {
   if (!request.isAxiosError(error)) {
     throw error;
