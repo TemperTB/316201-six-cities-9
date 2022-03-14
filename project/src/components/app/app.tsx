@@ -7,8 +7,6 @@ import browserHistory from '../../browser-history';
 import PrivateRoute from '../private-route/private-route';
 
 import { FavoriteOffers } from '../../types/favorite-offers';
-import { OfferReviews } from '../../types/offer-reviews';
-import { NearbyOffers } from '../../types/nearby-offers';
 
 import Favorites from '../../pages/favorites';
 import Login from '../../pages/login';
@@ -19,14 +17,10 @@ import Offer from '../../pages/offer';
 
 type AppScreenProps = {
   favoriteOffers: FavoriteOffers;
-  reviews: OfferReviews;
-  nearbyOffers: NearbyOffers;
 };
 
 function App({
   favoriteOffers,
-  reviews,
-  nearbyOffers,
 }: AppScreenProps): JSX.Element {
 
   const { authorizationStatus } = useAppSelector(
@@ -41,7 +35,7 @@ function App({
         <Route path={AppRoute.NotFound} element={<NotFound />} />
         <Route
           path={`${AppRoute.Offer}:id`}
-          element={<Offer reviews={reviews} nearbyOffers={nearbyOffers} />}
+          element={<Offer/>}
         />
         <Route
           path={AppRoute.Favorites}

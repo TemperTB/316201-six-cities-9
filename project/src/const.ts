@@ -60,6 +60,7 @@ export const MONTHS = [
   'December',
 ];
 
+
 export const CITIES = [
   {
     name: 'Paris',
