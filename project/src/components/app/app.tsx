@@ -38,6 +38,7 @@ function App({
       <Routes>
         <Route path={AppRoute.Main} element={<Main />} />
         <Route path={AppRoute.Login} element={<Login />} />
+        <Route path={AppRoute.NotFound} element={<NotFound />} />
         <Route
           path={`${AppRoute.Offer}:id`}
           element={<Offer reviews={reviews} nearbyOffers={nearbyOffers} />}

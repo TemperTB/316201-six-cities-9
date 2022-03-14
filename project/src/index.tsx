@@ -7,15 +7,15 @@ import { NEARBY_OFFERS } from './mocks/nearby-offers';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { checkAuthAction } from './store/api-actions';
-import ErrorMessage from './components/error-message/error-message';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 store.dispatch(checkAuthAction());
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ErrorMessage />
+      <ToastContainer />
       <App
         favoriteOffers={FAVORITE_OFFERS}
         reviews={REVIEWS}

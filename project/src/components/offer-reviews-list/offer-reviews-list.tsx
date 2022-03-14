@@ -1,14 +1,17 @@
+import { useAppSelector } from '../../hooks';
 import { OfferReviews } from '../../types/offer-reviews';
+import { limitingReviews, sortingReviews } from '../../utils';
 import OfferReviewsItem from '../offer-reviews-item/offer-reviews-item';
 
-type OfferReviewsListProps = {
-  reviews: OfferReviews;
-};
 
-function OfferReviewsList({ reviews }: OfferReviewsListProps): JSX.Element {
+function OfferReviewsList(): JSX.Element {
+  const { reviews } = useAppSelector((state) => state);
+  const sortReviews: OfferReviews = sortingReviews(reviews);
+  const reviewsForShow: OfferReviews = limitingReviews(sortReviews);
+
   return (
     <ul className="reviews__list">
-      {reviews.map((review) => (
+      {reviewsForShow.map((review) => (
         <OfferReviewsItem key={review.id} review={review} />
       ))}
     </ul>

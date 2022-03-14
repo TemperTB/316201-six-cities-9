@@ -3,7 +3,6 @@ import { OfferReview } from '../../types/offer-reviews';
 
 type OfferReviewsItemProps = {
   review: OfferReview;
-  key: number;
 };
 
 const transformDate = (dateToTransform: string): string => {
@@ -11,11 +10,11 @@ const transformDate = (dateToTransform: string): string => {
   return `${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
 };
 
-function OfferReviewsItem({ review, key }: OfferReviewsItemProps): JSX.Element {
+function OfferReviewsItem({ review }: OfferReviewsItemProps): JSX.Element {
   const {user, rating, comment, date} = review;
   const {name, avatarUrl} = user;
   return (
-    <li key={key} className="reviews__item">
+    <li className="reviews__item">
       <div className="reviews__user user">
         <div className="reviews__avatar-wrapper user__avatar-wrapper">
           <img

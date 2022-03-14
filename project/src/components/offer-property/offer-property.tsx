@@ -1,21 +1,11 @@
 import { PERCENT_PER_STAR } from '../../const';
-import { NearbyOffers } from '../../types/nearby-offers';
-import { OfferReviews as OfferReviewsType } from '../../types/offer-reviews';
-import { Offer } from '../../types/offers';
 import OfferReviews from '../offer-reviews/offer-reviews';
 import Map from '../map/map';
+import { useAppSelector } from '../../hooks';
 
-type OfferPropertyProps = {
-  offer: Offer;
-  reviews: OfferReviewsType;
-  nearbyOffers: NearbyOffers;
-};
 
-function OfferProperty({
-  offer,
-  reviews,
-  nearbyOffers,
-}: OfferPropertyProps): JSX.Element {
+function OfferProperty(): JSX.Element {
+  const { isNearbyOffersLoaded, nearbyOffers, offer } = useAppSelector((state) => state);
   const {
     images,
     title,
@@ -133,16 +123,18 @@ function OfferProperty({
               <p className="property__text">{description}</p>
             </div>
           </div>
-          <OfferReviews reviews={reviews} />
+          <OfferReviews />
         </div>
       </div>
       <section className="property__map map">
-        <Map
-          centerCoordinates={nearbyOffers[0].city.location}
-          points={[...nearbyOffers, offer]}
-          selectedPoint={offer}
-          height={579}
-        />
+        {isNearbyOffersLoaded ?
+          <Map
+            centerCoordinates={nearbyOffers[0].city.location}
+            key={`${offer.id}: ${offer.title}`}
+            points={[...nearbyOffers, offer]}
+            selectedPoint={offer}
+            height={579}
+          /> : ''}
       </section>
     </section>
   );

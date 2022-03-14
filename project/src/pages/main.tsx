@@ -1,11 +1,14 @@
+import { useEffect } from 'react';
 import Header from '../components/header/header';
 import MainScreen from '../components/main-screen/main-screen';
-import { store } from '../store';
+import { useAppDispatch } from '../hooks';
 import { fetchOffersAction } from '../store/api-actions';
 
 function Main(): JSX.Element {
-
-  store.dispatch(fetchOffersAction());
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchOffersAction());
+  }, []);
 
   return (
     <div className="page page--gray page--main">

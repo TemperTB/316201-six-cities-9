@@ -1,30 +1,71 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api, store } from '.';
-import { APIRoute, AppRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../const';
+import { APIRoute, AppRoute, AuthorizationStatus } from '../const';
 import { errorHandle } from '../services/error-handle';
 import { saveToken, dropToken } from '../services/services';
 import { AuthData } from '../types/auth-data';
-import { Offers } from '../types/offers';
+import { NearbyOffers } from '../types/nearby-offers';
+import { OfferReviews, ReviewData } from '../types/offer-reviews';
+import { Offers, Offer } from '../types/offers';
 import { UserData } from '../types/user-data';
-import { loadOffers, redirectToRoute, requireAuthorization, setError } from './action';
-
-export const clearErrorAction = createAsyncThunk(
-  '/clearError',
-  () => {
-    setTimeout(
-      () => store.dispatch(setError('')),
-      TIMEOUT_SHOW_ERROR,
-    );
-  },
-);
+import { loadNearbyOffers, loadOffer, loadOffers, loadReviews, redirectToRoute, requireAuthorization, sendReview } from './action';
 
 export const fetchOffersAction = createAsyncThunk(
-  'data/fetchQuestions',
+  'data/fetchOffers',
   async () => {
 
     try {
       const {data} = await api.get<Offers>(APIRoute.Offers);
       store.dispatch(loadOffers(data));
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
+
+export const fetchOfferAction = createAsyncThunk(
+  'data/fetchOffer',
+  async (id: string) => {
+    try {
+      const {data} = await api.get<Offer>(`${APIRoute.Offers}/${id}`);
+      store.dispatch(loadOffer(data));
+    } catch (error) {
+      errorHandle(error);
+      store.dispatch(redirectToRoute(AppRoute.NotFound));
+    }
+  },
+);
+
+export const fetchNearbyOffersAction = createAsyncThunk(
+  'data/fetchNearbyOffers',
+  async (id: string) => {
+    try {
+      const {data} = await api.get<NearbyOffers>(`${APIRoute.Offers}/${id}${APIRoute.Nearby}`);
+      store.dispatch(loadNearbyOffers(data));
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
+
+export const fetchReviewsAction = createAsyncThunk(
+  'data/fetchReviews',
+  async (id: string) => {
+    try {
+      const {data} = await api.get<OfferReviews>(`${APIRoute.Comments}/${id}`);
+      store.dispatch(loadReviews(data));
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
+
+export const fetchSendReview = createAsyncThunk(
+  'data/fetchSendReviews',
+  async ({id, comment, rating}: ReviewData) => {
+    try {
+      const {data} = await api.post<OfferReviews>(`${APIRoute.Comments}/${id}`, {comment, rating});
+      store.dispatch(sendReview(data));
     } catch (error) {
       errorHandle(error);
     }

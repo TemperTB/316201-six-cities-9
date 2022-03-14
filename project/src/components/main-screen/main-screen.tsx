@@ -6,17 +6,15 @@ import LoadingScreen from '../loading-screen/loading-screen';
 
 function MainScreen(): JSX.Element {
 
-  const { isDataLoaded } = useAppSelector((state) => state);
+  const { isOffersLoaded } = useAppSelector((state) => state);
 
   return (
-
-
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <LocationsList />
       </div>
-      {!isDataLoaded ? <LoadingScreen /> : <Cities />}
+      {!isOffersLoaded ? <LoadingScreen /> : <Cities />}
     </main>
   );
 }

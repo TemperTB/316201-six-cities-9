@@ -7,6 +7,7 @@ export enum AppRoute {
   Favorites = '/favorites',
   Offer = '/offer/',
   Main = '/',
+  NotFound = '/not-found',
 }
 
 /**
@@ -115,15 +116,13 @@ export const START_CITY = CITIES[0];
 export const sortTypes: SortTypes = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
 
 export enum APIRoute {
+  Comments = '/comments',
   Offers = '/hotels',
   Login = '/login',
   Logout = '/logout',
+  Nearby = '/nearby',
 }
 
-/**
- * Время отображения ошибки
- */
-export const TIMEOUT_SHOW_ERROR = 2000;
 
 /**
  * Коды ответов от сервера
@@ -133,3 +132,8 @@ export enum HTTP_CODE {
   UNAUTHORIZED = 401,
   NOT_FOUND = 404,
 }
+
+/**
+ * Максимальное количество отзывов для отображения
+ */
+export const MAX_COUNT_REVIEWS = 10;
