@@ -11,6 +11,9 @@ type Parametrs = {
   height: number;
 };
 
+/**
+ * В зависимости от местоположения логотипа возвращает параметры для его отрисовки
+ */
 const getParametrs = (type: LogoTypes): Parametrs => {
   switch (type) {
     case LogoTypes.Header:

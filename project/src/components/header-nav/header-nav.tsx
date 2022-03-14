@@ -1,16 +1,18 @@
 import { Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthorizationStatus } from '../../const';
+import { Link, useLocation } from 'react-router-dom';
+import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
 
-function HeaderNav(): JSX.Element {
+function HeaderNav(): JSX.Element | null {
 
   const dispatch = useAppDispatch();
   const { authorizationStatus } = useAppSelector((state) => state);
 
-
-  const getNavItems = (status: AuthorizationStatus): JSX.Element => { //TODO реализовать первоначальную отрисовку, чтобы сразу подтягивался статус авторизации (сейчас он Unknown)
+  /**
+   * В зависимости от того авторизован пользователь или нет, возвращает разметку для меню навигации
+   */
+  const getNavItems = (status: AuthorizationStatus): JSX.Element => {
     switch (status) {
       case (AuthorizationStatus.Auth):
         return (
@@ -90,6 +92,12 @@ function HeaderNav(): JSX.Element {
         );
     }
   };
+
+  const { pathname } = useLocation();
+
+  if (pathname === AppRoute.Login) {
+    return null;
+  }
 
   return (
     <nav className="header__nav">

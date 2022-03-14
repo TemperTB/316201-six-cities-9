@@ -7,6 +7,7 @@ export enum AppRoute {
   Favorites = '/favorites',
   Offer = '/offer/',
   Main = '/',
+  NotFound = '/not-found',
 }
 
 /**
@@ -33,11 +34,17 @@ export const ICON_HEIGHT = 40;
 export const ANCHOR_RELATIVE_X = 20;
 export const ANCHOR_RELATIVE_Y = 40;
 
+/**
+ * Варианты для отрисовки логотипа
+ */
 export enum LogoTypes {
   Header = 'header',
   Footer = 'footer',
 }
 
+/**
+ * Типы карточек городов
+ */
 export enum PlaceCardTypes {
   Main = 'cities',
   Favorites = 'favorites',
@@ -59,6 +66,9 @@ export const MONTHS = [
   'December',
 ];
 
+/**
+ * Список городов
+ */
 export const CITIES = [
   {
     name: 'Paris',
@@ -110,23 +120,38 @@ export const CITIES = [
   },
 ];
 
+/**
+ * Начальный город для отрисовки карты
+ */
 export const START_CITY = CITIES[0];
 
+/**
+ * Варианты сортировки
+ */
 export const sortTypes: SortTypes = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
 
+/**
+ * Маршруты для связи с сервером
+ */
 export enum APIRoute {
+  Comments = '/comments',
   Offers = '/hotels',
   Login = '/login',
   Logout = '/logout',
+  Nearby = '/nearby',
 }
 
-/**
- * Время отображения ошибки
- */
-export const TIMEOUT_SHOW_ERROR = 2000;
 
+/**
+ * Коды ответов от сервера
+ */
 export enum HTTP_CODE {
   BAD_REQUEST = 400,
   UNAUTHORIZED = 401,
   NOT_FOUND = 404,
 }
+
+/**
+ * Максимальное количество отзывов для отображения
+ */
+export const MAX_COUNT_REVIEWS = 10;

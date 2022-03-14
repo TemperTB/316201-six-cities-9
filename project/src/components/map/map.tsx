@@ -37,6 +37,9 @@ function Map({ centerCoordinates, points, selectedPoint, height }: MapProps) {
   const mapRef = useRef(null);
   const map = useMap(mapRef, centerCoordinates);
 
+  /**
+   * Отрисовывает метки на карте
+   */
   useEffect(() => {
     if (map) {
       points.forEach((point) => {

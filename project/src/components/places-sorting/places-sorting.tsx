@@ -7,6 +7,9 @@ type PlacesSortingProps = {
 };
 
 function PlacesSorting({ sortType }: PlacesSortingProps): JSX.Element {
+  /**
+   * Открывает/закрывает select
+   */
   const toggleSortTypeVisible = (): void => {
     const placesOptions: HTMLElement | null =
       document.querySelector('.places__options');

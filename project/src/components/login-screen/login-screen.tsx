@@ -3,24 +3,32 @@ import { useAppDispatch } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
 
 function LoginScreen(): JSX.Element {
-
   const dispatch = useAppDispatch();
 
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
+  /**
+   * Действие при вводе логина
+   */
   const loginChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
     evt.preventDefault();
     const { value } = evt.target;
     setLogin(value);
   };
 
+  /**
+   * Действие при вводе пароля
+   */
   const passwordChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
     evt.preventDefault();
     const { value } = evt.target;
     setPassword(value);
   };
 
+  /**
+   * Действие при отправке формы
+   */
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     if (login !== '' && password !== '') {
