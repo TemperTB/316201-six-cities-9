@@ -5,8 +5,14 @@ import { useAppSelector } from '../../hooks';
 
 
 function OfferProperty(): JSX.Element {
+  // eslint-disable-next-line no-console
+  console.info('OfferProperty');
   const isNearbyOffersLoaded = useAppSelector(
     (state) => state.isNearbyOffersLoaded,
+  );
+  const isOfferLoaded = useAppSelector((state) => state.isOfferLoaded);
+  const isOfferReviewsLoaded = useAppSelector(
+    (state) => state.isOfferReviewsLoaded,
   );
   const nearbyOffers = useAppSelector((state) => state.nearbyOffers);
   const offer = useAppSelector((state) => state.offer);
@@ -127,18 +133,21 @@ function OfferProperty(): JSX.Element {
               <p className="property__text">{description}</p>
             </div>
           </div>
-          <OfferReviews />
+          {isOfferReviewsLoaded ? <OfferReviews /> : ''}
         </div>
       </div>
       <section className="property__map map">
-        {isNearbyOffersLoaded ?
+        {isNearbyOffersLoaded && isOfferLoaded ? (
           <Map
             centerCoordinates={nearbyOffers[0].city.location}
             key={`${offer.id}: ${offer.title}`}
             points={[...nearbyOffers, offer]}
             selectedPoint={offer}
             height={579}
-          /> : ''}
+          />
+        ) : (
+          ''
+        )}
       </section>
     </section>
   );

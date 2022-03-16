@@ -114,4 +114,4 @@ function HeaderNav(): JSX.Element | null {
   );
 }
 
-export default HeaderNav;
+export default React.memo(HeaderNav);

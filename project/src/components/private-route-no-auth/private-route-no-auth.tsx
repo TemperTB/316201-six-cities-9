@@ -6,13 +6,11 @@ type PrivateRouteProps = {
   children: JSX.Element;
 };
 
-function PrivateRouteNoAuth(props: PrivateRouteProps): JSX.Element {
+function PrivateRouteNoAuth({ children }: PrivateRouteProps): JSX.Element {
   const authorizationStatus = useAppSelector(
     (state) => state.authorizationStatus,
   );
-  const { children } = props;
-
-  return authorizationStatus === AuthorizationStatus.NoAuth ? (
+  return authorizationStatus !== AuthorizationStatus.Auth ? (
     children
   ) : (
     <Navigate to={AppRoute.Main} />

@@ -8,7 +8,6 @@ type LocationItemProps = {
 };
 
 function LocationItem({
-
   city,
   activeCity,
 }: LocationItemProps): JSX.Element {

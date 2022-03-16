@@ -155,3 +155,15 @@ export enum HTTP_CODE {
  * Максимальное количество отзывов для отображения
  */
 export const MAX_COUNT_REVIEWS = 10;
+
+/**
+ * Минимальная длина комментария
+ */
+export const MIN_COMMENT_LENGTH = 50;
+
+
+export enum NameSpace {
+  data = 'DATA',
+  main = 'MAIN',
+  user = 'USER',
+}

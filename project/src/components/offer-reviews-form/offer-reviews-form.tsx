@@ -1,9 +1,12 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { MIN_COMMENT_LENGTH } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { errorHandle } from '../../services/error-handle';
 import { fetchSendReview } from '../../store/api-actions';
 
 function OfferReviewsForm(): JSX.Element {
+  // eslint-disable-next-line no-console
+  console.log('OfferReviewsForm');
   const dispatch = useAppDispatch();
   const offer = useAppSelector((state) => state.offer);
   const [rating, setRating] = useState(0);
@@ -15,11 +18,9 @@ function OfferReviewsForm(): JSX.Element {
   useEffect(() => {
     const submitButton: HTMLButtonElement | null =
       document.querySelector('.form__submit');
-    if (rating !== 0 && comment.length >= 50) {
-      (submitButton as HTMLButtonElement).disabled = false;
-    } else {
-      (submitButton as HTMLButtonElement).disabled = true;
-    }
+    rating !== 0 && comment.length >= MIN_COMMENT_LENGTH
+      ? ((submitButton as HTMLButtonElement).disabled = false)
+      : ((submitButton as HTMLButtonElement).disabled = true);
   }, [rating, comment]);
 
   /**

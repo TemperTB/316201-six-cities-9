@@ -8,6 +8,8 @@ import LoadingScreen from '../components/loading-screen/loading-screen';
 
 
 function Offer(): JSX.Element {
+  // eslint-disable-next-line no-console
+  console.info('Offer-page');
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
   useEffect(() => {
