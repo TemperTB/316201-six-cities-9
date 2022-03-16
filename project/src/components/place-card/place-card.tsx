@@ -86,7 +86,7 @@ function PlaceCard({
       <div
         className={`${classPrefix}__image-wrapper place-card__image-wrapper`}
       >
-        <Link to={AppRoute.Offer + id}>
+        <Link to={AppRoute.Offer + id} onClick={() => window.scrollTo(0, 0)}>
           <img
             className="place-card__image"
             src={previewImage}
@@ -121,7 +121,7 @@ function PlaceCard({
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={AppRoute.Offer + id}>{title}</Link>
+          <Link to={AppRoute.Offer + id} onClick={() => window.scrollTo(0, 0)}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
