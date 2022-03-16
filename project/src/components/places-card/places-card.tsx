@@ -16,8 +16,7 @@ function PlacesCard({
   onPlaceCardHover = undefined,
   typeCard,
 }: PlacesCardProps): JSX.Element {
-  // eslint-disable-next-line no-console
-  console.info('PlacesCard');
+
   return (
     <Fragment>
       {offers.map((offer, id) => {

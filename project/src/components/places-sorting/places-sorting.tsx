@@ -8,8 +8,6 @@ type PlacesSortingProps = {
 };
 
 function PlacesSorting({ sortType }: PlacesSortingProps): JSX.Element {
-  // eslint-disable-next-line no-console
-  console.info('PlacesSorting');
 
   /**
    * Открывает/закрывает select

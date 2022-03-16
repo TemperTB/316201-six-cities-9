@@ -4,12 +4,9 @@ import OfferReviewsForm from '../offer-reviews-form/offer-reviews-form';
 import OfferReviewsList from '../offer-reviews-list/offer-reviews-list';
 
 function OfferReviews(): JSX.Element {
-  // eslint-disable-next-line no-console
-  console.info('OfferReviews');
-  const authorizationStatus = useAppSelector(
-    (state) => state.authorizationStatus,
-  );
-  const reviews = useAppSelector((state) => state.reviews);
+
+  const authorizationStatus = useAppSelector(({ USER }) => USER.authorizationStatus);
+  const reviews = useAppSelector(({ OFFER }) => OFFER.reviews);
   return (
     <section className="property__reviews reviews">
       <h2 className="reviews__title">

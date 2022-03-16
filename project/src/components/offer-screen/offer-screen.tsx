@@ -6,10 +6,8 @@ import React from 'react';
 
 
 function OfferScreen(): JSX.Element {
-  // eslint-disable-next-line no-console
-  console.info('OfferScreen');
 
-  const nearbyOffers = useAppSelector((state) => state.nearbyOffers);
+  const nearbyOffers = useAppSelector(({ OFFER }) => OFFER.nearbyOffers);
 
   return (
     <main className="page__main page__main--property">

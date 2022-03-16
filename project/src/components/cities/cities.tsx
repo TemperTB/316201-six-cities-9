@@ -8,11 +8,9 @@ import { useAppSelector } from '../../hooks';
 import PlacesSorting from '../places-sorting/places-sorting';
 
 function Cities(): JSX.Element {
-  // eslint-disable-next-line no-console
-  console.info('Cities');
-  const validOffers = useAppSelector((state) => state.validOffers);
-  const currentCity = useAppSelector((state) => state.currentCity);
-  const sortType = useAppSelector((state) => state.sortType);
+  const validOffers = useAppSelector(({ OFFERS }) => OFFERS.validOffers);
+  const currentCity = useAppSelector(({ OFFERS }) => OFFERS.currentCity);
+  const sortType = useAppSelector(({ OFFERS }) => OFFERS.sortType);
 
   const placesCount: number = validOffers.length;
 

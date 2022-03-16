@@ -5,7 +5,7 @@ import { userProcess } from './offer-process/offer-process';
 import { offerProcess } from './data-process/data-process';
 
 export const rootReducer = combineReducers({
-  [NameSpace.data]: offerProcess.reducer,
-  [NameSpace.main]: offersProcess.reducer,
+  [NameSpace.offer]: offerProcess.reducer,
+  [NameSpace.offers]: offersProcess.reducer,
   [NameSpace.user]: userProcess.reducer,
 });

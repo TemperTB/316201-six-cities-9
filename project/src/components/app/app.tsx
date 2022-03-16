@@ -22,8 +22,6 @@ function App({
   favoriteOffers,
 }: AppScreenProps): JSX.Element {
 
-  // eslint-disable-next-line no-console
-  console.info('App');
   return (
     <HistoryRouter history={browserHistory}>
       <Routes>

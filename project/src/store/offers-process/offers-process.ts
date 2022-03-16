@@ -14,7 +14,7 @@ const initialState: MainProcess = {
 
 
 export const offersProcess = createSlice({
-  name: NameSpace.main,
+  name: NameSpace.offers,
   initialState,
   reducers: {
     loadOffers: (state, action) => {

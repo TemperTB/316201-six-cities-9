@@ -5,8 +5,6 @@ import { useAppDispatch } from '../hooks';
 import { fetchOffersAction } from '../store/api-actions';
 
 function Main(): JSX.Element {
-  // eslint-disable-next-line no-console
-  console.info('Main-page');
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchOffersAction());

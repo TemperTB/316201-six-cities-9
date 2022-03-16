@@ -8,7 +8,11 @@ import { NearbyOffers } from '../types/nearby-offers';
 import { OfferReviews, ReviewData } from '../types/offer-reviews';
 import { Offers, Offer } from '../types/offers';
 import { UserData } from '../types/user-data';
-import { loadNearbyOffers, loadOffer, loadOffers, loadReviews, redirectToRoute, requireAuthorization, sendReview } from './action';
+import { redirectToRoute } from './action';
+import { loadNearbyOffers, loadOffer, loadReviews, sendReview } from './data-process/data-process';
+import { requireAuthorization } from './offer-process/offer-process';
+import { loadOffers } from './offers-process/offers-process';
+
 
 /**
  * Получение списка предложений (для главной страницы)

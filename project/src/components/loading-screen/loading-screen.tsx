@@ -1,6 +1,5 @@
 function LoadingScreen(): JSX.Element {
-  // eslint-disable-next-line no-console
-  console.info('LoadingScreen');
+
   return (
     <section className="loading">
       <h1 className="visually-hidden">Error</h1>

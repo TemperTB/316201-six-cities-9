@@ -5,10 +5,8 @@ import { useAppSelector } from '../../hooks';
 import LoadingScreen from '../loading-screen/loading-screen';
 
 function MainScreen(): JSX.Element {
-  // eslint-disable-next-line no-console
-  console.info('MainScreen');
 
-  const isOffersLoaded = useAppSelector((state) => state.isOffersLoaded);
+  const isOffersLoaded = useAppSelector(({ OFFERS }) => OFFERS.isOffersLoaded);
 
   return (
     <main className="page__main page__main--index">

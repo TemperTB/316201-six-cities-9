@@ -8,8 +8,7 @@ import LoadingScreen from '../components/loading-screen/loading-screen';
 
 
 function Offer(): JSX.Element {
-  // eslint-disable-next-line no-console
-  console.info('Offer-page');
+
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
   useEffect(() => {
@@ -19,7 +18,7 @@ function Offer(): JSX.Element {
     dispatch(fetchReviewsAction(pathnames[2]));
   }, [pathname]);
 
-  const isOfferLoaded = useAppSelector((state) => state.isOfferLoaded);
+  const isOfferLoaded = useAppSelector(({ OFFER }) => OFFER.isOfferLoaded);
 
   return (
     <div className="page">

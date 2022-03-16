@@ -6,12 +6,10 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
 
 function HeaderNav(): JSX.Element | null {
-  // eslint-disable-next-line no-console
-  console.info('HeaderNav');
 
   const dispatch = useAppDispatch();
-  const authorizationStatus = useAppSelector(
-    (state) => state.authorizationStatus,
+  const {authorizationStatus}= useAppSelector(
+    ({ USER }) => USER,
   );
 
   /**

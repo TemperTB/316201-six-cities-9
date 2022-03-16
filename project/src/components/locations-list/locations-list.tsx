@@ -1,11 +1,11 @@
+import React from 'react';
 import { CITIES } from '../../const';
 import { useAppSelector } from '../../hooks';
 import LocationItem from '../location-item/location-item';
 
 function LocationsList(): JSX.Element {
-  // eslint-disable-next-line no-console
-  console.info('LocationList');
-  const currentCity = useAppSelector((state) => state.currentCity);
+
+  const { currentCity } = useAppSelector(({ OFFERS }) => OFFERS);
   return (
     <section className="locations container">
       <ul className="locations__list tabs__list">
@@ -20,4 +20,4 @@ function LocationsList(): JSX.Element {
   );
 }
 
-export default LocationsList;
+export default React.memo(LocationsList);

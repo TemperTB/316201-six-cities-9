@@ -5,10 +5,9 @@ import { errorHandle } from '../../services/error-handle';
 import { fetchSendReview } from '../../store/api-actions';
 
 function OfferReviewsForm(): JSX.Element {
-  // eslint-disable-next-line no-console
-  console.log('OfferReviewsForm');
+
   const dispatch = useAppDispatch();
-  const offer = useAppSelector((state) => state.offer);
+  const offer = useAppSelector(({ OFFER }) => OFFER.offer);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
 

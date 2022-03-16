@@ -58,8 +58,7 @@ function PlaceCard({
   typeCard,
   onPlaceCardHover=undefined,
 }: PlaceCardProps): JSX.Element {
-  // eslint-disable-next-line no-console
-  console.info('PlaceCard');
+
   const {
     previewImage,
     isPremium,

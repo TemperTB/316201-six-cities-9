@@ -5,17 +5,12 @@ import { useAppSelector } from '../../hooks';
 
 
 function OfferProperty(): JSX.Element {
-  // eslint-disable-next-line no-console
-  console.info('OfferProperty');
-  const isNearbyOffersLoaded = useAppSelector(
-    (state) => state.isNearbyOffersLoaded,
-  );
-  const isOfferLoaded = useAppSelector((state) => state.isOfferLoaded);
-  const isOfferReviewsLoaded = useAppSelector(
-    (state) => state.isOfferReviewsLoaded,
-  );
-  const nearbyOffers = useAppSelector((state) => state.nearbyOffers);
-  const offer = useAppSelector((state) => state.offer);
+
+  const isNearbyOffersLoaded = useAppSelector(({ OFFER }) => OFFER.isNearbyOffersLoaded);
+  const isOfferLoaded = useAppSelector(({ OFFER }) => OFFER.isOfferLoaded);
+  const isOfferReviewsLoaded = useAppSelector(({ OFFER }) => OFFER.isOfferReviewsLoaded);
+  const nearbyOffers = useAppSelector(({ OFFER }) => OFFER.nearbyOffers);
+  const offer = useAppSelector(({ OFFER }) => OFFER.offer);
   const {
     images,
     title,

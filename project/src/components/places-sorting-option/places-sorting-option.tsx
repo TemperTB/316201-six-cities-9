@@ -1,6 +1,6 @@
 import { useAppDispatch } from '../../hooks';
-import { changeSortType } from '../../store/action';
 import { SortType } from '../../types/sort';
+import { changeSortType } from '../../store/offers-process/offers-process';
 
 type PlacesSortingOptionsProps = {
   activeOption: string;
@@ -13,8 +13,6 @@ function PlacesSortingOption({
   option,
   toggleSortTypeVisible,
 }: PlacesSortingOptionsProps): JSX.Element {
-  // eslint-disable-next-line no-console
-  console.info('PlacesSortingOption');
 
   const dispatch = useAppDispatch();
   const changeActiveCard = () => {

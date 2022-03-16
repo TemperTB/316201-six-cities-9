@@ -14,8 +14,7 @@ const transformDate = (dateToTransform: string): string => {
 };
 
 function OfferReviewsItem({ review }: OfferReviewsItemProps): JSX.Element {
-  // eslint-disable-next-line no-console
-  console.info('OfferReviewsItem');
+
   const { user, rating, comment, date } = review;
   const { name, avatarUrl } = user;
   return (
