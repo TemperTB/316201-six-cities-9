@@ -1,3 +1,4 @@
+import React from 'react';
 import { Fragment } from 'react';
 import { PlaceCardTypes } from '../../const';
 import { Offers, Offer } from '../../types/offers';
@@ -15,6 +16,8 @@ function PlacesCard({
   onPlaceCardHover = undefined,
   typeCard,
 }: PlacesCardProps): JSX.Element {
+  // eslint-disable-next-line no-console
+  console.info('PlacesCard');
   return (
     <Fragment>
       {offers.map((offer, id) => {
@@ -32,4 +35,4 @@ function PlacesCard({
   );
 }
 
-export default PlacesCard;
+export default React.memo(PlacesCard);

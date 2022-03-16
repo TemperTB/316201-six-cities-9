@@ -7,7 +7,9 @@ type PrivateRouteProps = {
 };
 
 function PrivateRouteNoAuth(props: PrivateRouteProps): JSX.Element {
-  const { authorizationStatus } = useAppSelector((state) => state);
+  const authorizationStatus = useAppSelector(
+    (state) => state.authorizationStatus,
+  );
   const { children } = props;
 
   return authorizationStatus === AuthorizationStatus.NoAuth ? (

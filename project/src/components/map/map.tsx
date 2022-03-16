@@ -34,6 +34,8 @@ const currentCustomIcon = new Icon({
 
 
 function Map({ centerCoordinates, points, selectedPoint, height }: MapProps) {
+  // eslint-disable-next-line no-console
+  console.info('Map');
   const mapRef = useRef(null);
   const map = useMap(mapRef, centerCoordinates);
 
@@ -61,4 +63,4 @@ function Map({ centerCoordinates, points, selectedPoint, height }: MapProps) {
   return <div style={{ height: `${height}px` }} ref={mapRef} />;
 }
 
-export default Map;
+export default React.memo(Map);

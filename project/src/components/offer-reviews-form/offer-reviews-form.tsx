@@ -5,7 +5,7 @@ import { fetchSendReview } from '../../store/api-actions';
 
 function OfferReviewsForm(): JSX.Element {
   const dispatch = useAppDispatch();
-  const { offer } = useAppSelector((state) => state);
+  const offer = useAppSelector((state) => state.offer);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
 

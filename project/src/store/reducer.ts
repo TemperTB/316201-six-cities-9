@@ -103,16 +103,20 @@ const initialState: InitalState = {
 
 const reducer = createReducer(initialState, (builder) => {
   builder.addCase(changeCity, (state, action) => {
-    state.currentCity = action.payload;
-    const filteredOffers: Offers = filterOffers(state.offers, state.currentCity);
-    const sortedOffers: Offers = sortOffers(filteredOffers, state.sortType);
-    state.validOffers = sortedOffers;
+    if (state.currentCity.name !== action.payload.name) {
+      state.currentCity = action.payload;
+      const filteredOffers: Offers = filterOffers(state.offers, state.currentCity);
+      const sortedOffers: Offers = sortOffers(filteredOffers, state.sortType);
+      state.validOffers = sortedOffers;
+    }
   });
   builder.addCase(changeSortType, (state, action) => {
-    state.sortType = action.payload;
-    const filteredOffers: Offers = filterOffers(state.offers, state.currentCity);
-    const sortedOffers: Offers = sortOffers(filteredOffers, state.sortType);
-    state.validOffers = sortedOffers;
+    if (state.sortType !== action.payload) {
+      state.sortType = action.payload;
+      const filteredOffers: Offers = filterOffers(state.offers, state.currentCity);
+      const sortedOffers: Offers = sortOffers(filteredOffers, state.sortType);
+      state.validOffers = sortedOffers;
+    }
   });
   builder.addCase(loadOffers, (state, action) => {
     state.offers = action.payload;

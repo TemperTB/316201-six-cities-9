@@ -17,7 +17,7 @@ function Offer(): JSX.Element {
     dispatch(fetchReviewsAction(pathnames[2]));
   }, [pathname]);
 
-  const { isOfferLoaded } = useAppSelector((state) => state);
+  const isOfferLoaded = useAppSelector((state) => state.isOfferLoaded);
 
   return (
     <div className="page">

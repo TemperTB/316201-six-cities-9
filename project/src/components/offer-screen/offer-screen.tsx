@@ -6,7 +6,7 @@ import { useAppSelector } from '../../hooks';
 
 function OfferScreen(): JSX.Element {
 
-  const { nearbyOffers } = useAppSelector((state) => state);
+  const nearbyOffers = useAppSelector((state) => state.nearbyOffers);
 
   return (
     <main className="page__main page__main--property">

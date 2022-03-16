@@ -11,7 +11,7 @@ type FavoriteScreenProps = {
 
 function FavoritesScreen({ favoriteOffers }: FavoriteScreenProps): JSX.Element {
 
-  const { validOffers: filteredOffers } = useAppSelector((state) => state);
+  const validOffers = useAppSelector((state) => state.validOffers);
 
   return (
     <Fragment>
@@ -30,7 +30,7 @@ function FavoritesScreen({ favoriteOffers }: FavoriteScreenProps): JSX.Element {
                 </div>
                 <div className="favorites__places">
                   <PlacesCard
-                    offers={filteredOffers}
+                    offers={validOffers}
                     typeCard={PlaceCardTypes.Favorites}
                   />
                 </div>

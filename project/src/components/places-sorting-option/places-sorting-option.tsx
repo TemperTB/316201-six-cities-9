@@ -13,6 +13,8 @@ function PlacesSortingOption({
   option,
   toggleSortTypeVisible,
 }: PlacesSortingOptionsProps): JSX.Element {
+  // eslint-disable-next-line no-console
+  console.info('PlacesSortingOption');
 
   const dispatch = useAppDispatch();
   const changeActiveCard = () => {

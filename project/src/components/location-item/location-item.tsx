@@ -8,9 +8,12 @@ type LocationItemProps = {
 };
 
 function LocationItem({
+
   city,
   activeCity,
 }: LocationItemProps): JSX.Element {
+  // eslint-disable-next-line no-console
+  console.info('LocationItem');
   const { name } = city;
   const isActive = name === activeCity.name ? 'tabs__item--active' : '';
   const dispatch = useAppDispatch();

@@ -5,7 +5,11 @@ import { useAppSelector } from '../../hooks';
 
 
 function OfferProperty(): JSX.Element {
-  const { isNearbyOffersLoaded, nearbyOffers, offer } = useAppSelector((state) => state);
+  const isNearbyOffersLoaded = useAppSelector(
+    (state) => state.isNearbyOffersLoaded,
+  );
+  const nearbyOffers = useAppSelector((state) => state.nearbyOffers);
+  const offer = useAppSelector((state) => state.offer);
   const {
     images,
     title,

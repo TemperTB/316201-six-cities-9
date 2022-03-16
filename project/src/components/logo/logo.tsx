@@ -26,6 +26,8 @@ const getParametrs = (type: LogoTypes): Parametrs => {
 };
 
 function Logo({ type }: LogoProps): JSX.Element {
+  // eslint-disable-next-line no-console
+  console.info('Logo');
   const { classPrefix, width, height } = getParametrs(type);
   return (
     <Link className={`${classPrefix}__logo-link`} to="/">

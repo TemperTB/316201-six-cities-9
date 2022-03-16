@@ -5,7 +5,7 @@ import OfferReviewsItem from '../offer-reviews-item/offer-reviews-item';
 
 
 function OfferReviewsList(): JSX.Element {
-  const { reviews } = useAppSelector((state) => state);
+  const reviews = useAppSelector((state) => state.reviews);
   const sortReviews: OfferReviews = sortingReviews(reviews);
   const reviewsForShow: OfferReviews = limitingReviews(sortReviews);
 

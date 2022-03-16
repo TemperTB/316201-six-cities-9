@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppRoute, PERCENT_PER_STAR, PlaceCardTypes } from '../../const';
 import { Offer } from '../../types/offers';
@@ -52,10 +53,13 @@ const getParametrs = (type: PlaceCardTypes): Parametrs => {
 };
 
 function PlaceCard({
+
   offer,
   typeCard,
   onPlaceCardHover=undefined,
 }: PlaceCardProps): JSX.Element {
+  // eslint-disable-next-line no-console
+  console.info('PlaceCard');
   const {
     previewImage,
     isPremium,
@@ -66,7 +70,8 @@ function PlaceCard({
     price,
     id,
   } = offer;
-  const { mainClass, classPrefix, imgWidth, imgHeight } = getParametrs(typeCard);
+  const { mainClass, classPrefix, imgWidth, imgHeight } =
+    getParametrs(typeCard);
   return (
     <article
       className={`${mainClass} place-card`}
@@ -125,4 +130,4 @@ function PlaceCard({
   );
 }
 
-export default PlaceCard;
+export default React.memo(PlaceCard);

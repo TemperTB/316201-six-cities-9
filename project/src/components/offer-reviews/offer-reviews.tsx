@@ -4,7 +4,10 @@ import OfferReviewsForm from '../offer-reviews-form/offer-reviews-form';
 import OfferReviewsList from '../offer-reviews-list/offer-reviews-list';
 
 function OfferReviews(): JSX.Element {
-  const { reviews, authorizationStatus } = useAppSelector((state) => state);
+  const reviews = useAppSelector((state) => state.reviews);
+  const authorizationStatus = useAppSelector(
+    (state) => state.authorizationStatus,
+  );
   return (
     <section className="property__reviews reviews">
       <h2 className="reviews__title">
