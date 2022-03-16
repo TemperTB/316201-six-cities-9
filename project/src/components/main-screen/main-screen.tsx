@@ -6,7 +6,7 @@ import LoadingScreen from '../loading-screen/loading-screen';
 
 function MainScreen(): JSX.Element {
 
-  const isOffersLoaded = useAppSelector(({ OFFERS }) => OFFERS.isOffersLoaded);
+  const isOffersLoaded = useAppSelector(({ MAIN }) => MAIN.isOffersLoaded);
 
   return (
     <main className="page__main page__main--index">

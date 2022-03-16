@@ -11,7 +11,7 @@ type FavoriteScreenProps = {
 
 function FavoritesScreen({ favoriteOffers }: FavoriteScreenProps): JSX.Element {
 
-  const validOffers = useAppSelector(({ OFFERS }) => OFFERS.validOffers);
+  const validOffers = useAppSelector(({ MAIN }) => MAIN.offers);
 
   return (
     <Fragment>

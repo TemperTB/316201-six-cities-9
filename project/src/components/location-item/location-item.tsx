@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppDispatch } from '../../hooks';
-import { changeCity } from '../../store/offers-process/offers-process';
+import { changeCity } from '../../store/main-process/main-process';
 import { City } from '../../types/offers';
 
 type LocationItemProps = {

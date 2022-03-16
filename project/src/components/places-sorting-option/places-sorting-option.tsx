@@ -1,6 +1,6 @@
 import { useAppDispatch } from '../../hooks';
 import { SortType } from '../../types/sort';
-import { changeSortType } from '../../store/offers-process/offers-process';
+import { changeSortType } from '../../store/main-process/main-process';
 
 type PlacesSortingOptionsProps = {
   activeOption: string;

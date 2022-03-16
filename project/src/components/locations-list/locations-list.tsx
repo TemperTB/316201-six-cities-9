@@ -5,7 +5,7 @@ import LocationItem from '../location-item/location-item';
 
 function LocationsList(): JSX.Element {
 
-  const { currentCity } = useAppSelector(({ OFFERS }) => OFFERS);
+  const  currentCity  = useAppSelector(({ MAIN }) => MAIN.currentCity);
   return (
     <section className="locations container">
       <ul className="locations__list tabs__list">

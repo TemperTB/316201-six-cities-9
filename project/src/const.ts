@@ -164,6 +164,6 @@ export const MIN_COMMENT_LENGTH = 50;
 
 export enum NameSpace {
   offer = 'OFFER',
-  offers = 'OFFERS',
+  main = 'MAIN',
   user = 'USER',
 }

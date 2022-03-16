@@ -17,10 +17,9 @@ export type MainProcess = {
   isOffersLoaded: boolean,
   offers: Offers,
   sortType: string,
-  validOffers: Offers,
 };
 
-export type DataProcess = {
+export type OfferProcess = {
   isNearbyOffersLoaded: boolean,
   isOfferLoaded: boolean,
   isOfferReviewsLoaded: boolean,
