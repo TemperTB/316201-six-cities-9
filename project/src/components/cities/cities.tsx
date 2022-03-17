@@ -1,26 +1,25 @@
 import { Offer } from '../../types/offers';
 import Map from '../map/map';
-
 import PlacesCard from '../places-card/places-card';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { PlaceCardTypes } from '../../const';
 import { useAppSelector } from '../../hooks';
 import PlacesSorting from '../places-sorting/places-sorting';
+import { doValidOffers } from '../../utils';
 
 function Cities(): JSX.Element {
-  const { validOffers, currentCity, sortType } = useAppSelector(
-    (state) => state,
-  );
+  const offers = useAppSelector(({ MAIN }) => MAIN.offers);
+  const currentCity = useAppSelector(({ MAIN }) => MAIN.currentCity);
+  const sortType = useAppSelector(({ MAIN }) => MAIN.sortType);
 
+  const validOffers = doValidOffers(offers, currentCity, sortType);
   const placesCount: number = validOffers.length;
 
   const [selectedPoint, setSelectedPoint] = useState<Offer | undefined>(
     undefined,
   );
 
-  const onPlaceCardHover = (offer: Offer) => {
-    setSelectedPoint(offer);
-  };
+  const onPlaceCardHover = useCallback((offer: Offer): void => (setSelectedPoint(offer)),[]);
 
   return (
     <div className="cities">

@@ -1,5 +1,6 @@
+import React from 'react';
 import { useAppDispatch } from '../../hooks';
-import { changeCity } from '../../store/action';
+import { changeCity } from '../../store/main-process/main-process';
 import { City } from '../../types/offers';
 
 type LocationItemProps = {
@@ -11,6 +12,7 @@ function LocationItem({
   city,
   activeCity,
 }: LocationItemProps): JSX.Element {
+
   const { name } = city;
   const isActive = name === activeCity.name ? 'tabs__item--active' : '';
   const dispatch = useAppDispatch();
@@ -28,4 +30,4 @@ function LocationItem({
   );
 }
 
-export default LocationItem;
+export default React.memo(LocationItem);

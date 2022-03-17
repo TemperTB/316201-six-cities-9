@@ -33,7 +33,7 @@ export const sortOffers = (offers: Offers, sortType: SortType): Offers => {
 /**
  * Сортирует отзывы согласно ТЗ (от позднего к раннему по дате)
  */
-export const sortingReviews = (arr: OfferReviews) => {
+export const sortingReviews = (arr: OfferReviews): OfferReviews => {
   if (arr.length < 2) {
     return arr;
   }
@@ -44,9 +44,22 @@ export const sortingReviews = (arr: OfferReviews) => {
 /**
  * Ограничивает количество отзывов согласно ТЗ
  */
-export const limitingReviews = (arr: OfferReviews) => {
+export const limitingReviews = (arr: OfferReviews): OfferReviews => {
   if (arr.length > 10) {
     return arr.slice(0, MAX_COUNT_REVIEWS);
   }
   return arr;
+};
+
+/**
+ * Фильтрует и сортирует предложения
+ * @param offers - список предложений
+ * @param currentCity - город для фильтрации
+ * @param sortType - тип сортировки
+ */
+export const doValidOffers = (offers: Offers, currentCity: City, sortType: SortType): Offers => {
+  const filteredOffers: Offers = filterOffers(offers, currentCity);
+  const sortedOffers: Offers = sortOffers(filteredOffers, sortType);
+  const validOffers: Offers = sortedOffers;
+  return validOffers;
 };

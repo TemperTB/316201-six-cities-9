@@ -2,15 +2,16 @@ import OfferProperty from '../offer-property/offer-property';
 import { PlaceCardTypes } from '../../const';
 import PlacesCard from '../places-card/places-card';
 import { useAppSelector } from '../../hooks';
+import React from 'react';
 
 
 function OfferScreen(): JSX.Element {
 
-  const { nearbyOffers } = useAppSelector((state) => state);
+  const nearbyOffers = useAppSelector(({ OFFER }) => OFFER.nearbyOffers);
 
   return (
     <main className="page__main page__main--property">
-      <OfferProperty/>
+      <OfferProperty />
       <div className="container">
         <section className="near-places places">
           <h2 className="near-places__title">
@@ -28,4 +29,4 @@ function OfferScreen(): JSX.Element {
   );
 }
 
-export default OfferScreen;
+export default React.memo(OfferScreen);

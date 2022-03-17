@@ -8,7 +8,11 @@ import { NearbyOffers } from '../types/nearby-offers';
 import { OfferReviews, ReviewData } from '../types/offer-reviews';
 import { Offers, Offer } from '../types/offers';
 import { UserData } from '../types/user-data';
-import { loadNearbyOffers, loadOffer, loadOffers, loadReviews, redirectToRoute, requireAuthorization, sendReview } from './action';
+import { redirectToRoute } from './action';
+import { loadNearbyOffers, loadOffer, loadReviews, resetIsOfferLoaded, sendReview } from './offer-process/offer-process';
+import { requireAuthorization } from './user-process/user-process';
+import { loadOffers } from './main-process/main-process';
+
 
 /**
  * Получение списка предложений (для главной страницы)
@@ -31,6 +35,7 @@ export const fetchOffersAction = createAsyncThunk(
 export const fetchOfferAction = createAsyncThunk(
   'data/fetchOffer',
   async (id: string) => {
+    store.dispatch(resetIsOfferLoaded());
     try {
       const {data} = await api.get<Offer>(`${APIRoute.Offers}/${id}`);
       store.dispatch(loadOffer(data));

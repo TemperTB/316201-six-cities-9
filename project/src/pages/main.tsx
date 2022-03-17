@@ -13,7 +13,7 @@ function Main(): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Header />
-      <MainScreen/>
+      <MainScreen />
     </div>
   );
 }

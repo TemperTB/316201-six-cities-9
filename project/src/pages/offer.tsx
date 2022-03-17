@@ -8,6 +8,7 @@ import LoadingScreen from '../components/loading-screen/loading-screen';
 
 
 function Offer(): JSX.Element {
+
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
   useEffect(() => {
@@ -17,7 +18,7 @@ function Offer(): JSX.Element {
     dispatch(fetchReviewsAction(pathnames[2]));
   }, [pathname]);
 
-  const { isOfferLoaded } = useAppSelector((state) => state);
+  const isOfferLoaded = useAppSelector(({ OFFER }) => OFFER.isOfferLoaded);
 
   return (
     <div className="page">

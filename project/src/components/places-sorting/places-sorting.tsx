@@ -1,3 +1,4 @@
+import React from 'react';
 import { sortTypes } from '../../const';
 import { SortType } from '../../types/sort';
 import PlacesSortingOption from '../places-sorting-option/places-sorting-option';
@@ -7,6 +8,7 @@ type PlacesSortingProps = {
 };
 
 function PlacesSorting({ sortType }: PlacesSortingProps): JSX.Element {
+
   /**
    * Открывает/закрывает select
    */
@@ -47,4 +49,4 @@ function PlacesSorting({ sortType }: PlacesSortingProps): JSX.Element {
   );
 }
 
-export default PlacesSorting;
+export default React.memo(PlacesSorting);

@@ -5,7 +5,12 @@ import { useAppSelector } from '../../hooks';
 
 
 function OfferProperty(): JSX.Element {
-  const { isNearbyOffersLoaded, nearbyOffers, offer } = useAppSelector((state) => state);
+
+  const isNearbyOffersLoaded = useAppSelector(({ OFFER }) => OFFER.isNearbyOffersLoaded);
+  const isOfferLoaded = useAppSelector(({ OFFER }) => OFFER.isOfferLoaded);
+  const isOfferReviewsLoaded = useAppSelector(({ OFFER }) => OFFER.isOfferReviewsLoaded);
+  const nearbyOffers = useAppSelector(({ OFFER }) => OFFER.nearbyOffers);
+  const offer = useAppSelector(({ OFFER }) => OFFER.offer);
   const {
     images,
     title,
@@ -123,18 +128,21 @@ function OfferProperty(): JSX.Element {
               <p className="property__text">{description}</p>
             </div>
           </div>
-          <OfferReviews />
+          {isOfferReviewsLoaded ? <OfferReviews /> : ''}
         </div>
       </div>
       <section className="property__map map">
-        {isNearbyOffersLoaded ?
+        {isNearbyOffersLoaded && isOfferLoaded ? (
           <Map
             centerCoordinates={nearbyOffers[0].city.location}
             key={`${offer.id}: ${offer.title}`}
             points={[...nearbyOffers, offer]}
             selectedPoint={offer}
             height={579}
-          /> : ''}
+          />
+        ) : (
+          ''
+        )}
       </section>
     </section>
   );

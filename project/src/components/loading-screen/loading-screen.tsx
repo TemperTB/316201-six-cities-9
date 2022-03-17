@@ -1,4 +1,5 @@
 function LoadingScreen(): JSX.Element {
+
   return (
     <section className="loading">
       <h1 className="visually-hidden">Error</h1>

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useAppSelector } from '../../hooks';
 import { OfferReviews } from '../../types/offer-reviews';
 import { limitingReviews, sortingReviews } from '../../utils';
@@ -5,7 +6,8 @@ import OfferReviewsItem from '../offer-reviews-item/offer-reviews-item';
 
 
 function OfferReviewsList(): JSX.Element {
-  const { reviews } = useAppSelector((state) => state);
+
+  const reviews = useAppSelector(({ OFFER }) => OFFER.reviews);
   const sortReviews: OfferReviews = sortingReviews(reviews);
   const reviewsForShow: OfferReviews = limitingReviews(sortReviews);
 
@@ -18,4 +20,4 @@ function OfferReviewsList(): JSX.Element {
   );
 }
 
-export default OfferReviewsList;
+export default React.memo(OfferReviewsList);

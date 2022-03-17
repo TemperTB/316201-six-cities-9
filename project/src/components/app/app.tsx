@@ -22,7 +22,6 @@ function App({
   favoriteOffers,
 }: AppScreenProps): JSX.Element {
 
-
   return (
     <HistoryRouter history={browserHistory}>
       <Routes>
