@@ -1,17 +1,23 @@
 import { PERCENT_PER_STAR } from '../../const';
 import OfferReviews from '../offer-reviews/offer-reviews';
 import Map from '../map/map';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { errorHandle } from '../../services/error-handle';
+import { fetchChangeStatusOffer, fetchOfferAction } from '../../store/api-actions';
 
 
 function OfferProperty(): JSX.Element {
-
-  const isNearbyOffersLoaded = useAppSelector(({ OFFER }) => OFFER.isNearbyOffersLoaded);
+  const isNearbyOffersLoaded = useAppSelector(
+    ({ OFFER }) => OFFER.isNearbyOffersLoaded,
+  );
   const isOfferLoaded = useAppSelector(({ OFFER }) => OFFER.isOfferLoaded);
-  const isOfferReviewsLoaded = useAppSelector(({ OFFER }) => OFFER.isOfferReviewsLoaded);
+  const isOfferReviewsLoaded = useAppSelector(
+    ({ OFFER }) => OFFER.isOfferReviewsLoaded,
+  );
   const nearbyOffers = useAppSelector(({ OFFER }) => OFFER.nearbyOffers);
   const offer = useAppSelector(({ OFFER }) => OFFER.offer);
   const {
+    id,
     images,
     title,
     isFavorite,
@@ -27,12 +33,29 @@ function OfferProperty(): JSX.Element {
   } = offer;
   const { name, isPro, avatarUrl } = host;
 
+  const dispatch = useAppDispatch();
+
+  /**
+   * Асинхронное действие, которое следит за изменением статуса предложения на сервере.
+   * При корректном обновляет информацию
+   */
+  const changeOfferStatus = async () => {
+    try {
+      isFavorite
+        ? await dispatch(fetchChangeStatusOffer({ id, status: 0 }))
+        : await dispatch(fetchChangeStatusOffer({ id, status: 1 }));
+      dispatch(fetchOfferAction(id.toString()));
+    } catch (error) {
+      errorHandle(error);
+    }
+  };
+
   return (
     <section className="property">
       <div className="property__gallery-container container">
         <div className="property__gallery">
-          {images.map((imageUrl, id) => {
-            const keyValue = id + imageUrl;
+          {images.map((imageUrl, imageId) => {
+            const keyValue = imageId + imageUrl;
             return id < 6 ? (
               <div key={keyValue} className="property__image-wrapper">
                 <img
@@ -61,6 +84,7 @@ function OfferProperty(): JSX.Element {
                 isFavorite ? 'property__bookmark-button--active' : ''
               }`}
               type="button"
+              onClick={changeOfferStatus}
             >
               <svg className="property__bookmark-icon" width={31} height={33}>
                 <use xlinkHref="#icon-bookmark" />
@@ -95,8 +119,8 @@ function OfferProperty(): JSX.Element {
           <div className="property__inside">
             <h2 className="property__inside-title">What&apos;s inside</h2>
             <ul className="property__inside-list">
-              {goods.map((good, id) => {
-                const keyValue = id + good;
+              {goods.map((good, goodId) => {
+                const keyValue = goodId + good;
                 return (
                   <li key={keyValue} className="property__inside-item">
                     {good}

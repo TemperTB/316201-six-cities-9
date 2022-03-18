@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppRoute, PERCENT_PER_STAR, PlaceCardTypes } from '../../const';
+import { useAppDispatch } from '../../hooks';
+import { errorHandle } from '../../services/error-handle';
+import { fetchChangeStatusOffer, fetchOffersAction } from '../../store/api-actions';
 import { Offer } from '../../types/offers';
 
 type PlaceCardProps = {
@@ -53,12 +56,10 @@ const getParametrs = (type: PlaceCardTypes): Parametrs => {
 };
 
 function PlaceCard({
-
   offer,
   typeCard,
   onPlaceCardHover=undefined,
 }: PlaceCardProps): JSX.Element {
-
   const {
     previewImage,
     isPremium,
@@ -71,6 +72,24 @@ function PlaceCard({
   } = offer;
   const { mainClass, classPrefix, imgWidth, imgHeight } =
     getParametrs(typeCard);
+
+  const dispatch = useAppDispatch();
+
+  /**
+   * Асинхронное действие, которое следит за изменением статуса предложения на сервере.
+   * При корректном изменении запрашивает с сервера предложения
+   */
+  const changeOfferStatus = async () => {
+    try {
+      isFavorite
+        ? await dispatch(fetchChangeStatusOffer({ id, status: 0 }))
+        : await dispatch(fetchChangeStatusOffer({ id, status: 1 }));
+      dispatch(fetchOffersAction());
+    } catch (error) {
+      errorHandle(error);
+    }
+  };
+
   return (
     <article
       className={`${mainClass} place-card`}
@@ -107,6 +126,7 @@ function PlaceCard({
               isFavorite && 'place-card__bookmark-button--active'
             }`}
             type="button"
+            onClick={changeOfferStatus}
           >
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark" />
@@ -121,7 +141,9 @@ function PlaceCard({
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={AppRoute.Offer + id} onClick={() => window.scrollTo(0, 0)}>{title}</Link>
+          <Link to={AppRoute.Offer + id} onClick={() => window.scrollTo(0, 0)}>
+            {title}
+          </Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

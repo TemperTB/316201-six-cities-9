@@ -12,6 +12,8 @@ import { redirectToRoute } from './action';
 import { loadNearbyOffers, loadOffer, loadReviews, resetIsOfferLoaded, sendReview } from './offer-process/offer-process';
 import { requireAuthorization } from './user-process/user-process';
 import { loadOffers } from './main-process/main-process';
+import { FavoriteOffers, FavoriteOffersData } from '../types/favorite-offers';
+import { changeFavoriteOffersLoadStatus, loadFavoriteOffers } from './favorite-process/favorite-process';
 
 
 /**
@@ -85,6 +87,38 @@ export const fetchSendReview = createAsyncThunk(
     try {
       const {data} = await api.post<OfferReviews>(`${APIRoute.Comments}/${id}`, {comment, rating});
       store.dispatch(sendReview(data));
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
+
+/**
+ * Получение списка избранных предложений
+ */
+export const fetchFavoriteOffersAction = createAsyncThunk(
+  'data/fetchFavoriteOffers',
+  async () => {
+    try {
+      const {data} = await api.get<FavoriteOffers>(APIRoute.Favorite);
+      store.dispatch(loadFavoriteOffers(data));
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
+
+/**
+ * Добавление/удаление выбранного предложения из избранного
+ * status = 0 - удалить
+ * status = 1 - добавить
+ */
+export const fetchChangeStatusOffer = createAsyncThunk(
+  'data/fetchChangeStatusOffer',
+  async ({id, status}: FavoriteOffersData) => {
+    try {
+      await api.post<OfferReviews>(`${APIRoute.Favorite}/${id}/${status}`);
+      store.dispatch(changeFavoriteOffersLoadStatus(false));
     } catch (error) {
       errorHandle(error);
     }

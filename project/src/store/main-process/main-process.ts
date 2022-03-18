@@ -28,7 +28,10 @@ export const offersProcess = createSlice({
         state.sortType = action.payload;
       }
     },
+    changeOffersLoadStatus: (state, action) => {
+      state.isOffersLoaded = action.payload;
+    },
   },
 });
 
-export const {loadOffers, changeCity, changeSortType} = offersProcess.actions;
+export const {loadOffers, changeCity, changeSortType, changeOffersLoadStatus} = offersProcess.actions;

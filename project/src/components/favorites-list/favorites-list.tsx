@@ -1,24 +1,30 @@
-import { PlaceCardTypes } from '../../const';
+import { CITIES } from '../../const';
 import { useAppSelector } from '../../hooks';
-import PlacesCard from '../places-card/places-card';
+import { FavoriteOffers } from '../../types/favorite-offers';
+import { filterOffers } from '../../utils';
+import FavoritesItem from '../favorites-item/favorite-item';
 function FavoritesList(): JSX.Element {
-
-  const offers = useAppSelector(({ MAIN }) => MAIN.offers);
+  const favoriteOffers = useAppSelector(
+    ({ FAVORITE }) => FAVORITE.favoriteOffers,
+  );
 
   return (
     <ul className="favorites__list">
-      <li className="favorites__locations-items">
-        <div className="favorites__locations locations locations--current">
-          <div className="locations__item">
-            <a className="locations__item-link" href="#">
-              <span>Amsterdam</span>
-            </a>
-          </div>
-        </div>
-        <div className="favorites__places">
-          <PlacesCard offers={offers} typeCard={PlaceCardTypes.Favorites} />
-        </div>
-      </li>
+      {CITIES.map((city) => {
+        const validFavoritesOffers: FavoriteOffers = filterOffers(
+          favoriteOffers,
+          city,
+        );
+        return validFavoritesOffers.length !== 0 ? (
+          <FavoritesItem
+            key={city.name}
+            city={city}
+            validFavoritesOffers={validFavoritesOffers}
+          />
+        ) : (
+          ''
+        );
+      })}
     </ul>
   );
 }

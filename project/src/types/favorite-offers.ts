@@ -34,3 +34,8 @@ export type FavoriteOffer = {
 };
 
 export type FavoriteOffers = FavoriteOffer[];
+
+export type FavoriteOffersData = {
+  id: number;
+  status: number;
+};
