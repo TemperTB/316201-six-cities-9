@@ -6,22 +6,13 @@ import browserHistory from '../../browser-history';
 import PrivateRouteAuth from '../private-route-auth/private-route-auth';
 import PrivateRouteNoAuth from '../private-route-no-auth/private-route-no-auth';
 
-import { FavoriteOffers } from '../../types/favorite-offers';
-
-import Favorites from '../../pages/favorites';
 import Login from '../../pages/login';
 import Main from '../../pages/main';
 import NotFound from '../../pages/not-found';
 import Offer from '../../pages/offer';
+import Favorites from '../../pages/favorites';
 
-type AppScreenProps = {
-  favoriteOffers: FavoriteOffers;
-};
-
-function App({
-  favoriteOffers,
-}: AppScreenProps): JSX.Element {
-
+function App(): JSX.Element {
   return (
     <HistoryRouter history={browserHistory}>
       <Routes>
@@ -40,7 +31,7 @@ function App({
           path={AppRoute.Favorites}
           element={
             <PrivateRouteAuth>
-              <Favorites favoriteOffers={favoriteOffers} />
+              <Favorites/>
             </PrivateRouteAuth>
           }
         />
