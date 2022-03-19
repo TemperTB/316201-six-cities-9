@@ -62,4 +62,4 @@ function Map({ centerCoordinates, points, selectedPoint, height }: MapProps) {
   return <div style={{ height: `${height}px` }} ref={mapRef} />;
 }
 
-export default React.memo(Map);
+export default Map;

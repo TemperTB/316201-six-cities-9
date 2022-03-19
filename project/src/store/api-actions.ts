@@ -9,11 +9,11 @@ import { OfferReviews, ReviewData } from '../types/offer-reviews';
 import { Offers, Offer } from '../types/offers';
 import { UserData } from '../types/user-data';
 import { redirectToRoute } from './action';
-import { loadNearbyOffers, loadOffer, loadReviews, resetIsOfferLoaded, sendReview } from './offer-process/offer-process';
+import { loadNearbyOffers, loadOffer, loadReviews, sendReview } from './offer-process/offer-process';
 import { requireAuthorization } from './user-process/user-process';
 import { loadOffers } from './main-process/main-process';
 import { FavoriteOffers, FavoriteOffersData } from '../types/favorite-offers';
-import { changeFavoriteOffersLoadStatus, loadFavoriteOffers } from './favorite-process/favorite-process';
+import { loadFavoriteOffers } from './favorite-process/favorite-process';
 
 
 /**
@@ -37,7 +37,6 @@ export const fetchOffersAction = createAsyncThunk(
 export const fetchOfferAction = createAsyncThunk(
   'data/fetchOffer',
   async (id: string) => {
-    store.dispatch(resetIsOfferLoaded());
     try {
       const {data} = await api.get<Offer>(`${APIRoute.Offers}/${id}`);
       store.dispatch(loadOffer(data));
@@ -118,7 +117,6 @@ export const fetchChangeStatusOffer = createAsyncThunk(
   async ({id, status}: FavoriteOffersData) => {
     try {
       await api.post<OfferReviews>(`${APIRoute.Favorite}/${id}/${status}`);
-      store.dispatch(changeFavoriteOffersLoadStatus(false));
     } catch (error) {
       errorHandle(error);
     }

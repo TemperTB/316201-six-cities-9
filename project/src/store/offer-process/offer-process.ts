@@ -99,10 +99,10 @@ export const offerProcess = createSlice({
     sendReview: (state, action) => {
       state.reviews = action.payload;
     },
-    resetIsOfferLoaded: (state) => {
-      state.isOfferLoaded = false;
+    resetNearbyOffers: (state) => {
+      state.isNearbyOffersLoaded = false;
     },
   },
 });
 
-export const {loadOffer, loadNearbyOffers, loadReviews, sendReview, resetIsOfferLoaded} = offerProcess.actions;
+export const {loadOffer, loadNearbyOffers, loadReviews, sendReview, resetNearbyOffers} = offerProcess.actions;

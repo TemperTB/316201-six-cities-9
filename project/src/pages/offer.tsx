@@ -14,9 +14,19 @@ function Offer(): JSX.Element {
   useEffect(() => {
     const pathnames = pathname.split('/');
     dispatch(fetchOfferAction(pathnames[2]));
-    dispatch(fetchNearbyOffersAction(pathnames[2]));
     dispatch(fetchReviewsAction(pathnames[2]));
+    dispatch(fetchNearbyOffersAction(pathnames[2]));
   }, [pathname]);
+
+  const isNearbyOffersLoaded = useAppSelector(
+    ({ OFFER }) => OFFER.isNearbyOffersLoaded,
+  );
+  useEffect(() => {
+    const pathnames = pathname.split('/');
+    if (!isNearbyOffersLoaded) {
+      dispatch(fetchNearbyOffersAction(pathnames[2]));
+    }
+  }, [isNearbyOffersLoaded]);
 
   const isOfferLoaded = useAppSelector(({ OFFER }) => OFFER.isOfferLoaded);
 

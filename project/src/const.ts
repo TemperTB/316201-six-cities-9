@@ -47,7 +47,7 @@ export enum LogoTypes {
  */
 export enum PlaceCardTypes {
   Main = 'cities',
-  Favorites = 'favorites',
+  Favorite = 'favorites',
   Nearby = 'near-places',
 }
 

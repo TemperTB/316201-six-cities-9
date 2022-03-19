@@ -7,9 +7,6 @@ import { fetchChangeStatusOffer, fetchOfferAction } from '../../store/api-action
 
 
 function OfferProperty(): JSX.Element {
-  const isNearbyOffersLoaded = useAppSelector(
-    ({ OFFER }) => OFFER.isNearbyOffersLoaded,
-  );
   const isOfferLoaded = useAppSelector(({ OFFER }) => OFFER.isOfferLoaded);
   const isOfferReviewsLoaded = useAppSelector(
     ({ OFFER }) => OFFER.isOfferReviewsLoaded,
@@ -156,9 +153,9 @@ function OfferProperty(): JSX.Element {
         </div>
       </div>
       <section className="property__map map">
-        {isNearbyOffersLoaded && isOfferLoaded ? (
+        {isOfferLoaded ? (
           <Map
-            centerCoordinates={nearbyOffers[0].city.location}
+            centerCoordinates={offer.city.location}
             key={`${offer.id}: ${offer.title}`}
             points={[...nearbyOffers, offer]}
             selectedPoint={offer}

@@ -37,7 +37,7 @@ function FavoritesItem({
       <div className="favorites__places">
         <PlacesCard
           offers={validFavoritesOffers}
-          typeCard={PlaceCardTypes.Favorites}
+          typeCard={PlaceCardTypes.Favorite}
         />
       </div>
     </li>
