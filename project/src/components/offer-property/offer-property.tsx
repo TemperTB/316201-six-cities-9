@@ -53,7 +53,7 @@ function OfferProperty(): JSX.Element {
         <div className="property__gallery">
           {images.map((imageUrl, imageId) => {
             const keyValue = imageId + imageUrl;
-            return id < 6 ? (
+            return imageId < 6 ? (
               <div key={keyValue} className="property__image-wrapper">
                 <img
                   className="property__image"

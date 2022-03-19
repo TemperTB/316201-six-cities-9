@@ -11,7 +11,7 @@ import { UserData } from '../types/user-data';
 import { redirectToRoute } from './action';
 import { loadNearbyOffers, loadOffer, loadReviews, sendReview } from './offer-process/offer-process';
 import { requireAuthorization } from './user-process/user-process';
-import { loadOffers } from './main-process/main-process';
+import { changeOffersLoadStatus, loadOffers } from './main-process/main-process';
 import { FavoriteOffers, FavoriteOffersData } from '../types/favorite-offers';
 import { loadFavoriteOffers } from './favorite-process/favorite-process';
 
@@ -26,6 +26,7 @@ export const fetchOffersAction = createAsyncThunk(
       const {data} = await api.get<Offers>(APIRoute.Offers);
       store.dispatch(loadOffers(data));
     } catch (error) {
+      store.dispatch(changeOffersLoadStatus(true));
       errorHandle(error);
     }
   },
