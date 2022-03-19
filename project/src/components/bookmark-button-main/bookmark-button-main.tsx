@@ -1,5 +1,7 @@
 import { ActionCreatorWithoutPayload, AsyncThunk } from '@reduxjs/toolkit';
-import { useAppDispatch } from '../../hooks';
+import { useNavigate } from 'react-router-dom';
+import { AuthorizationStatus } from '../../const';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { errorHandle } from '../../services/error-handle';
 import { fetchChangeStatusOffer } from '../../store/api-actions';
 
@@ -17,12 +19,18 @@ function BookmarkButtonMain({
   isFavorite,
 }: BookmarkButtonMainProps): JSX.Element {
   const dispatch = useAppDispatch();
-
+  const navigate = useNavigate();
+  const authorizationStatus = useAppSelector(
+    ({ USER }) => USER.authorizationStatus,
+  );
   /**
    * Асинхронное действие, которое следит за изменением статуса предложения на сервере.
    * При корректном изменении вызывает cb для перерисовки нужных данных
    */
   const changeOfferStatus = async () => {
+    if (authorizationStatus === AuthorizationStatus.NoAuth) {
+      navigate('/login');
+    }
     try {
       isFavorite
         ? await dispatch(fetchChangeStatusOffer({ id, status: 0 }))

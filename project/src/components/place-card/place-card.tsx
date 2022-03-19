@@ -120,16 +120,6 @@ function PlaceCard({
             <span className="place-card__price-text"> /&nbsp;night</span>
           </div>
           <BookmarkButtonMain cb={callbackForButton} id={id} isFavorite={isFavorite} />
-          {/* {typeCard === PlaceCardTypes.Favorite ? (
-            <BookmarkButtonFavorite id={id} isFavorite={isFavorite} />
-          ) : (
-            ''
-          )}
-          {typeCard === PlaceCardTypes.Nearby ? (
-            <BookmarkButtonNearby id={id} isFavorite={isFavorite} />
-          ) : (
-            ''
-          )} */}
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
