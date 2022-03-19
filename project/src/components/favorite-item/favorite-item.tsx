@@ -11,7 +11,7 @@ type FavoriteItemProps = {
   validFavoritesOffers: FavoriteOffers;
 };
 
-function FavoritesItem({
+function FavoriteItem({
   city,
   validFavoritesOffers,
 }: FavoriteItemProps): JSX.Element {
@@ -44,5 +44,5 @@ function FavoritesItem({
   );
 }
 
-export default FavoritesItem;
+export default FavoriteItem;
 

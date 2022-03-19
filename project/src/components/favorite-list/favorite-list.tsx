@@ -2,8 +2,9 @@ import { CITIES } from '../../const';
 import { useAppSelector } from '../../hooks';
 import { FavoriteOffers } from '../../types/favorite-offers';
 import { filterOffers } from '../../utils';
-import FavoritesItem from '../favorites-item/favorite-item';
-function FavoritesList(): JSX.Element {
+import FavoriteItem from '../favorite-item/favorite-item';
+
+function FavoriteList(): JSX.Element {
   const favoriteOffers = useAppSelector(
     ({ FAVORITE }) => FAVORITE.favoriteOffers,
   );
@@ -16,7 +17,7 @@ function FavoritesList(): JSX.Element {
           city,
         );
         return validFavoritesOffers.length !== 0 ? (
-          <FavoritesItem
+          <FavoriteItem
             key={city.name}
             city={city}
             validFavoritesOffers={validFavoritesOffers}
@@ -29,4 +30,4 @@ function FavoritesList(): JSX.Element {
   );
 }
 
-export default FavoritesList;
+export default FavoriteList;
