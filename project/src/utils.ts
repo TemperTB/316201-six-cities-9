@@ -63,3 +63,11 @@ export const doValidOffers = (offers: Offers, currentCity: City, sortType: SortT
   const validOffers: Offers = sortedOffers;
   return validOffers;
 };
+
+/**
+ * Возвращает случайный элемент массива
+ */
+export const getRandomArrayElement = <T>(arr: Array<T>): T => {
+  const rand = Math.floor(Math.random() * arr.length);
+  return arr[rand];
+};
