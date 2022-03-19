@@ -3,11 +3,9 @@ import LocationsList from '../locations-list/locations-list';
 import Cities from '../cities/cities';
 import { useAppSelector } from '../../hooks';
 import LoadingScreen from '../loading-screen/loading-screen';
-import CitiesEmpty from '../cities-empty/cities-empty';
 
 function MainScreen(): JSX.Element {
 
-  const offers = useAppSelector(({ MAIN }) => MAIN.offers);
   const isOffersLoaded = useAppSelector(({ MAIN }) => MAIN.isOffersLoaded);
 
   return (
@@ -16,9 +14,7 @@ function MainScreen(): JSX.Element {
       <div className="tabs">
         <LocationsList />
       </div>
-      {!isOffersLoaded ? <LoadingScreen /> : ''}
-      {isOffersLoaded && offers.length === 0 ? <CitiesEmpty/> : ''}
-      {isOffersLoaded && offers.length !== 0 ? <Cities /> : ''}
+      {!isOffersLoaded ? <LoadingScreen /> : <Cities />}
     </main>
   );
 }
