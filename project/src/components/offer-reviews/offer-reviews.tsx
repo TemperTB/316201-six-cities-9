@@ -1,4 +1,5 @@
 import React from 'react';
+import { AuthorizationStatus } from '../../const';
 import { useAppSelector } from '../../hooks';
 import OfferReviewsForm from '../offer-reviews-form/offer-reviews-form';
 import OfferReviewsList from '../offer-reviews-list/offer-reviews-list';
@@ -13,7 +14,7 @@ function OfferReviews(): JSX.Element {
         Reviews · <span className="reviews__amount">{reviews.length}</span>
       </h2>
       <OfferReviewsList />
-      {authorizationStatus ? <OfferReviewsForm /> : ''}
+      {authorizationStatus === AuthorizationStatus.Auth ? <OfferReviewsForm /> : ''}
     </section>
   );
 }

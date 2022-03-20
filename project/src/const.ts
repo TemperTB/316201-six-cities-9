@@ -47,7 +47,7 @@ export enum LogoTypes {
  */
 export enum PlaceCardTypes {
   Main = 'cities',
-  Favorites = 'favorites',
+  Favorite = 'favorites',
   Nearby = 'near-places',
 }
 
@@ -135,10 +135,11 @@ export const sortTypes: SortTypes = ['Popular', 'Price: low to high', 'Price: hi
  */
 export enum APIRoute {
   Comments = '/comments',
-  Offers = '/hotels',
+  Favorite = '/favorite',
   Login = '/login',
   Logout = '/logout',
   Nearby = '/nearby',
+  Offers = '/hotels',
 }
 
 
@@ -166,4 +167,5 @@ export enum NameSpace {
   offer = 'OFFER',
   main = 'MAIN',
   user = 'USER',
+  favorite = 'FAVORITE',
 }

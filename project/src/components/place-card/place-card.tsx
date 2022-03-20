@@ -1,7 +1,11 @@
+import { ActionCreatorWithoutPayload, AsyncThunk } from '@reduxjs/toolkit';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppRoute, PERCENT_PER_STAR, PlaceCardTypes } from '../../const';
+import { fetchFavoriteOffersAction, fetchOffersAction } from '../../store/api-actions';
+import { resetNearbyOffers } from '../../store/offer-process/offer-process';
 import { Offer } from '../../types/offers';
+import BookmarkButtonMain from '../bookmark-button-main/bookmark-button-main';
 
 type PlaceCardProps = {
   offer: Offer;
@@ -14,7 +18,11 @@ type Parametrs = {
   classPrefix: string;
   imgWidth: number;
   imgHeight: number;
+  callbackForButton:
+    | AsyncThunk<void, void, Record<string, unknown>>
+    | ActionCreatorWithoutPayload<string>;
 };
+
 
 /**
  * В зависимости от места отрисовки компонента (type) возвращает значения необходимые для правильной отрисовки
@@ -27,13 +35,15 @@ const getParametrs = (type: PlaceCardTypes): Parametrs => {
         classPrefix: PlaceCardTypes.Main,
         imgWidth: 260,
         imgHeight: 200,
+        callbackForButton: fetchOffersAction,
       };
-    case PlaceCardTypes.Favorites:
+    case PlaceCardTypes.Favorite:
       return {
         mainClass: 'favorites__card',
-        classPrefix: PlaceCardTypes.Favorites,
+        classPrefix: PlaceCardTypes.Favorite,
         imgWidth: 150,
         imgHeight: 110,
+        callbackForButton: fetchFavoriteOffersAction,
       };
     case PlaceCardTypes.Nearby:
       return {
@@ -41,6 +51,7 @@ const getParametrs = (type: PlaceCardTypes): Parametrs => {
         classPrefix: PlaceCardTypes.Nearby,
         imgWidth: 260,
         imgHeight: 200,
+        callbackForButton: resetNearbyOffers,
       };
     default:
       return {
@@ -48,17 +59,16 @@ const getParametrs = (type: PlaceCardTypes): Parametrs => {
         classPrefix: PlaceCardTypes.Main,
         imgWidth: 260,
         imgHeight: 200,
+        callbackForButton: fetchOffersAction,
       };
   }
 };
 
 function PlaceCard({
-
   offer,
   typeCard,
-  onPlaceCardHover=undefined,
+  onPlaceCardHover = undefined,
 }: PlaceCardProps): JSX.Element {
-
   const {
     previewImage,
     isPremium,
@@ -69,8 +79,15 @@ function PlaceCard({
     price,
     id,
   } = offer;
-  const { mainClass, classPrefix, imgWidth, imgHeight } =
-    getParametrs(typeCard);
+  const {
+    mainClass,
+    classPrefix,
+    imgWidth,
+    imgHeight,
+    callbackForButton,
+  } = getParametrs(typeCard);
+
+
   return (
     <article
       className={`${mainClass} place-card`}
@@ -102,17 +119,7 @@ function PlaceCard({
             <b className="place-card__price-value">€{price}</b>
             <span className="place-card__price-text"> /&nbsp;night</span>
           </div>
-          <button
-            className={`place-card__bookmark-button button ${
-              isFavorite && 'place-card__bookmark-button--active'
-            }`}
-            type="button"
-          >
-            <svg className="place-card__bookmark-icon" width="18" height="19">
-              <use xlinkHref="#icon-bookmark" />
-            </svg>
-            <span className="visually-hidden">To bookmarks</span>
-          </button>
+          <BookmarkButtonMain cb={callbackForButton} id={id} isFavorite={isFavorite} />
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
@@ -121,7 +128,9 @@ function PlaceCard({
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={AppRoute.Offer + id} onClick={() => window.scrollTo(0, 0)}>{title}</Link>
+          <Link to={AppRoute.Offer + id} onClick={() => window.scrollTo(0, 0)}>
+            {title}
+          </Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

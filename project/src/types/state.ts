@@ -1,5 +1,6 @@
 import { AuthorizationStatus } from '../const.js';
 import { store } from '../store/index.js';
+import { FavoriteOffers } from './favorite-offers.js';
 import { NearbyOffers } from './nearby-offers.js';
 import { OfferReviews } from './offer-reviews.js';
 import { City, Offer, Offers } from './offers.js';
@@ -26,4 +27,9 @@ export type OfferProcess = {
   nearbyOffers: NearbyOffers,
   offer: Offer,
   reviews: OfferReviews,
+}
+
+export type FavoriteProcess = {
+  isFavoriteOffersLoaded: boolean,
+  favoriteOffers: FavoriteOffers,
 }
