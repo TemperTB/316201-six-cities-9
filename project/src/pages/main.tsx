@@ -10,7 +10,9 @@ function Main(): JSX.Element {
   const isOffersLoaded = useAppSelector(getLoadedOffersStatus);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchOffersAction());
+    if (!isOffersLoaded) {
+      dispatch(fetchOffersAction());
+    }
   }, [isOffersLoaded]);
   const offers = useAppSelector(getOffers);
 

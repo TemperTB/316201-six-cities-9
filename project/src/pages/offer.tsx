@@ -21,7 +21,6 @@ function Offer(): JSX.Element {
     const pathnames = pathname.split('/');
     dispatch(fetchOfferAction(pathnames[2]));
     dispatch(fetchReviewsAction(pathnames[2]));
-    dispatch(fetchNearbyOffersAction(pathnames[2]));
   }, [pathname]);
 
   const isNearbyOffersLoaded = useAppSelector(getLoadNearbyStatus);
@@ -30,7 +29,7 @@ function Offer(): JSX.Element {
     if (!isNearbyOffersLoaded) {
       dispatch(fetchNearbyOffersAction(pathnames[2]));
     }
-  }, [isNearbyOffersLoaded]);
+  }, [isNearbyOffersLoaded, pathname]);
 
   const isOfferLoaded = useAppSelector(getLoadOfferStatus);
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { CITIES } from '../../const';
 import { useAppDispatch } from '../../hooks';
@@ -29,4 +30,4 @@ function LoginLocations(): JSX.Element {
   );
 }
 
-export default LoginLocations;
+export default React.memo(LoginLocations);

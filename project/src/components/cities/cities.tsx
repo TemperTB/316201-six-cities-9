@@ -5,15 +5,14 @@ import { useCallback, useState } from 'react';
 import { PlaceCardTypes } from '../../const';
 import { useAppSelector } from '../../hooks';
 import PlacesSorting from '../places-sorting/places-sorting';
-import { doValidOffers } from '../../utils';
-import { getCurrentCity, getOffers, getSortType } from '../../store/main-process/selectors';
+import { getCurrentCity, getSortType, getValidOffers } from '../../store/main-process/selectors';
 
 function Cities(): JSX.Element {
-  const offers = useAppSelector(getOffers);
+  const validOffers = useAppSelector(getValidOffers);
   const currentCity = useAppSelector(getCurrentCity);
   const sortType = useAppSelector(getSortType);
 
-  const validOffers = doValidOffers(offers, currentCity, sortType);
+
   const placesCount: number = validOffers.length;
 
   const [selectedPoint, setSelectedPoint] = useState<Offer | undefined>(
