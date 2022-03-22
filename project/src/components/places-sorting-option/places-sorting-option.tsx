@@ -5,19 +5,18 @@ import { changeSortType } from '../../store/main-process/main-process';
 type PlacesSortingOptionsProps = {
   activeOption: string;
   option: SortType;
-  toggleSortTypeVisible: () => void;
+  onPlacesOptionClick: () => void;
 };
 
 function PlacesSortingOption({
   activeOption,
   option,
-  toggleSortTypeVisible,
+  onPlacesOptionClick,
 }: PlacesSortingOptionsProps): JSX.Element {
-
   const dispatch = useAppDispatch();
-  const changeActiveCard = () => {
+  const onItemClick = () => {
     const sortType = option;
-    toggleSortTypeVisible();
+    onPlacesOptionClick();
     dispatch(changeSortType(sortType));
   };
 
@@ -27,7 +26,7 @@ function PlacesSortingOption({
         activeOption === option ? 'places__option--active' : ''
       }`}
       tabIndex={0}
-      onClick={() => changeActiveCard()}
+      onClick={onItemClick}
     >
       {option}
     </li>

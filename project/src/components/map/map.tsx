@@ -20,20 +20,18 @@ type MapProps = {
   height: number;
 };
 
-const defaultCustomIcon = new Icon({
-  iconUrl: URL_MARKER_DEFAULT,
-  iconSize: [ICON_WIDTH, ICON_HEIGHT],
-  iconAnchor: [ANCHOR_RELATIVE_X, ANCHOR_RELATIVE_Y],
-});
-
-const currentCustomIcon = new Icon({
-  iconUrl: URL_MARKER_CURRENT,
-  iconSize: [ICON_WIDTH, ICON_HEIGHT],
-  iconAnchor: [ANCHOR_RELATIVE_X, ANCHOR_RELATIVE_Y],
-});
-
-
 function Map({ centerCoordinates, points, selectedPoint, height }: MapProps) {
+  const defaultCustomIcon = new Icon({
+    iconUrl: URL_MARKER_DEFAULT,
+    iconSize: [ICON_WIDTH, ICON_HEIGHT],
+    iconAnchor: [ANCHOR_RELATIVE_X, ANCHOR_RELATIVE_Y],
+  });
+
+  const currentCustomIcon = new Icon({
+    iconUrl: URL_MARKER_CURRENT,
+    iconSize: [ICON_WIDTH, ICON_HEIGHT],
+    iconAnchor: [ANCHOR_RELATIVE_X, ANCHOR_RELATIVE_Y],
+  });
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, centerCoordinates);

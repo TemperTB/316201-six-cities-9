@@ -12,7 +12,7 @@ function LoginScreen(): JSX.Element {
   /**
    * Действие при вводе логина
    */
-  const loginChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
+  const handleLoginChange = (evt: ChangeEvent<HTMLInputElement>) => {
     evt.preventDefault();
     const { value } = evt.target;
     setLogin(value);
@@ -21,7 +21,7 @@ function LoginScreen(): JSX.Element {
   /**
    * Действие при вводе пароля
    */
-  const passwordChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
+  const handlePasswordChange = (evt: ChangeEvent<HTMLInputElement>) => {
     evt.preventDefault();
     const { value } = evt.target;
     setPassword(value);
@@ -30,7 +30,7 @@ function LoginScreen(): JSX.Element {
   /**
    * Действие при отправке формы
    */
-  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     if (login !== '' && password !== '') {
       dispatch(
@@ -51,7 +51,7 @@ function LoginScreen(): JSX.Element {
             className="login__form form"
             action="#"
             method="post"
-            onSubmit={handleSubmit}
+            onSubmit={handleFormSubmit}
           >
             <div className="login__input-wrapper form__input-wrapper">
               <label className="visually-hidden">E-mail</label>
@@ -62,7 +62,7 @@ function LoginScreen(): JSX.Element {
                 placeholder="Email"
                 required
                 value={login}
-                onChange={loginChangeHandler}
+                onChange={handleLoginChange}
               />
             </div>
             <div className="login__input-wrapper form__input-wrapper">
@@ -74,7 +74,7 @@ function LoginScreen(): JSX.Element {
                 placeholder="Password"
                 required
                 value={password}
-                onChange={passwordChangeHandler}
+                onChange={handlePasswordChange}
               />
             </div>
             <button className="login__submit form__submit button" type="submit">

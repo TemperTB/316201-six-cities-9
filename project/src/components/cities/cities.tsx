@@ -6,11 +6,12 @@ import { PlaceCardTypes } from '../../const';
 import { useAppSelector } from '../../hooks';
 import PlacesSorting from '../places-sorting/places-sorting';
 import { doValidOffers } from '../../utils';
+import { getCurrentCity, getOffers, getSortType } from '../../store/main-process/selectors';
 
 function Cities(): JSX.Element {
-  const offers = useAppSelector(({ MAIN }) => MAIN.offers);
-  const currentCity = useAppSelector(({ MAIN }) => MAIN.currentCity);
-  const sortType = useAppSelector(({ MAIN }) => MAIN.sortType);
+  const offers = useAppSelector(getOffers);
+  const currentCity = useAppSelector(getCurrentCity);
+  const sortType = useAppSelector(getSortType);
 
   const validOffers = doValidOffers(offers, currentCity, sortType);
   const placesCount: number = validOffers.length;
@@ -19,7 +20,10 @@ function Cities(): JSX.Element {
     undefined,
   );
 
-  const onPlaceCardHover = useCallback((offer: Offer): void => (setSelectedPoint(offer)),[]);
+  const onPlaceCardHover = useCallback(
+    (offer: Offer): void => setSelectedPoint(offer),
+    [],
+  );
 
   return (
     <div className="cities">

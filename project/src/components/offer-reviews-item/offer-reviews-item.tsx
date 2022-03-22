@@ -13,6 +13,16 @@ const transformDate = (dateToTransform: string): string => {
   return `${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
 };
 
+/**
+ * Переводит дату в нужный формат для атрибута time (пример: 2019-01-01)
+ */
+const transformDateForAtribute = (dateToTransform: string): string => {
+  const date = new Date(dateToTransform);
+  return `${date.getFullYear()}-${
+    date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth()
+  }-${date.getDate()}`;
+};
+
 function OfferReviewsItem({ review }: OfferReviewsItemProps): JSX.Element {
 
   const { user, rating, comment, date } = review;
@@ -39,7 +49,7 @@ function OfferReviewsItem({ review }: OfferReviewsItemProps): JSX.Element {
           </div>
         </div>
         <p className="reviews__text">{comment}</p>
-        <time className="reviews__time" dateTime="2019-04-24">
+        <time className="reviews__time" dateTime={transformDateForAtribute(date)}>
           {transformDate(date)}
         </time>
       </div>

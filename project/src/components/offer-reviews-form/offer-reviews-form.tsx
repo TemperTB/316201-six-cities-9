@@ -3,11 +3,11 @@ import { MIN_COMMENT_LENGTH } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { errorHandle } from '../../services/error-handle';
 import { fetchSendReview } from '../../store/api-actions';
+import { getOffer } from '../../store/offer-process/selectors';
 
 function OfferReviewsForm(): JSX.Element {
-
   const dispatch = useAppDispatch();
-  const offer = useAppSelector(({ OFFER }) => OFFER.offer);
+  const offer = useAppSelector(getOffer);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
 
@@ -25,7 +25,7 @@ function OfferReviewsForm(): JSX.Element {
   /**
    * Действия при изменении рейтинга
    */
-  const ratingChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
+  const handlerRadioClick = (evt: ChangeEvent<HTMLInputElement>) => {
     const { value } = evt.target;
     setRating(Number(value));
   };
@@ -33,7 +33,7 @@ function OfferReviewsForm(): JSX.Element {
   /**
    * Действия при изменении комментария
    */
-  const commentChangeHandler = (evt: ChangeEvent<HTMLTextAreaElement>) => {
+  const handlerTextareaChange = (evt: ChangeEvent<HTMLTextAreaElement>) => {
     evt.preventDefault();
     const { value } = evt.target;
     setComment(value);
@@ -60,7 +60,7 @@ function OfferReviewsForm(): JSX.Element {
   /**
    * Действия при отправке формы (форма блокируется)
    */
-  const formSubmitHandler = (evt: FormEvent<HTMLFormElement>) => {
+  const handlerFormSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     (fieldset as HTMLFieldSetElement).disabled = true;
     sendReview();
@@ -71,7 +71,7 @@ function OfferReviewsForm(): JSX.Element {
       className="reviews__form form"
       action="#"
       method="post"
-      onSubmit={formSubmitHandler}
+      onSubmit={handlerFormSubmit}
     >
       <fieldset className="reviews__fieldset">
         <label className="reviews__label form__label" htmlFor="review">
@@ -79,7 +79,7 @@ function OfferReviewsForm(): JSX.Element {
         </label>
         <div className="reviews__rating-form form__rating">
           <input
-            onChange={ratingChangeHandler}
+            onChange={handlerRadioClick}
             className="form__rating-input visually-hidden"
             name="rating"
             defaultValue={5}
@@ -96,7 +96,7 @@ function OfferReviewsForm(): JSX.Element {
             </svg>
           </label>
           <input
-            onChange={ratingChangeHandler}
+            onChange={handlerRadioClick}
             className="form__rating-input visually-hidden"
             name="rating"
             defaultValue={4}
@@ -113,7 +113,7 @@ function OfferReviewsForm(): JSX.Element {
             </svg>
           </label>
           <input
-            onChange={ratingChangeHandler}
+            onChange={handlerRadioClick}
             className="form__rating-input visually-hidden"
             name="rating"
             defaultValue={3}
@@ -130,7 +130,7 @@ function OfferReviewsForm(): JSX.Element {
             </svg>
           </label>
           <input
-            onChange={ratingChangeHandler}
+            onChange={handlerRadioClick}
             className="form__rating-input visually-hidden"
             name="rating"
             defaultValue={2}
@@ -147,7 +147,7 @@ function OfferReviewsForm(): JSX.Element {
             </svg>
           </label>
           <input
-            onChange={ratingChangeHandler}
+            onChange={handlerRadioClick}
             className="form__rating-input visually-hidden"
             name="rating"
             defaultValue={1}
@@ -165,7 +165,7 @@ function OfferReviewsForm(): JSX.Element {
           </label>
         </div>
         <textarea
-          onChange={commentChangeHandler}
+          onChange={handlerTextareaChange}
           value={comment}
           className="reviews__textarea form__textarea"
           id="review"

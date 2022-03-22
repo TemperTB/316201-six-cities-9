@@ -10,7 +10,7 @@ function LoginLocations(): JSX.Element {
   const { name } = randomCity;
 
   const dispatch = useAppDispatch();
-  const changeCityToFilter = (): void => {
+  const handleLinkClick = (): void => {
     dispatch(changeCity(randomCity));
   };
 
@@ -20,7 +20,7 @@ function LoginLocations(): JSX.Element {
         <Link
           className="locations__item-link"
           to="/"
-          onClick={changeCityToFilter}
+          onClick={handleLinkClick}
         >
           <span>{name}</span>
         </Link>

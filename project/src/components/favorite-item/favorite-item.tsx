@@ -17,7 +17,7 @@ function FavoriteItem({
 }: FavoriteItemProps): JSX.Element {
   const { name } = city;
   const dispatch = useAppDispatch();
-  const changeCityOnMain = (): void => {
+  const handleLinkClick = (): void => {
     dispatch(changeCity(city));
   };
 
@@ -28,7 +28,7 @@ function FavoriteItem({
           <Link
             className="locations__item-link"
             to="/"
-            onClick={changeCityOnMain}
+            onClick={handleLinkClick}
           >
             <span>{name}</span>
           </Link>
