@@ -9,7 +9,7 @@ import { OfferReviews, ReviewData } from '../types/offer-reviews';
 import { Offers, Offer } from '../types/offers';
 import { UserData } from '../types/user-data';
 import { redirectToRoute } from './action';
-import { loadNearbyOffers, loadOffer, loadReviews, sendReview } from './offer-process/offer-process';
+import { loadNearbyOffers, loadOffer, loadReviews } from './offer-process/offer-process';
 import { requireAuthorization } from './user-process/user-process';
 import { changeOffersLoadStatus, loadOffers } from './main-process/main-process';
 import { FavoriteOffers, FavoriteOffersData } from '../types/favorite-offers';
@@ -86,7 +86,7 @@ export const fetchSendReview = createAsyncThunk(
   async ({id, comment, rating}: ReviewData) => {
     try {
       const {data} = await api.post<OfferReviews>(`${APIRoute.Comments}/${id}`, {comment, rating});
-      store.dispatch(sendReview(data));
+      store.dispatch(loadReviews(data));
     } catch (error) {
       errorHandle(error);
     }

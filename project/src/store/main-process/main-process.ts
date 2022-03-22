@@ -10,7 +10,7 @@ const initialState: MainProcess = {
 };
 
 
-export const offersProcess = createSlice({
+export const mainProcess = createSlice({
   name: NameSpace.main,
   initialState,
   reducers: {
@@ -34,4 +34,4 @@ export const offersProcess = createSlice({
   },
 });
 
-export const {loadOffers, changeCity, changeSortType, changeOffersLoadStatus} = offersProcess.actions;
+export const {loadOffers, changeCity, changeSortType, changeOffersLoadStatus} = mainProcess.actions;

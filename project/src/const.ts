@@ -125,6 +125,7 @@ export const CITIES = [
  */
 export const START_CITY = CITIES[0];
 
+
 /**
  * Варианты сортировки
  */
