@@ -17,12 +17,17 @@ function LocationItem({
   const isActive = name === activeCity.name ? 'tabs__item--active' : '';
   const dispatch = useAppDispatch();
 
+  const handleLinkClick = (evt: React.MouseEvent<HTMLElement>) => {
+    evt.preventDefault();
+    dispatch(changeCity(city));
+  };
+
   return (
     <li className="locations__item">
       <a
         className={`locations__item-link tabs__item ${isActive}`}
         href="#"
-        onClick={() => dispatch(changeCity(city))}
+        onClick={handleLinkClick}
       >
         <span>{name}</span>
       </a>

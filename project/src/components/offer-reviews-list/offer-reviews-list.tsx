@@ -1,15 +1,10 @@
 import React from 'react';
 import { useAppSelector } from '../../hooks';
-import { OfferReviews } from '../../types/offer-reviews';
-import { limitingReviews, sortingReviews } from '../../utils';
+import { getValidOfferReviews } from '../../store/offer-process/selectors';
 import OfferReviewsItem from '../offer-reviews-item/offer-reviews-item';
 
-
 function OfferReviewsList(): JSX.Element {
-
-  const reviews = useAppSelector(({ OFFER }) => OFFER.reviews);
-  const sortReviews: OfferReviews = sortingReviews(reviews);
-  const reviewsForShow: OfferReviews = limitingReviews(sortReviews);
+  const reviewsForShow = useAppSelector(getValidOfferReviews);
 
   return (
     <ul className="reviews__list">

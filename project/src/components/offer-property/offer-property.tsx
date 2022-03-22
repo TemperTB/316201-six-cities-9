@@ -3,16 +3,22 @@ import OfferReviews from '../offer-reviews/offer-reviews';
 import Map from '../map/map';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { errorHandle } from '../../services/error-handle';
-import { fetchChangeStatusOffer, fetchOfferAction } from '../../store/api-actions';
-
+import {
+  fetchChangeStatusOffer,
+  fetchOfferAction
+} from '../../store/api-actions';
+import {
+  getLoadOfferStatus,
+  getLoadReviewsStatus,
+  getNearbyOffers,
+  getOffer
+} from '../../store/offer-process/selectors';
 
 function OfferProperty(): JSX.Element {
-  const isOfferLoaded = useAppSelector(({ OFFER }) => OFFER.isOfferLoaded);
-  const isOfferReviewsLoaded = useAppSelector(
-    ({ OFFER }) => OFFER.isOfferReviewsLoaded,
-  );
-  const nearbyOffers = useAppSelector(({ OFFER }) => OFFER.nearbyOffers);
-  const offer = useAppSelector(({ OFFER }) => OFFER.offer);
+  const isOfferLoaded = useAppSelector(getLoadOfferStatus);
+  const isOfferReviewsLoaded = useAppSelector(getLoadReviewsStatus);
+  const nearbyOffers = useAppSelector(getNearbyOffers);
+  const offer = useAppSelector(getOffer);
   const {
     id,
     images,
@@ -36,7 +42,7 @@ function OfferProperty(): JSX.Element {
    * Асинхронное действие, которое следит за изменением статуса предложения на сервере.
    * При корректном обновляет информацию
    */
-  const changeOfferStatus = async () => {
+  const handlerButtonClick = async () => {
     try {
       isFavorite
         ? await dispatch(fetchChangeStatusOffer({ id, status: 0 }))
@@ -81,7 +87,7 @@ function OfferProperty(): JSX.Element {
                 isFavorite ? 'property__bookmark-button--active' : ''
               }`}
               type="button"
-              onClick={changeOfferStatus}
+              onClick={handlerButtonClick}
             >
               <svg className="property__bookmark-icon" width={31} height={33}>
                 <use xlinkHref="#icon-bookmark" />

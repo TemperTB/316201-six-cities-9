@@ -1,11 +1,11 @@
 import React from 'react';
 import { CITIES } from '../../const';
 import { useAppSelector } from '../../hooks';
+import { getCurrentCity } from '../../store/main-process/selectors';
 import LocationItem from '../location-item/location-item';
 
 function LocationsList(): JSX.Element {
-
-  const  currentCity  = useAppSelector(({ MAIN }) => MAIN.currentCity);
+  const currentCity = useAppSelector(getCurrentCity);
   return (
     <section className="locations container">
       <ul className="locations__list tabs__list">

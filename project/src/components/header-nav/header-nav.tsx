@@ -4,13 +4,11 @@ import { Link, useLocation } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
+import { getAuthorizationStatus } from '../../store/user-process/selectors';
 
 function HeaderNav(): JSX.Element | null {
-
   const dispatch = useAppDispatch();
-  const {authorizationStatus}= useAppSelector(
-    ({ USER }) => USER,
-  );
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
   /**
    * В зависимости от того авторизован пользователь или нет, возвращает разметку для меню навигации

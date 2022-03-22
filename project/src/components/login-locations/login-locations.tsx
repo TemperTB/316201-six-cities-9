@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { CITIES } from '../../const';
 import { useAppDispatch } from '../../hooks';
@@ -10,7 +11,7 @@ function LoginLocations(): JSX.Element {
   const { name } = randomCity;
 
   const dispatch = useAppDispatch();
-  const changeCityToFilter = (): void => {
+  const handleLinkClick = (): void => {
     dispatch(changeCity(randomCity));
   };
 
@@ -20,7 +21,7 @@ function LoginLocations(): JSX.Element {
         <Link
           className="locations__item-link"
           to="/"
-          onClick={changeCityToFilter}
+          onClick={handleLinkClick}
         >
           <span>{name}</span>
         </Link>
@@ -29,4 +30,4 @@ function LoginLocations(): JSX.Element {
   );
 }
 
-export default LoginLocations;
+export default React.memo(LoginLocations);

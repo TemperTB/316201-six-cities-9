@@ -11,21 +11,21 @@ type Parametrs = {
   height: number;
 };
 
-/**
- * В зависимости от местоположения логотипа возвращает параметры для его отрисовки
- */
-const getParametrs = (type: LogoTypes): Parametrs => {
-  switch (type) {
-    case LogoTypes.Header:
-      return { classPrefix: LogoTypes.Header, width: 81, height: 41 };
-    case LogoTypes.Footer:
-      return { classPrefix: LogoTypes.Footer, width: 64, height: 33 };
-    default:
-      return { classPrefix: LogoTypes.Header, width: 81, height: 41 };
-  }
-};
-
 function Logo({ type }: LogoProps): JSX.Element {
+
+  /**
+   * В зависимости от местоположения логотипа возвращает параметры для его отрисовки
+   */
+  const getParametrs = (placement: LogoTypes): Parametrs => {
+    switch (placement) {
+      case LogoTypes.Header:
+        return { classPrefix: LogoTypes.Header, width: 81, height: 41 };
+      case LogoTypes.Footer:
+        return { classPrefix: LogoTypes.Footer, width: 64, height: 33 };
+      default:
+        return { classPrefix: LogoTypes.Header, width: 81, height: 41 };
+    }
+  };
 
   const { classPrefix, width, height } = getParametrs(type);
   return (

@@ -3,11 +3,10 @@ import { PlaceCardTypes } from '../../const';
 import PlacesCard from '../places-card/places-card';
 import { useAppSelector } from '../../hooks';
 import React from 'react';
-
+import { getNearbyOffers } from '../../store/offer-process/selectors';
 
 function OfferScreen(): JSX.Element {
-
-  const nearbyOffers = useAppSelector(({ OFFER }) => OFFER.nearbyOffers);
+  const nearbyOffers = useAppSelector(getNearbyOffers);
 
   return (
     <main className="page__main page__main--property">

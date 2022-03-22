@@ -12,7 +12,7 @@ function PlacesSorting({ sortType }: PlacesSortingProps): JSX.Element {
   /**
    * Открывает/закрывает select
    */
-  const toggleSortTypeVisible = (): void => {
+  const handleSpanClick = (): void => {
     const placesOptions: HTMLElement | null =
       document.querySelector('.places__options');
     (placesOptions as HTMLElement).classList.toggle('places__options--closed');
@@ -25,7 +25,7 @@ function PlacesSorting({ sortType }: PlacesSortingProps): JSX.Element {
       <span
         className="places__sorting-type"
         tabIndex={0}
-        onClick={() => toggleSortTypeVisible()}
+        onClick={handleSpanClick}
       >
         {sortType}
         <svg className="places__sorting-arrow" width="7" height="4">
@@ -40,7 +40,7 @@ function PlacesSorting({ sortType }: PlacesSortingProps): JSX.Element {
               activeOption={sortType}
               key={keyValue}
               option={type}
-              toggleSortTypeVisible={toggleSortTypeVisible}
+              onPlacesOptionClick={handleSpanClick}
             />
           );
         })}

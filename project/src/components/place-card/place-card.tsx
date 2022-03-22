@@ -5,7 +5,7 @@ import { AppRoute, PERCENT_PER_STAR, PlaceCardTypes } from '../../const';
 import { fetchFavoriteOffersAction, fetchOffersAction } from '../../store/api-actions';
 import { resetNearbyOffers } from '../../store/offer-process/offer-process';
 import { Offer } from '../../types/offers';
-import BookmarkButtonMain from '../bookmark-button-main/bookmark-button-main';
+import BookmarkButton from '../bookmark-button/bookmark-button';
 
 type PlaceCardProps = {
   offer: Offer;
@@ -87,6 +87,13 @@ function PlaceCard({
     callbackForButton,
   } = getParametrs(typeCard);
 
+  /**
+   * Поднимает страницу вверх
+   */
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
+
 
   return (
     <article
@@ -103,7 +110,7 @@ function PlaceCard({
       <div
         className={`${classPrefix}__image-wrapper place-card__image-wrapper`}
       >
-        <Link to={AppRoute.Offer + id} onClick={() => window.scrollTo(0, 0)}>
+        <Link to={AppRoute.Offer + id} onClick={handleLinkClick}>
           <img
             className="place-card__image"
             src={previewImage}
@@ -119,7 +126,11 @@ function PlaceCard({
             <b className="place-card__price-value">€{price}</b>
             <span className="place-card__price-text"> /&nbsp;night</span>
           </div>
-          <BookmarkButtonMain cb={callbackForButton} id={id} isFavorite={isFavorite} />
+          <BookmarkButton
+            cb={callbackForButton}
+            id={id}
+            isFavorite={isFavorite}
+          />
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
@@ -128,7 +139,7 @@ function PlaceCard({
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={AppRoute.Offer + id} onClick={() => window.scrollTo(0, 0)}>
+          <Link to={AppRoute.Offer + id} onClick={handleLinkClick}>
             {title}
           </Link>
         </h2>
