@@ -170,3 +170,8 @@ export enum NameSpace {
   user = 'USER',
   favorite = 'FAVORITE',
 }
+
+/**
+ * Токен авторизации
+ */
+export const AUTH_TOKEN_KEY_NAME = 'six-cities-token';
