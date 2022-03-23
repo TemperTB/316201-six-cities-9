@@ -1,10 +1,12 @@
 import { ActionCreatorWithoutPayload, AsyncThunk } from '@reduxjs/toolkit';
+import { AxiosInstance } from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppRoute, PERCENT_PER_STAR, PlaceCardTypes } from '../../const';
 import { fetchFavoriteOffersAction, fetchOffersAction } from '../../store/api-actions';
 import { resetNearbyOffers } from '../../store/offer-process/offer-process';
 import { Offer } from '../../types/offers';
+import { AppDispatch, State } from '../../types/state';
 import BookmarkButton from '../bookmark-button/bookmark-button';
 
 type PlaceCardProps = {
@@ -19,7 +21,15 @@ type Parametrs = {
   imgWidth: number;
   imgHeight: number;
   callbackForButton:
-    | AsyncThunk<void, void, Record<string, unknown>>
+    | AsyncThunk<
+        void,
+        undefined,
+        {
+          dispatch: AppDispatch;
+          state: State;
+          extra: AxiosInstance;
+        }
+      >
     | ActionCreatorWithoutPayload<string>;
 };
 
@@ -120,6 +130,7 @@ function PlaceCard({
           />
         </Link>
       </div>
+
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">

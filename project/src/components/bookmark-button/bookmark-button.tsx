@@ -5,10 +5,20 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { errorHandle } from '../../services/error-handle';
 import { fetchChangeStatusOffer } from '../../store/api-actions';
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
+import { AppDispatch, State } from '../../types/state';
+import { AxiosInstance } from 'axios';
 
 type BookmarkButtonMainProps = {
   cb:
-    | AsyncThunk<void, void, Record<string, unknown>>
+    | AsyncThunk<
+        void,
+        undefined,
+        {
+          dispatch: AppDispatch;
+          state: State;
+          extra: AxiosInstance;
+        }
+      >
     | ActionCreatorWithoutPayload<string>;
   id: number;
   isFavorite: boolean;
