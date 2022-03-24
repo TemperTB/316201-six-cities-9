@@ -45,6 +45,7 @@ describe('Application Routing', () => {
 
     render(fakeApp);
 
+    //TODO Разобраться с задвоением
     // expect(screen.getByText(/Paris/i)).toBeInTheDocument();
     expect(screen.getByText(/Cologne/i)).toBeInTheDocument();
     expect(screen.getByText(/Brussels/i)).toBeInTheDocument();
@@ -58,6 +59,7 @@ describe('Application Routing', () => {
 
     render(fakeApp);
 
+    //TODO Разобраться с задвоением
     // expect(screen.getByText(/Paris/i)).toBeInTheDocument();
     expect(screen.getByText(/Cologne/i)).toBeInTheDocument();
     expect(screen.getByText(/Brussels/i)).toBeInTheDocument();
@@ -66,7 +68,9 @@ describe('Application Routing', () => {
     expect(screen.getByText(/Dusseldorf/i)).toBeInTheDocument();
   });
 
+  //TODO Разобраться с тестами
   // it('При "/offer/1" будет показывать экран предложения (offer-page)', () => {
+
   //   history.push(`${AppRoute.Offer}1`);
 
   //   render(fakeApp);
@@ -96,5 +100,4 @@ describe('Application Routing', () => {
     expect(screen.getByText('Page not found')).toBeInTheDocument();
     expect(screen.getByText('Go to main page')).toBeInTheDocument();
   });
-
 });
