@@ -2,10 +2,10 @@ import { configureMockStore } from '@jedmao/redux-mock-store';
 import { createMemoryHistory } from 'history';
 import {Provider} from 'react-redux';
 import {render, screen} from '@testing-library/react';
-import { AppRoute, AuthorizationStatus, CITIES, sortTypes } from '../../const';
+import { AppRoute, AuthorizationStatus, sortTypes } from '../../const';
 import HistoryRouter from '../history-route/history-route';
 import App from './app';
-import { MOCK_OFFERS } from '../../mock';
+import { MOCK_CITY, MOCK_OFFERS } from '../../mock';
 
 
 const mockStore = configureMockStore();
@@ -13,7 +13,7 @@ const mockStore = configureMockStore();
 const store = mockStore({
   USER: { authorizationStatus: AuthorizationStatus.Auth },
   MAIN: {
-    currentCity: CITIES[0],
+    currentCity: MOCK_CITY,
     offers: MOCK_OFFERS,
     isOffersLoaded: true,
     sortType: sortTypes[0],
@@ -45,13 +45,12 @@ describe('Application Routing', () => {
 
     render(fakeApp);
 
-    //TODO Разобраться с задвоением
-    // expect(screen.getByText(/Paris/i)).toBeInTheDocument();
-    expect(screen.getByText(/Cologne/i)).toBeInTheDocument();
-    expect(screen.getByText(/Brussels/i)).toBeInTheDocument();
-    expect(screen.getByText(/Amsterdam/i)).toBeInTheDocument();
-    expect(screen.getByText(/Hamburg/i)).toBeInTheDocument();
-    expect(screen.getByText(/Dusseldorf/i)).toBeInTheDocument();
+    expect(screen.getByText('Paris')).toBeInTheDocument();
+    expect(screen.getByText('Cologne')).toBeInTheDocument();
+    expect(screen.getByText('Brussels')).toBeInTheDocument();
+    expect(screen.getByText('Amsterdam')).toBeInTheDocument();
+    expect(screen.getByText('Hamburg')).toBeInTheDocument();
+    expect(screen.getByText('Dusseldorf')).toBeInTheDocument();
   });
 
   it('При "/login" будет показывать главный экран если пользователь авторизован (main-page)', () => {
@@ -59,28 +58,29 @@ describe('Application Routing', () => {
 
     render(fakeApp);
 
-    //TODO Разобраться с задвоением
-    // expect(screen.getByText(/Paris/i)).toBeInTheDocument();
-    expect(screen.getByText(/Cologne/i)).toBeInTheDocument();
-    expect(screen.getByText(/Brussels/i)).toBeInTheDocument();
-    expect(screen.getByText(/Amsterdam/i)).toBeInTheDocument();
-    expect(screen.getByText(/Hamburg/i)).toBeInTheDocument();
-    expect(screen.getByText(/Dusseldorf/i)).toBeInTheDocument();
+    expect(screen.getByText('Paris')).toBeInTheDocument();
+    expect(screen.getByText('Cologne')).toBeInTheDocument();
+    expect(screen.getByText('Brussels')).toBeInTheDocument();
+    expect(screen.getByText('Amsterdam')).toBeInTheDocument();
+    expect(screen.getByText('Hamburg')).toBeInTheDocument();
+    expect(screen.getByText('Dusseldorf')).toBeInTheDocument();
   });
 
-  //TODO Разобраться с тестами
   // it('При "/offer/1" будет показывать экран предложения (offer-page)', () => {
+
+  //   jest.mock(
+  //     '../offer-screen/offer-screen',
+  //     () =>
+  //       function DummyOfferScreen() {
+  //         return <div data-testid="offer-screen"></div>;
+  //       },
+  //   );
 
   //   history.push(`${AppRoute.Offer}1`);
 
   //   render(fakeApp);
 
-  //   // expect(screen.getByText(/Paris/i)).toBeInTheDocument();
-  //   expect(screen.getByText(/Bedrooms/i)).toBeInTheDocument();
-  //   expect(screen.getByText(/Max/i)).toBeInTheDocument();
-  //   expect(screen.getByText(/night/i)).toBeInTheDocument();
-  //   expect(screen.getByText(/What's inside/i)).toBeInTheDocument();
-  //   expect(screen.getByText(/Meet the host/i)).toBeInTheDocument();
+
   // });
 
   // it('При "/favorite" будет показывать экран избранное если пользователь авторизован (favorite-page)', () => {

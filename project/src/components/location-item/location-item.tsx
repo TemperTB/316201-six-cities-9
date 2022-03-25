@@ -23,11 +23,12 @@ function LocationItem({
   };
 
   return (
-    <li className="locations__item">
+    <li className="locations__item" data-testid="location-item">
       <a
         className={`locations__item-link tabs__item ${isActive}`}
         href="#"
         onClick={handleLinkClick}
+        data-testid="location-item-link"
       >
         <span>{name}</span>
       </a>
