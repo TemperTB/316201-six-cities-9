@@ -34,4 +34,4 @@ describe('Component: PlacesSortingOption', () => {
   });
 });
 
-//TODO test click
+//TODO переделать

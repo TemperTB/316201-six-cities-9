@@ -66,6 +66,7 @@ describe('Application Routing', () => {
     expect(screen.getByText('Dusseldorf')).toBeInTheDocument();
   });
 
+  //TODO доделать
   // it('При "/offer/1" будет показывать экран предложения (offer-page)', () => {
 
   //   jest.mock(

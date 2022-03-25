@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import HistoryRouter from '../history-route/history-route';
 import FavoriteScreenEmpty from './favorite-screen-empty';
 
+//TODO переделать под общий вид
 describe('Component: FavoriteScreenEmpty', () => {
   it('should render correctly', () => {
     const history = createMemoryHistory();

@@ -4,6 +4,8 @@ import { MOCK_REVIEWS } from '../../mock';
 import HistoryRouter from '../history-route/history-route';
 import OfferReviewsItem from './offer-reviews-item';
 
+
+//TODO переделать
 describe('Component: FavoriteScreenEmpty', () => {
   it('should render correctly', () => {
     const history = createMemoryHistory();

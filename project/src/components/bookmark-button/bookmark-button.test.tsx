@@ -9,7 +9,7 @@ import HistoryRouter from '../history-route/history-route';
 import BookmarkButton from './bookmark-button';
 import * as Redux from 'react-redux';
 
-
+//TODO разбить на 2 теста
 const mockStore = configureMockStore();
 const store = mockStore({
   USER: { authorizationStatus: AuthorizationStatus.Auth }});
