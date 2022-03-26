@@ -1,25 +1,23 @@
-import { createMemoryHistory } from 'history';
 import { render, screen } from '@testing-library/react';
+import { createMemoryHistory } from 'history';
 import HistoryRouter from '../history-route/history-route';
 import FavoriteScreenEmpty from './favorite-screen-empty';
 
-//TODO переделать под общий вид
+const history = createMemoryHistory();
+
+const fakeApp = (
+  <HistoryRouter history={history}>
+    <FavoriteScreenEmpty/>
+  </HistoryRouter>
+);
+
 describe('Component: FavoriteScreenEmpty', () => {
-  it('should render correctly', () => {
-    const history = createMemoryHistory();
+  it('Правильная отрисовка', () => {
+    render(fakeApp);
 
-    render(
-      <HistoryRouter history={history}>
-        <FavoriteScreenEmpty />
-      </HistoryRouter>,
-    );
-
-    const headerElement = screen.getByText('Nothing yet saved.');
-    const paragraphElement = screen.getByText(
-      'Save properties to narrow down search or plan your future trips.',
-    );
-
-    expect(headerElement).toBeInTheDocument();
-    expect(paragraphElement).toBeInTheDocument();
+    const item = screen.getByTestId('favorite-screen-empty');
+    expect(item).toBeInTheDocument();
+    expect(item).toHaveClass('page__main--favorites-empty');
+    expect(screen.getByText('Nothing yet saved.')).toBeInTheDocument();
   });
 });

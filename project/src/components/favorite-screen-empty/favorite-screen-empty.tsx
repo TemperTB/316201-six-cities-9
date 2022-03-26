@@ -4,7 +4,7 @@ import Footer from '../footer/footer';
 function FavoriteScreenEmpty(): JSX.Element {
   return (
     <Fragment>
-      <main className="page__main page__main--favorites page__main--favorites-empty">
+      <main className="page__main page__main--favorites page__main--favorites-empty" data-testid="favorite-screen-empty">
         <div className="page__favorites-container container">
           <section className="favorites favorites--empty">
             <h1 className="visually-hidden">Favorites (empty)</h1>

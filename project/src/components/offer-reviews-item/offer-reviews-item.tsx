@@ -28,7 +28,7 @@ function OfferReviewsItem({ review }: OfferReviewsItemProps): JSX.Element {
   const { user, rating, comment, date } = review;
   const { name, avatarUrl } = user;
   return (
-    <li className="reviews__item">
+    <li className="reviews__item" data-testid="offer-reviews-item">
       <div className="reviews__user user">
         <div className="reviews__avatar-wrapper user__avatar-wrapper">
           <img

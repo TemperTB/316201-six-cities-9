@@ -1,12 +1,11 @@
 import LocationsList from '../locations-list/locations-list';
 
-function CitiesEmpty(): JSX.Element {
-
+function MainScreenEmpty(): JSX.Element {
   return (
-    <main className="page__main page__main--index page__main--index-empty">
+    <main className="page__main page__main--index page__main--index-empty" data-testid="main-screen-empty">
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
-        <LocationsList/>
+        <LocationsList />
       </div>
       <div className="cities">
         <div className="cities__places-container cities__places-container--empty container">
@@ -25,4 +24,4 @@ function CitiesEmpty(): JSX.Element {
     </main>
   );
 }
-export default CitiesEmpty;
+export default MainScreenEmpty;

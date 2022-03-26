@@ -27,6 +27,7 @@ function PlacesSortingOption({
       }`}
       tabIndex={0}
       onClick={onItemClick}
+      data-testid = "places-sorting-option"
     >
       {option}
     </li>
