@@ -29,7 +29,7 @@ function Logo({ type }: LogoProps): JSX.Element {
 
   const { classPrefix, width, height } = getParametrs(type);
   return (
-    <Link className={`${classPrefix}__logo-link`} to="/">
+    <Link className={`${classPrefix}__logo-link`} to="/" data-testid="logo">
       <img
         className={`${classPrefix}__logo`}
         src="img/logo.svg"
