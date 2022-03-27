@@ -3,7 +3,7 @@ import { createMemoryHistory } from 'history';
 import * as Redux from 'react-redux';
 import HistoryRouter from '../history-route/history-route';
 import userEvent from '@testing-library/user-event';
-import { sortTypes } from '../../const';
+import { SORT_TYPES } from '../../const';
 import PlacesSortingOption from './places-sorting-option';
 import { Provider } from 'react-redux';
 import { configureMockStore } from '@jedmao/redux-mock-store';
@@ -20,8 +20,8 @@ describe('Component: PlacesSortingOption', () => {
       <Provider store={store}>
         <HistoryRouter history={history}>
           <PlacesSortingOption
-            activeOption={sortTypes[0]}
-            option={sortTypes[0]}
+            activeOption={SORT_TYPES[0]}
+            option={SORT_TYPES[0]}
             onPlacesOptionClick={mockFunction}
           />
         </HistoryRouter>
@@ -41,8 +41,8 @@ describe('Component: PlacesSortingOption', () => {
       <Provider store={store}>
         <HistoryRouter history={history}>
           <PlacesSortingOption
-            activeOption={sortTypes[0]}
-            option={sortTypes[1]}
+            activeOption={SORT_TYPES[0]}
+            option={SORT_TYPES[1]}
             onPlacesOptionClick={mockFunction}
           />
         </HistoryRouter>
@@ -65,8 +65,8 @@ describe('Component: PlacesSortingOption', () => {
       <Provider store={store}>
         <HistoryRouter history={history}>
           <PlacesSortingOption
-            activeOption={sortTypes[0]}
-            option={sortTypes[0]}
+            activeOption={SORT_TYPES[0]}
+            option={SORT_TYPES[0]}
             onPlacesOptionClick={mockFunction}
           />
         </HistoryRouter>

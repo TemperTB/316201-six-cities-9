@@ -2,7 +2,7 @@ import { configureMockStore } from '@jedmao/redux-mock-store';
 import { createMemoryHistory } from 'history';
 import {Provider} from 'react-redux';
 import {render, screen} from '@testing-library/react';
-import { AppRoute, AuthorizationStatus, sortTypes } from '../../const';
+import { AppRoute, AuthorizationStatus, SORT_TYPES } from '../../const';
 import HistoryRouter from '../history-route/history-route';
 import App from './app';
 import { MOCK_CITY, MOCK_OFFERS } from '../../mock';
@@ -16,7 +16,7 @@ const store = mockStore({
     currentCity: MOCK_CITY,
     offers: MOCK_OFFERS,
     isOffersLoaded: true,
-    sortType: sortTypes[0],
+    sortType: SORT_TYPES[0],
   },
   OFFER: {
     isOfferLoaded: true,

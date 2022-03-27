@@ -129,7 +129,7 @@ export const START_CITY = CITIES[0];
 /**
  * Варианты сортировки
  */
-export const sortTypes: SortTypes = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
+export const SORT_TYPES: SortTypes = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
 
 /**
  * Маршруты для связи с сервером

@@ -1,5 +1,5 @@
 import React from 'react';
-import { sortTypes } from '../../const';
+import { SORT_TYPES } from '../../const';
 import { SortType } from '../../types/sort';
 import PlacesSortingOption from '../places-sorting-option/places-sorting-option';
 
@@ -20,12 +20,18 @@ function PlacesSorting({ sortType }: PlacesSortingProps): JSX.Element {
   };
 
   return (
-    <form className="places__sorting" action="#" method="get">
+    <form
+      className="places__sorting"
+      action="#"
+      method="get"
+      data-testid="places-sorting"
+    >
       <span className="places__sorting-caption">Sort by </span>
       <span
         className="places__sorting-type"
         tabIndex={0}
         onClick={handleSpanClick}
+        data-testid="places-sorting-span"
       >
         {sortType}
         <svg className="places__sorting-arrow" width="7" height="4">
@@ -33,7 +39,7 @@ function PlacesSorting({ sortType }: PlacesSortingProps): JSX.Element {
         </svg>
       </span>
       <ul className="places__options places__options--custom places__options--closed">
-        {sortTypes.map((type, id) => {
+        {SORT_TYPES.map((type, id) => {
           const keyValue = `${id}: ${type}`;
           return (
             <PlacesSortingOption
