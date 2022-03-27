@@ -54,7 +54,7 @@ function OfferProperty(): JSX.Element {
   };
 
   return (
-    <section className="property">
+    <section className="property" data-testid="offer-property">
       <div className="property__gallery-container container">
         <div className="property__gallery">
           {images.map((imageUrl, imageId) => {
@@ -88,6 +88,7 @@ function OfferProperty(): JSX.Element {
               }`}
               type="button"
               onClick={handlerButtonClick}
+              data-testid="property-bookmark-button"
             >
               <svg className="property__bookmark-icon" width={31} height={33}>
                 <use xlinkHref="#icon-bookmark" />

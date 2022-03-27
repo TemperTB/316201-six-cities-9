@@ -7,7 +7,7 @@ function OfferReviewsList(): JSX.Element {
   const reviewsForShow = useAppSelector(getValidOfferReviews);
 
   return (
-    <ul className="reviews__list">
+    <ul className="reviews__list" data-testid="reviews-list">
       {reviewsForShow.map((review) => (
         <OfferReviewsItem key={review.id} review={review} />
       ))}

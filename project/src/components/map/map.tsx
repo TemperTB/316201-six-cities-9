@@ -57,7 +57,7 @@ function Map({ centerCoordinates, points, selectedPoint, height }: MapProps) {
     }
   }, [map, points, selectedPoint]);
 
-  return <div style={{ height: `${height}px` }} ref={mapRef} />;
+  return <div data-testid="map" style={{ height: `${height}px` }} ref={mapRef} />;
 }
 
 export default Map;
