@@ -25,7 +25,7 @@ function Cities(): JSX.Element {
   );
 
   return (
-    <div className="cities">
+    <div className="cities" data-testid="cities">
       <div className="cities__places-container container">
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
@@ -33,13 +33,11 @@ function Cities(): JSX.Element {
             {placesCount} places to stay in {currentCity.name}
           </b>
           <PlacesSorting sortType={sortType} />
-          <div className="cities__places-list places__list tabs__content">
-            <PlacesCard
-              offers={validOffers}
-              onPlaceCardHover={onPlaceCardHover}
-              typeCard={PlaceCardTypes.Main}
-            />
-          </div>
+          <PlacesCard
+            offers={validOffers}
+            onPlaceCardHover={onPlaceCardHover}
+            typeCard={PlaceCardTypes.Main}
+          />
         </section>
         <div className="cities__right-section">
           <section className="cities__map map">

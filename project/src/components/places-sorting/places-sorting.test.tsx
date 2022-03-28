@@ -4,7 +4,6 @@ import { createMemoryHistory } from 'history';
 import { Provider } from 'react-redux';
 import HistoryRouter from '../history-route/history-route';
 import userEvent from '@testing-library/user-event';
-import * as Redux from 'react-redux';
 import { SORT_TYPES } from '../../const';
 import PlacesSorting from './places-sorting';
 
@@ -29,18 +28,18 @@ describe('Component: LoginLocations', () => {
     expect(item).toHaveClass('places__sorting');
   });
 
-  // it('Проверка работы кнопки', () => {
+  it('Проверка работы кнопки', () => {
 
-  //   const handleItemClick = jest.fn();
-  //   const useDispatch = jest.spyOn(Redux, 'useDispatch');
-  //   useDispatch.mockReturnValue(handleItemClick);
+    const handleSpanClick = jest.fn();
 
-  //   render(fakeApp);
+    render(fakeApp);
 
-  //   const item = screen.getByTestId('places-sorting-span');
-  //   expect(handleItemClick).toHaveBeenCalledTimes(0);
-  //   userEvent.click(item);
-  //   expect(handleItemClick).toHaveBeenCalledTimes(1);
-  // });
+    const item = screen.getByTestId('places-sorting-span');
+    expect(item).toBeInTheDocument();
+    expect(item).toHaveClass('places__sorting-type');
+    userEvent.click(item);
+    expect(handleSpanClick).toBeCalled();
+
+  });
   //TODO доделать
 });

@@ -9,7 +9,7 @@ function OfferScreen(): JSX.Element {
   const nearbyOffers = useAppSelector(getNearbyOffers);
 
   return (
-    <main className="page__main page__main--property">
+    <main className="page__main page__main--property" data-testid="offer-screen">
       <OfferProperty />
       <div className="container">
         <section className="near-places places">

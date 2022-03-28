@@ -15,7 +15,7 @@ describe('Component: LoadingScreen', () => {
   it('Правильная отрисовка', () => {
     render(fakeApp);
 
-    const loading = screen.getByTestId('loading');
+    const loading = screen.getByTestId('loading-screen');
     expect(loading).toBeInTheDocument();
     expect(loading).toHaveClass('loading');
   });
