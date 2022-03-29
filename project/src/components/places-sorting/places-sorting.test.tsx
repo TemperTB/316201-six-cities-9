@@ -28,6 +28,29 @@ describe('Component: LoginLocations', () => {
     expect(item).toHaveClass('places__sorting');
   });
 
+  it('Проверка работы кнопки', () => {
+
+    const handleSpanClick = jest.fn();
+
+    render(fakeApp);
+
+    const item = screen.getByTestId('places-sorting-span');
+    expect(item).toBeInTheDocument();
+    const ul = screen.getByTestId('places-options');
+    expect(ul).toBeInTheDocument();
+    expect(ul).toHaveClass('places__options');
+    expect(ul).toHaveClass('places__options--closed');
+    expect(ul).not.toHaveClass('places__options--opened');
+    expect(handleSpanClick).toHaveBeenCalledTimes(0);
+    userEvent.click(item);
+    expect(ul).not.toHaveClass('places__options--closed');
+    expect(ul).toHaveClass('places__options--opened');
+    userEvent.click(item);
+    expect(ul).toHaveClass('places__options--closed');
+    expect(ul).not.toHaveClass('places__options--opened');
+
+  });
+
   // it('Проверка работы кнопки', () => {
 
   //   const handleSpanClick = jest.fn();
@@ -41,5 +64,5 @@ describe('Component: LoginLocations', () => {
   //   expect(handleSpanClick).toBeCalled();
 
   // });
-  //TODO доделат
+  //TODO задать вопрос
 });

@@ -7,7 +7,6 @@ import { configureMockStore } from '@jedmao/redux-mock-store';
 import userEvent from '@testing-library/user-event';
 import OfferReviewsForm from './offer-reviews-form';
 import { MOCK_OFFERS } from '../../mock';
-import React from 'react';
 
 const mockStore = configureMockStore();
 const store = mockStore({
@@ -31,31 +30,28 @@ describe('Component: OfferReviewsForm', () => {
     expect(form).toBeInTheDocument();
     expect(form).toHaveClass('reviews__form');
   });
-  // TODO доделать
-  // it('Выбор рейтинга и заполнение текста комментария', async () => {
-  //   render(
-  //     <Provider store={store}>
-  //       <HistoryRouter history={history}>
-  //         <OfferReviewsForm />
-  //       </HistoryRouter>
-  //     </Provider>,
-  //   );
 
-  //   const comment = screen.getByTestId('comment');
-  //   const inputRating = screen.getByTestId('input-rating');
-  //   const labelRating = screen.getByTestId('label-rating');
-  //   expect(comment).toBeInTheDocument();
-  //   expect(inputRating).toBeInTheDocument();
-  //   expect(labelRating).toBeInTheDocument();
+  it('Выбор рейтинга и заполнение текста комментария', () => {
+    render(
+      <Provider store={store}>
+        <HistoryRouter history={history}>
+          <OfferReviewsForm />
+        </HistoryRouter>
+      </Provider>,
+    );
 
-  //   userEvent.type(screen.getByTestId('comment'), 'Комментарий');
-  //   userEvent.click(labelRating);
+    const comment = screen.getByTestId('comment');
+    const inputRating = screen.getByTestId('input-rating');
+    const labelRating = screen.getByTestId('label-rating');
+    expect(comment).toBeInTheDocument();
+    expect(inputRating).toBeInTheDocument();
+    expect(labelRating).toBeInTheDocument();
 
-  //   expect(screen.getByDisplayValue(/Комментарий/i)).toBeInTheDocument();
-  //   await waitFor(() => {
-  //     expect(inputRating).toHaveAttribute('checked', true);
-  //   });
-  // });
+    userEvent.type(screen.getByTestId('comment'), 'Комментарий');
+    userEvent.click(labelRating);
+    expect(screen.getByDisplayValue(/Комментарий/i)).toBeInTheDocument();
+    expect(inputRating).toBeChecked();
+  });
 
   it('Отправка формы', async() => {
     const handleFormSubmit = jest.fn();

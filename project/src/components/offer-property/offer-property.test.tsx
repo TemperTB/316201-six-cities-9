@@ -133,7 +133,7 @@ describe('Component: LoginLocations', () => {
         <HistoryRouter history={history}>
           <OfferProperty />
         </HistoryRouter>
-      </Provider>
+      </Provider>,
     );
 
     const button = screen.getByTestId('property-bookmark-button');

@@ -38,7 +38,10 @@ function PlacesSorting({ sortType }: PlacesSortingProps): JSX.Element {
           <use xlinkHref="#icon-arrow-select" />
         </svg>
       </span>
-      <ul className="places__options places__options--custom places__options--closed">
+      <ul
+        className="places__options places__options--custom places__options--closed"
+        data-testid="places-options"
+      >
         {SORT_TYPES.map((type, id) => {
           const keyValue = `${id}: ${type}`;
           return (
