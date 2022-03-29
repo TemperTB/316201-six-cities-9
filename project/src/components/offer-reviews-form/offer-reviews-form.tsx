@@ -27,7 +27,6 @@ function OfferReviewsForm(): JSX.Element {
    */
   const handlerRadioClick = (evt: ChangeEvent<HTMLInputElement>) => {
     const { value } = evt.target;
-    evt.target.checked = true;
     setRating(Number(value));
   };
 
