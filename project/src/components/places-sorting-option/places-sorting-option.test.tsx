@@ -77,5 +77,6 @@ describe('Component: PlacesSortingOption', () => {
     expect(onItemClick).toHaveBeenCalledTimes(0);
     userEvent.click(item);
     expect(onItemClick).toHaveBeenCalledTimes(1);
+    expect(mockFunction).toHaveBeenCalledTimes(1);
   });
 });

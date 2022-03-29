@@ -175,3 +175,14 @@ export enum NameSpace {
  * Токен авторизации
  */
 export const AUTH_TOKEN_KEY_NAME = 'six-cities-token';
+
+/**
+ * Рейтинг комментариев
+ */
+export enum RatingStars {
+  one = 1,
+  two = 2,
+  three = 3,
+  four = 4,
+  five = 5,
+}
