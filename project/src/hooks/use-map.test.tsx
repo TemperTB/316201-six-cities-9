@@ -1,6 +1,5 @@
 
 import { MOCK_CITY } from '../mock';
-import {Map} from 'leaflet';
 import useMap from './use-map';
 import {renderHook} from '@testing-library/react-hooks';
 import {Map} from 'leaflet';
