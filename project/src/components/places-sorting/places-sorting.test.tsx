@@ -21,6 +21,7 @@ const fakeApp = (
 
 describe('Component: LoginLocations', () => {
   it('Правильная отрисовка', () => {
+
     render(fakeApp);
 
     const item = screen.getByTestId('places-sorting');
