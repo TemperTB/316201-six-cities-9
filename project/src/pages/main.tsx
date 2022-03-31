@@ -7,6 +7,7 @@ import { fetchOffersAction } from '../store/api-actions';
 import { getLoadedOffersStatus, getOffers } from '../store/main-process/selectors';
 
 function Main(): JSX.Element {
+
   const isOffersLoaded = useAppSelector(getLoadedOffersStatus);
   const dispatch = useAppDispatch();
   useEffect(() => {
