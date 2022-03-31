@@ -43,7 +43,7 @@ function LoginScreen(): JSX.Element {
   };
 
   return (
-    <main className="page__main page__main--login">
+    <main className="page__main page__main--login" data-testid="login-screen">
       <div className="page__login-container container">
         <section className="login">
           <h1 className="login__title">Sign in</h1>
@@ -63,6 +63,7 @@ function LoginScreen(): JSX.Element {
                 required
                 value={login}
                 onChange={handleLoginChange}
+                data-testid="login"
               />
             </div>
             <div className="login__input-wrapper form__input-wrapper">
@@ -75,6 +76,7 @@ function LoginScreen(): JSX.Element {
                 required
                 value={password}
                 onChange={handlePasswordChange}
+                data-testid="password"
               />
             </div>
             <button className="login__submit form__submit button" type="submit">
@@ -82,7 +84,7 @@ function LoginScreen(): JSX.Element {
             </button>
           </form>
         </section>
-        <LoginLocations/>
+        <LoginLocations />
       </div>
     </main>
   );

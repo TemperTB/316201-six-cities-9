@@ -11,7 +11,7 @@ function OfferReviews(): JSX.Element {
   );
   const reviews = useAppSelector(getOfferReviews);
   return (
-    <section className="property__reviews reviews">
+    <section className="property__reviews reviews" data-testid="offer-reviews">
       <h2 className="reviews__title">
         Reviews · <span className="reviews__amount">{reviews.length}</span>
       </h2>

@@ -9,7 +9,7 @@ function FavoriteList(): JSX.Element {
   const favoriteOffers = useAppSelector(getFavoriteOffers);
 
   return (
-    <ul className="favorites__list">
+    <ul className="favorites__list" data-testid="favorite-list">
       {CITIES.map((city) => {
         const validFavoritesOffers: FavoriteOffers = filterOffers(
           favoriteOffers,

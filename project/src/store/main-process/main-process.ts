@@ -1,16 +1,16 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {NameSpace, sortTypes, START_CITY} from '../../const';
+import {NameSpace, SORT_TYPES, START_CITY} from '../../const';
 import { MainProcess } from '../../types/state';
 
 const initialState: MainProcess = {
   currentCity: START_CITY,
   isOffersLoaded: false,
   offers: [],
-  sortType: sortTypes[0],
+  sortType: SORT_TYPES[0],
 };
 
 
-export const offersProcess = createSlice({
+export const mainProcess = createSlice({
   name: NameSpace.main,
   initialState,
   reducers: {
@@ -34,4 +34,4 @@ export const offersProcess = createSlice({
   },
 });
 
-export const {loadOffers, changeCity, changeSortType, changeOffersLoadStatus} = offersProcess.actions;
+export const {loadOffers, changeCity, changeSortType, changeOffersLoadStatus} = mainProcess.actions;

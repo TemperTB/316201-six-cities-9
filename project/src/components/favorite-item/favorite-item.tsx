@@ -26,6 +26,7 @@ function FavoriteItem({
       <div className="favorites__locations locations locations--current">
         <div className="locations__item">
           <Link
+            data-testid="locations__link"
             className="locations__item-link"
             to="/"
             onClick={handleLinkClick}

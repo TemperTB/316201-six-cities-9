@@ -125,10 +125,11 @@ export const CITIES = [
  */
 export const START_CITY = CITIES[0];
 
+
 /**
  * Варианты сортировки
  */
-export const sortTypes: SortTypes = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
+export const SORT_TYPES: SortTypes = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
 
 /**
  * Маршруты для связи с сервером
@@ -168,4 +169,20 @@ export enum NameSpace {
   main = 'MAIN',
   user = 'USER',
   favorite = 'FAVORITE',
+}
+
+/**
+ * Токен авторизации
+ */
+export const AUTH_TOKEN_KEY_NAME = 'six-cities-token';
+
+/**
+ * Рейтинг комментариев
+ */
+export enum RatingStars {
+  one = 1,
+  two = 2,
+  three = 3,
+  four = 4,
+  five = 5,
 }

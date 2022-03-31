@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import { MIN_COMMENT_LENGTH } from '../../const';
+import { MIN_COMMENT_LENGTH, RatingStars } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { errorHandle } from '../../services/error-handle';
 import { fetchSendReview } from '../../store/api-actions';
@@ -72,6 +72,7 @@ function OfferReviewsForm(): JSX.Element {
       action="#"
       method="post"
       onSubmit={handlerFormSubmit}
+      data-testid="offer-reviews-form"
     >
       <fieldset className="reviews__fieldset">
         <label className="reviews__label form__label" htmlFor="review">
@@ -82,14 +83,17 @@ function OfferReviewsForm(): JSX.Element {
             onChange={handlerRadioClick}
             className="form__rating-input visually-hidden"
             name="rating"
-            defaultValue={5}
+            value={RatingStars.five}
             id="5-stars"
             type="radio"
+            data-testid="input-rating"
+            checked={rating === RatingStars.five}
           />
           <label
             htmlFor="5-stars"
             className="reviews__rating-label form__rating-label"
             title="perfect"
+            data-testid="label-rating"
           >
             <svg className="form__star-image" width={37} height={33}>
               <use xlinkHref="#icon-star" />
@@ -99,9 +103,10 @@ function OfferReviewsForm(): JSX.Element {
             onChange={handlerRadioClick}
             className="form__rating-input visually-hidden"
             name="rating"
-            defaultValue={4}
+            value={RatingStars.four}
             id="4-stars"
             type="radio"
+            checked={rating === RatingStars.four}
           />
           <label
             htmlFor="4-stars"
@@ -116,9 +121,10 @@ function OfferReviewsForm(): JSX.Element {
             onChange={handlerRadioClick}
             className="form__rating-input visually-hidden"
             name="rating"
-            defaultValue={3}
+            value={RatingStars.three}
             id="3-stars"
             type="radio"
+            checked={rating === RatingStars.three}
           />
           <label
             htmlFor="3-stars"
@@ -133,9 +139,10 @@ function OfferReviewsForm(): JSX.Element {
             onChange={handlerRadioClick}
             className="form__rating-input visually-hidden"
             name="rating"
-            defaultValue={2}
+            value={RatingStars.two}
             id="2-stars"
             type="radio"
+            checked={rating === RatingStars.two}
           />
           <label
             htmlFor="2-stars"
@@ -150,9 +157,10 @@ function OfferReviewsForm(): JSX.Element {
             onChange={handlerRadioClick}
             className="form__rating-input visually-hidden"
             name="rating"
-            defaultValue={1}
+            value={RatingStars.one}
             id="1-star"
             type="radio"
+            checked={rating === RatingStars.one}
           />
           <label
             htmlFor="1-star"
@@ -171,6 +179,7 @@ function OfferReviewsForm(): JSX.Element {
           id="review"
           name="review"
           placeholder="Tell how was your stay, what you like and what can be improved"
+          data-testid="comment"
         />
         <div className="reviews__button-wrapper">
           <p className="reviews__help">

@@ -8,7 +8,7 @@ function MainScreen(): JSX.Element {
   const isOffersLoaded = useAppSelector(getLoadedOffersStatus);
 
   return (
-    <main className="page__main page__main--index">
+    <main className="page__main page__main--index" data-testid="main-screen">
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <LocationsList />

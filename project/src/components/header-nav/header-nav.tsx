@@ -24,7 +24,7 @@ function HeaderNav(): JSX.Element | null {
                 to="/favorites"
               >
                 <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-                <span className="header__user-name user__name">
+                <span className="header__user-name user__name" data-testid="header-user-name">
                   Oliver.conner@gmail.com
                 </span>
               </Link>
@@ -36,6 +36,7 @@ function HeaderNav(): JSX.Element | null {
                 onClick={(evt) => {
                   dispatch(logoutAction());
                 }}
+                data-testid="header-signout"
               >
                 <span className="header__signout">Sign out</span>
               </Link>
@@ -50,7 +51,9 @@ function HeaderNav(): JSX.Element | null {
               to="/login"
             >
               <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-              <span className="header__login">Sign in</span>
+              <span className="header__login" data-testid="header-login">
+                Sign in
+              </span>
             </Link>
           </li>
         );
@@ -104,7 +107,7 @@ function HeaderNav(): JSX.Element | null {
   }
 
   return (
-    <nav className="header__nav">
+    <nav className="header__nav" data-testid="header_nav">
       <ul className="header__nav-list">{getNavItems(authorizationStatus)}</ul>
     </nav>
   );

@@ -7,8 +7,8 @@ import LocationItem from '../location-item/location-item';
 function LocationsList(): JSX.Element {
   const currentCity = useAppSelector(getCurrentCity);
   return (
-    <section className="locations container">
-      <ul className="locations__list tabs__list">
+    <section className="locations container" >
+      <ul className="locations__list tabs__list" data-testid="locations_list">
         {CITIES.map((item, id) => {
           const keyValue = `${id}: ${item.name}`;
           return (

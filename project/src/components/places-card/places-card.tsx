@@ -1,5 +1,4 @@
 import React from 'react';
-import { Fragment } from 'react';
 import { PlaceCardTypes } from '../../const';
 import { Offers, Offer } from '../../types/offers';
 
@@ -18,7 +17,7 @@ function PlacesCard({
 }: PlacesCardProps): JSX.Element {
 
   return (
-    <Fragment>
+    <div className="cities__places-list places__list tabs__content" data-testid="places-card">
       {offers.map((offer, id) => {
         const keyValue = `${id}: ${offer.id}`;
         return (
@@ -30,7 +29,7 @@ function PlacesCard({
           />
         );
       })}
-    </Fragment>
+    </div>
   );
 }
 

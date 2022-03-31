@@ -2,80 +2,50 @@ import { createSlice } from '@reduxjs/toolkit';
 import { NameSpace } from '../../const';
 import { OfferProcess } from '../../types/state';
 
+/**
+ * Пустой объект для начального состояния offer-process
+ */
+export const START_OFFER = {
+  city: {
+    name: '',
+    location: {
+      latitude: 0,
+      longitude: 0,
+      zoom: 10,
+    },
+  },
+  previewImage: '',
+  images: [],
+  title: '',
+  isFavorite: false,
+  isPremium: false,
+  rating: 0,
+  type: '',
+  bedrooms: 0,
+  maxAdults: 0,
+  price: 0,
+  goods: [],
+  host: {
+    id: 0,
+    name: '',
+    isPro: false,
+    avatarUrl: '',
+  },
+  description: '',
+  location: {
+    latitude: 0,
+    longitude: 0,
+    zoom: 10,
+  },
+  id: 100500,
+};
 
 const initialState: OfferProcess = {
   isNearbyOffersLoaded: false,
   isOfferLoaded: false,
   isOfferReviewsLoaded: false,
-  nearbyOffers: [{
-    city: {
-      name: '',
-      location: {
-        latitude: 0,
-        longitude: 0,
-        zoom: 10,
-      },
-    },
-    previewImage: '',
-    images: [],
-    title: '',
-    isFavorite: false,
-    isPremium: false,
-    rating: 0,
-    type: '',
-    bedrooms: 0,
-    maxAdults: 0,
-    price: 0,
-    goods: [],
-    host: {
-      id: 0,
-      name: '',
-      isPro: false,
-      avatarUrl: '',
-    },
-    description:
-      '',
-    location: {
-      latitude: 0,
-      longitude: 0,
-      zoom: 10,
-    },
-    id: 100500,
-  }],
-  offer: {
-    city: {
-      name: '',
-      location: {
-        latitude: 0,
-        longitude: 0,
-        zoom: 10,
-      },
-    },
-    previewImage: '',
-    images: [],
-    title: '',
-    isFavorite: false,
-    isPremium: false,
-    rating: 0,
-    type: '',
-    bedrooms: 0,
-    maxAdults: 0,
-    price: 0,
-    goods: [],
-    host: {
-      id: 0,
-      name: '',
-      isPro: false,
-      avatarUrl: '',
-    },
-    description: '',
-    location: {
-      latitude: 0,
-      longitude: 0,
-      zoom: 10,
-    },
-    id: 100500,
-  },
+  nearbyOffers: [],
+  offer: START_OFFER,
   reviews: [],
 };
 
@@ -96,13 +66,10 @@ export const offerProcess = createSlice({
       state.reviews = action.payload;
       state.isOfferReviewsLoaded = true;
     },
-    sendReview: (state, action) => {
-      state.reviews = action.payload;
-    },
     resetNearbyOffers: (state) => {
       state.isNearbyOffersLoaded = false;
     },
   },
 });
 
-export const {loadOffer, loadNearbyOffers, loadReviews, sendReview, resetNearbyOffers} = offerProcess.actions;
+export const {loadOffer, loadNearbyOffers, loadReviews, resetNearbyOffers} = offerProcess.actions;

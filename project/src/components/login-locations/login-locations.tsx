@@ -16,12 +16,16 @@ function LoginLocations(): JSX.Element {
   };
 
   return (
-    <section className="locations locations--login locations--current">
+    <section
+      className="locations locations--login locations--current"
+      data-testid="locations-login"
+    >
       <div className="locations__item">
         <Link
           className="locations__item-link"
           to="/"
           onClick={handleLinkClick}
+          data-testid="locations-login-link"
         >
           <span>{name}</span>
         </Link>
