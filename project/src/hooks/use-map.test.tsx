@@ -1,5 +1,6 @@
 
 import { MOCK_CITY } from '../mock';
+import {Map} from 'leaflet';
 import useMap from './use-map';
 import {renderHook} from '@testing-library/react-hooks';
 
@@ -13,7 +14,7 @@ describe('Hook: useMap', () => {
 
     const { result } = renderHook(() => useMap(ref, MOCK_CITY.location));
 
-    expect(result).toBeInstanceOf(Object);
+    expect(result.current).toBeInstanceOf(Map);
   });
 
 });
